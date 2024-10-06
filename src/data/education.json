@@ -1,0 +1,16 @@
+{
+  "education": [
+    {
+      "degree": "Law",
+      "institution": "University of Wrocław",
+      "dates": "10/2011 - 06/2017",
+      "location": "Wrocław, Poland"
+    },
+    {
+      "degree": "Front-end Development",
+      "institution": "Wyższa Szkoła Bankowa",
+      "dates": "10/2018 - 06/2019",
+      "location": "Wrocław, Poland"
+    }
+  ]
+}

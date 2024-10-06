@@ -1,0 +1,17 @@
+---
+import languages from '@data/languages.json';
+---
+
+<style></style>
+
+<section id="languages" class="section">
+  <ul>
+    {
+      languages.languages.map((language) => (
+        <li>
+          {language.language} | {language.proficiency}
+        </li>
+      ))
+    }
+  </ul>
+</section>

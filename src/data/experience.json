@@ -1,0 +1,47 @@
+{
+  "experience": [
+    {
+      "job_title": "Front-end Developer",
+      "company": "Omnilogy Sp. z o.o.",
+      "date": "07/2023 - Present",
+      "responsibilities": [
+        "Developed high-performance web applications with a focus on observability, ensuring efficient monitoring and reliability.",
+        "Collaborated with cross-functional teams to design, implement, and troubleshoot new features, enhancing application functionality.",
+        "Led the development of a corporate website, overseeing the full project lifecycle from architecture to deployment.",
+        "Integrated content management systems (CMS) with the front-end, improving content management and user experience.",
+        "Wrote unit and end-to-end tests to ensure code quality and maintainability.",
+        "Automated testing processes to streamline development and enhance product quality.",
+        "Actively participated in code reviews, project planning, and task estimation.",
+        "Mentored junior developer, guiding them in best practices and code optimization."
+      ]
+    },
+    {
+      "job_title": "Front-end Developer",
+      "company": "Espeo Software",
+      "date": "06/2022 - 07/2023",
+      "responsibilities": [
+        "Collaborated with UI/UX designers to build intuitive and visually appealing interfaces, ensuring an optimal user experience.",
+        "Developed reusable components, ensuring scalability and maintainability of the front-end codebase across multiple projects.",
+        "Integrated user authentication and worked closely with backend developers to implement seamless, secure functionality.",
+        "Rebuilt web applications using modern frameworks, significantly improving performance and maintainability.",
+        "Customized and extended corporate websites using content management systems (CMS) to enhance functionality and user engagement.",
+        "Implemented responsive designs to optimize performance across devices and browsers.",
+        "Developed new features, including the integration of third-party APIs and services."
+      ]
+    },
+    {
+      "job_title": "CEO",
+      "company": "WOOL MORNING",
+      "date": "10/2019 - 09/2022",
+      "location": "Wrocław, Poland",
+      "responsibilities": []
+    },
+    {
+      "job_title": "Lawyer",
+      "company": "ALTO | SEL Energy Sp. z o. o. | Lumen Polska",
+      "date": "04/2016 - 10/2019",
+      "location": "Wrocław, Poland",
+      "responsibilities": []
+    }
+  ]
+}

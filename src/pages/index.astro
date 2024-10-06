@@ -1,10 +1,12 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
-import About from "../sections/About.astro";
-import Contact from "../sections/Contact.astro";
-import Experience from "../sections/Experience.astro";
-import Hero from "../sections/Hero.astro";
-import Skills from "../sections/Skills.astro";
+import MainLayout from '@layouts/MainLayout.astro';
+import About from '@sections/About.astro';
+import Blog from '@sections/Blog.astro';
+import Contact from '@sections/Contact.astro';
+import Experience from '@sections/Experience.astro';
+import Hero from '@sections/Hero.astro';
+import Languages from '@sections/Languages.astro';
+import Skills from '@sections/Skills.astro';
 ---
 
 <MainLayout title="Main page" description="Lorem ipsum dolor sit amet">
@@ -12,5 +14,7 @@ import Skills from "../sections/Skills.astro";
   <About />
   <Experience />
   <Skills />
+  <Languages />
+  <Blog />
   <Contact />
 </MainLayout>

@@ -1,0 +1,14 @@
+{
+  "presentations": [
+    {
+      "title": "Creating Dynatrace Apps",
+      "type": "Webinar",
+      "description": "Webinar and live coding session on creating Dynatrace apps."
+    },
+    {
+      "title": "Lightning Talk on Astro Framework",
+      "type": "Lightning Talk",
+      "description": "Brief presentation on the Astro Framework."
+    }
+  ]
+}
