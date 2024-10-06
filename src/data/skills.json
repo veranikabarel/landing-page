@@ -1,0 +1,46 @@
+{
+  "skills_and_tools": {
+    "languages_and_frameworks": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "TypeScript",
+      "Next.js",
+      "Astro"
+    ],
+    "styling": [
+      "Sass",
+      "Styled components",
+      "CSS modules",
+      "Material UI"
+    ],
+    "visualization_and_cms": [
+      "D3.js",
+      "Strapi",
+      "Wordpress",
+      "Dynatrace"
+    ],
+    "network_and_data": [
+      "Axios",
+      "React Query"
+    ],
+    "testing": [
+      "Jest",
+      "React testing library",
+      "Playwright",
+      "Backstop.js"
+    ],
+    "tools": [
+      "Git",
+      "Jira",
+      "Postman",
+      "Figma"
+    ],
+    "build_tools": [
+      "Webpack",
+      "Vite",
+      "Bun"
+    ]
+  }
+}

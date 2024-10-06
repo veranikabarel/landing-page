@@ -1,0 +1,24 @@
+{
+  "languages": [
+    {
+      "language": "English",
+      "proficiency": "Advanced"
+    },
+    {
+      "language": "Polish",
+      "proficiency": "Proficient"
+    },
+    {
+      "language": "Russian",
+      "proficiency": "Native"
+    },
+    {
+      "language": "Ukrainian",
+      "proficiency": "Beginner"
+    },
+    {
+      "language": "Belarussian",
+      "proficiency": "Intermediate"
+    }
+  ]
+}

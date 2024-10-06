@@ -1,13 +1,24 @@
 ---
-
+import experience from '@data/experience.json';
 ---
 
-<style>
-  .section {
-    height: 100vh;
-  }
-</style>
+<style></style>
 
 <section id="experience" class="section">
-  <p>Experience section</p>
+  <div>
+    {
+      experience.experience.map((exp) => (
+        <div>
+          <h5>{exp.job_title}</h5>
+          <p>{exp.date}</p>
+          <p>{exp.company}</p>
+          <ul>
+            {exp.responsibilities.map((resp: string) => (
+              <li>{resp}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
 </section>
