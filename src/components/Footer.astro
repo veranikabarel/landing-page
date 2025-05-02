@@ -2,15 +2,28 @@
 const today = new Date();
 ---
 
-<footer>
-  &copy; {today.getFullYear()} Veranika Kasparevych. All rights reserved.
-</footer>
 <style>
   footer {
-    padding: 2em 1em 6em 1em;
-    background: linear-gradient(var(--gray-gradient)) no-repeat;
-    color: rgb(var(--gray));
-    text-align: center;
+    padding: 12px 0;
     margin-bottom: 0;
+    text-align: center;
+  }
+
+  @media screen and (width >= 768px) {
+    footer {
+      padding: 0 32px;
+    }
+  }
+
+  @media screen and (width >= 1200px) {
+    footer {
+      padding: 0 48px;
+    }
   }
 </style>
+
+<footer>
+  <p>
+    &copy; {today.getFullYear()} Veranika Kasparevych. <br />
+  </p>
+</footer>

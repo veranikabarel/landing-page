@@ -1,0 +1,228 @@
+---
+import CustomLink from '@components/CustomLink.astro';
+import skills from '@data/skills.json';
+import MainLayout from '@layouts/MainLayout.astro';
+import Contact from '@sections/Contact.astro';
+---
+
+<style>
+  .heroSection {
+    padding: 0 12px;
+  }
+
+  .about {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .workSection {
+    padding: 0 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sectionHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .aboutSection {
+    padding: 0 12px;
+  }
+
+  .attendingSection {
+    padding: 0 12px;
+  }
+  @media screen and (width >= 768px) {
+    .heroSection {
+      padding: 0 32px;
+    }
+    .hero {
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 64px;
+    }
+
+    .about {
+      gap: 64px;
+    }
+
+    .workSection {
+      padding: 0 32px;
+    }
+
+    .workImagesWrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .imageAndTextWrapper {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .attendingSection {
+      padding: 0 32px;
+    }
+    .servicesSection {
+      padding: 0 32px;
+    }
+
+    .faqSection {
+      padding: 0 32px;
+    }
+  }
+
+  @media screen and (width >= 1200px) {
+    .heroSection {
+      padding: 0 48px;
+    }
+
+    .workSection {
+      padding: 0 48px;
+    }
+
+    .aboutSection {
+      padding: 0 48px;
+    }
+
+    .attendingSection {
+      padding: 0 48px;
+    }
+
+    .aboutImgAndText {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+</style>
+
+<MainLayout title="About me" description=" Lorem ipsum dolor sit amet">
+  <section class="heroSection">
+    <div class="hero">
+      <h1>Veranika <br /> Kasparevych</h1>
+    </div>
+
+    <div class="about">
+      <div class="sectionHeader">
+        <h2>about.</h2>
+        <CustomLink href="/about" text="Learn more" />
+      </div>
+      <div>
+        Hello, I'm a freelancer specializing in minimal design with 10 years of
+        expertise — based in Tokyo, working remote. Let’s create!
+      </div>
+
+      <div class="imageAndTextWrapper">
+        <div><img src="../../src/styles/img.jpg" /></div>
+        <div>
+          Hello, I'm a freelancer specializing in minimal design with 10 years
+          of expertise — based in Tokyo, working remote. Let’s create!
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="workSection">
+    <div class="sectionHeader">
+      <h2>technologies.</h2>
+      <CustomLink href="/work" text="Learn more" />
+    </div>
+    <div class="workImagesWrapper">
+      <div><img src="../../src/styles/img.jpg" /></div>
+      <div><img src="../../src/styles/img.jpg" /></div>
+      <div><img src="../../src/styles/img.jpg" /></div>
+      <div><img src="../../src/styles/img.jpg" /></div>
+    </div>
+  </section>
+
+  <section class="attendingSection">
+    <div>
+      <h2>articles.</h2>
+    </div>
+    <ul class="servicesWrapper">
+      <li>Lorem</li>
+      <li>Lorem</li>
+      <li>Lorem</li>
+      <li>Lorem</li>
+    </ul>
+  </section>
+
+  <section class="attendingSection">
+    <div>
+      <h2>conferences | certificates.</h2>
+    </div>
+    <ul class="servicesWrapper">
+      <li>Lorem</li>
+      <li>Lorem</li>
+      <li>Lorem</li>
+      <li>Lorem</li>
+    </ul>
+  </section>
+
+  <section class="attendingSection">
+    <div>
+      <h2>languages.</h2>
+    </div>
+    <ul class="servicesWrapper">
+      <ul>
+        {
+          skills.skills_and_tools.languages_and_frameworks.map((language) => (
+            <li>{language}</li>
+          ))
+        }
+      </ul>
+
+      <ul>
+        {
+          skills.skills_and_tools.network_and_data.map((network) => (
+            <li>{network}</li>
+          ))
+        }
+      </ul>
+
+      <ul>
+        {skills.skills_and_tools.styling.map((styles) => <li>{styles}</li>)}
+      </ul>
+
+      <ul>
+        {skills.skills_and_tools.testing.map((test) => <li>{test}</li>)}
+      </ul>
+
+      <ul>
+        {
+          skills.skills_and_tools.visualization_and_cms.map((vis) => (
+            <li>{vis}</li>
+          ))
+        }
+      </ul>
+
+      <ul>
+        {skills.skills_and_tools.build_tools.map((build) => <li>{build}</li>)}
+      </ul>
+
+      <ul>
+        {skills.skills_and_tools.tools.map((tool) => <li>{tool}</li>)}
+      </ul>
+    </ul>
+  </section>
+
+  <section class="faqSection">
+    <div>
+      <h2>FAQ</h2>
+    </div>
+    <div class="faqWrapper">
+      <ul class="faqList">
+        <li>Lorem</li>
+        <li>Lorem</li>
+        <li>Lorem</li>
+        <li>Lorem</li>
+      </ul>
+    </div>
+  </section>
+
+  <Contact />
+</MainLayout>
