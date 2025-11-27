@@ -10,12 +10,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "^3.1.7",
-    "@astrojs/rss": "^4.0.7",
-    "@astrojs/sitemap": "^3.2.0",
+    "@astrojs/check": "^0.9.6",
+    "@astrojs/mdx": "^4.3.12",
+    "@astrojs/rss": "^4.0.14",
+    "@astrojs/sitemap": "^3.6.0",
     "@fontsource-variable/montserrat": "^5.1.0",
-    "astro": "^4.15.11",
+    "astro": "^5.16.1",
     "typescript": "^5.5.3"
   },
   "devDependencies": {
