@@ -1,0 +1,57 @@
+---
+const { href, text, variant = "primary", ...props } = Astro.props;
+---
+
+<style>
+  .cta-link {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: var(--radius-md);
+    padding: 0.85rem 1.75rem;
+    background: linear-gradient(
+      135deg,
+      var(--color-accent),
+      var(--color-accent-strong)
+    );
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 15px 30px rgba(124, 77, 255, 0.35);
+    transition:
+      transform 220ms ease,
+      box-shadow var(--transition-base),
+      background var(--transition-base),
+      color var(--transition-base);
+  }
+
+  .cta-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 25px 40px rgba(95, 46, 234, 0.35);
+  }
+
+  .cta-link:active {
+    transform: translateY(0);
+  }
+
+  .cta-link.outline {
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    box-shadow: none;
+  }
+
+  .cta-link.outline:hover {
+    border-color: var(--color-accent-strong);
+    color: var(--color-accent-strong);
+  }
+</style>
+
+<a
+  href={href}
+  class:list={["cta-link", { outline: variant === "outline" }]}
+  {...props}
+>
+  {text}
+</a>

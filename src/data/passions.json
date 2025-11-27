@@ -1,0 +1,21 @@
+{
+  "hobbies_and_interests": [
+    {
+      "category": "Tech Blogging",
+      "description": "Writing articles on latest software development trends and sharing coding tutorials.",
+      "platforms": ["Dev.to", "Espeo blog"]
+    },
+    {
+      "category": "Music",
+      "hobby": "Piano"
+    },
+    {
+      "category": "Crafts",
+      "hobby": "Knitting"
+    },
+    {
+      "category": "Sports",
+      "hobby": "Snowboarding"
+    }
+  ]
+}
