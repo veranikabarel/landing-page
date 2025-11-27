@@ -1,143 +1,192 @@
 ---
-import CustomLink from '@components/CustomLink.astro';
+import CustomLink from "@components/CustomLink.astro";
 ---
 
 <style>
   .contactSection {
-    padding: 0 12px;
+    padding: clamp(2rem, 5vw, 3.5rem);
+    background: linear-gradient(
+      135deg,
+      rgba(124, 77, 255, 0.07),
+      rgba(16, 185, 129, 0.05)
+    );
   }
+
   .contactSectionHeader {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: 12px;
-    margin-bottom: 32px;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
   }
 
-  .mediaLinks {
+  .contactHeadingRow {
     display: flex;
-    gap: 8px;
-    list-style: none;
+    flex-direction: column;
+    gap: 1rem;
   }
 
-  .mediaLinks a {
-    text-decoration: none;
-    color: var(--black);
+  .socialIcons {
+    display: flex;
+    gap: 0.85rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .socialIcons a {
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text);
+    background: #fff;
+    transition:
+      transform var(--transition-base),
+      border-color var(--transition-base),
+      box-shadow var(--transition-base);
+  }
+
+  .socialIcons a:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-accent-strong);
+    box-shadow: var(--shadow-soft);
   }
 
   .contactWrapper {
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
+    display: grid;
+    gap: 1rem;
   }
 
   .contactWrapper p {
-    margin-bottom: 32px;
+    margin-bottom: 0;
+    font-size: 1.05rem;
   }
 
-  .buttonAndBannerWrapper {
-    display: flex;
-    flex-direction: column-reverse;
+  .contactSection h2 {
+    margin: 0;
   }
 
-  .buttonAndBannerWrapper p {
-    display: flex;
-    align-items: center;
+  .availabilityDot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-highlight);
+    display: inline-flex;
+    position: relative;
+  }
+
+  .availabilityWrapper p {
+    margin-top: 1rem;
+    color: var(--color-highlight);
+  }
+
+  .availabilityDot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
   }
 
   @media screen and (width >= 768px) {
-    .contactSection {
-      padding: 0 32px;
-    }
-
-    .contactSectionHeader {
-      justify-content: flex-end;
-    }
-
-    .buttonAndBannerWrapper {
+    .contactHeadingRow {
       flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .socialIcons li {
+      display: inline-flex;
     }
   }
 
   @media screen and (width >= 1200px) {
     .contactSection {
-      padding: 0 48px;
-    }
-
-    .contactSectionHeader {
-      justify-content: flex-end;
+      padding: 3.5rem;
     }
   }
 </style>
 
 <section class="contactSection">
   <div class="contactSectionHeader">
-    <ul class="mediaLinks">
-      <li>
-        <a href="mailto:veranikabarel@gmail.com"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            ><path
-              fill="currentColor"
-              d="M12 15c.81 0 1.5-.3 2.11-.89c.59-.61.89-1.3.89-2.11s-.3-1.5-.89-2.11C13.5 9.3 12.81 9 12 9s-1.5.3-2.11.89C9.3 10.5 9 11.19 9 12s.3 1.5.89 2.11c.61.59 1.3.89 2.11.89m0-13c2.75 0 5.1 1 7.05 2.95S22 9.25 22 12v1.45c0 1-.35 1.85-1 2.55c-.7.67-1.5 1-2.5 1c-1.2 0-2.19-.5-2.94-1.5c-1 1-2.18 1.5-3.56 1.5c-1.37 0-2.55-.5-3.54-1.46C7.5 14.55 7 13.38 7 12c0-1.37.5-2.55 1.46-3.54C9.45 7.5 10.63 7 12 7c1.38 0 2.55.5 3.54 1.46C16.5 9.45 17 10.63 17 12v1.45c0 .41.16.77.46 1.08s.65.47 1.04.47c.42 0 .77-.16 1.07-.47s.43-.67.43-1.08V12c0-2.19-.77-4.07-2.35-5.65S14.19 4 12 4s-4.07.77-5.65 2.35S4 9.81 4 12s.77 4.07 2.35 5.65S9.81 20 12 20h5v2h-5c-2.75 0-5.1-1-7.05-2.95S2 14.75 2 12s1-5.1 2.95-7.05S9.25 2 12 2"
-            ></path></svg
-          ></a
-        >
-      </li>
-      <li>
-        <a href="https://github.com/veranikabarel"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            ><g
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
-              ><path
-                d="M9.096 21.25v-3.146a3.33 3.33 0 0 1 .758-2.115c-3.005-.4-5.28-1.859-5.28-5.798c0-1.666 1.432-3.89 1.432-3.89c-.514-1.13-.5-3.084.06-3.551c0 0 1.95.175 3.847 1.75c1.838-.495 3.764-.554 5.661 0c1.897-1.575 3.848-1.75 3.848-1.75c.558.467.573 2.422.06 3.551c0 0 1.432 2.224 1.432 3.89c0 3.94-2.276 5.398-5.28 5.798a3.33 3.33 0 0 1 .757 2.115v3.146"
-              ></path><path
-                d="M3.086 16.57c.163.554.463 1.066.878 1.496c.414.431.932.77 1.513.988a4.46 4.46 0 0 0 3.62-.216"
-              ></path></g
-            ></svg
-          ></a
-        >
-      </li>
-      <li>
-        <a href="https://www.linkedin.com/in/veranika-kasparevych/"></a><svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          ><path
-            fill="currentColor"
-            d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"
-          ></path></svg
-        >
-      </li>
-    </ul>
+    <div class="contactHeadingRow">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2>Let’s build something thoughtful</h2>
+        <div class="availabilityWrapper">
+          <p class="badge">
+            <span class="availabilityDot" aria-hidden="true"></span>
+            Currently available for partnerships
+          </p>
+        </div>
+      </div>
+      <ul class="socialIcons" aria-label="Social media links">
+        <li>
+          <a
+            href="mailto:veranikabarel@gmail.com"
+            aria-label="Send me an email"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="currentColor"
+                d="M20 6H4l8 5l8-5m0 12V8l-8 5l-8-5v10h16m0-16q.825 0 1.413.588T22 4v16q0 .825-.587 1.413T20 22H4q-.825 0-1.412-.587T2 20V4q0-.825.588-1.412T4 2h16Z"
+              ></path>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://github.com/veranikabarel"
+            aria-label="View my GitHub profile"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="currentColor"
+                d="M12.04 1.998a10 10 0 0 0-3.162 19.487c.5.087.686-.213.686-.476c0-.235-.01-1.015-.014-1.84c-2.789.607-3.379-1.18-3.379-1.18c-.455-1.155-1.11-1.463-1.11-1.463c-.908-.62.07-.607.07-.607c1.003.07 1.531 1.03 1.531 1.03c.892 1.53 2.341 1.087 2.91.832c.092-.647.35-1.086.636-1.337c-2.228-.255-4.57-1.115-4.57-4.964c0-1.096.39-1.99 1.03-2.69c-.104-.253-.447-1.272.098-2.65c0 0 .84-.27 2.75 1.026a9.564 9.564 0 0 1 5 0c1.91-1.296 2.748-1.026 2.748-1.026c.547 1.378.204 2.397.1 2.65c.64.7 1.028 1.594 1.028 2.69c0 3.86-2.346 4.707-4.58 4.957c.359.308.678.917.678 1.85c0 1.335-.012 2.415-.012 2.743c0 .264.184.57.69.473A10 10 0 0 0 12.04 2Z"
+              ></path>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/in/veranika-kasparevych/"
+            aria-label="Connect on LinkedIn"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="currentColor"
+                d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"
+              ></path>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
+
   <div class="contactWrapper">
     <p>Curious about what we can create together?</p>
-
-    <div class="buttonAndBannerWrapper">
+    <div>
       <CustomLink href="/contact" text="Get in touch" />
-      <p>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          ><path
-            fill="currentColor"
-            d="M12 10a2 2 0 0 0-2 2a2 2 0 0 0 2 2c1.11 0 2-.89 2-2a2 2 0 0 0-2-2"
-          ></path></svg
-        >Available for work
-      </p>
     </div>
   </div>
 </section>

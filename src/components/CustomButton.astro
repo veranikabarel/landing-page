@@ -1,42 +1,82 @@
 ---
-const { onclick, text, ...props } = Astro.props;
+const {
+  onclick,
+  text,
+  type = "button",
+  variant = "primary",
+  href,
+  download,
+  target,
+  rel,
+  ...props
+} = Astro.props;
 ---
 
 <style>
-  .button {
-    background-color: var(--gray);
+  .cta {
     border: none;
-    padding: 0;
+    border-radius: var(--radius-md);
+    padding: 0.85rem 1.75rem;
+    font-weight: 600;
+    background: linear-gradient(
+      135deg,
+      var(--color-accent),
+      var(--color-accent-strong)
+    );
+    color: #fff;
     cursor: pointer;
-  }
-
-  .button {
-    text-decoration: none;
-    color: var(--black);
     font-family: inherit;
-    padding: 12px 24px;
+    box-shadow: 0 15px 30px rgba(124, 77, 255, 0.35);
     transition:
-      background-color 0.3s,
-      color 0.3s;
+      transform 220ms ease,
+      box-shadow var(--transition-base),
+      background var(--transition-base),
+      color var(--transition-base);
   }
 
-  .button:hover {
-    background-color: var(--yellow);
-    color: var(--black);
+  .cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 25px 40px rgba(95, 46, 234, 0.35);
   }
 
-  .button:focus {
-    outline: none;
+  .cta:active {
+    transform: translateY(0);
   }
 
-  .button:active {
-    background-color: var(--yellow);
-    color: var(--white);
+  .cta.outline {
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    box-shadow: none;
   }
 
-  .button:visited {
-    color: var(--black);
+  .cta.outline:hover {
+    color: var(--color-accent-strong);
+    border-color: var(--color-accent-strong);
+    box-shadow: none;
   }
 </style>
 
-<button onclick={onclick} class="button">{text}</button>
+{
+  href ? (
+    <a
+      href={href}
+      download={download}
+      target={target}
+      rel={target === "_blank" ? (rel ?? "noopener noreferrer") : rel}
+      class:list={["cta", { outline: variant === "outline" }]}
+      {...props}
+    >
+      {text}
+    </a>
+  ) : (
+    <button
+      type={type}
+      onclick={onclick}
+      class:list={["cta", { outline: variant === "outline" }]}
+      {...props}
+    >
+      {text}
+    </button>
+  )
+}

@@ -1,13 +1,76 @@
 ---
-import CustomLink from '@components/CustomLink.astro';
-import skills from '@data/skills.json';
-import MainLayout from '@layouts/MainLayout.astro';
-import Contact from '@sections/Contact.astro';
+import CustomLink from "@components/CustomLink.astro";
+import experience from "@data/experience.json";
+import skills from "@data/skills.json";
+import articles from "@data/articles.json";
+import activities from "@data/activities.json";
+import MainLayout from "@layouts/MainLayout.astro";
+import Contact from "@sections/Contact.astro";
+
+const skillSections = [
+  {
+    title: "Languages & Frameworks",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M8 5 3 12l5 7M16 5l5 7-5 7M11.5 4l-2 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>`,
+    items: skills.skills_and_tools.languages_and_frameworks,
+  },
+  {
+    title: "Styling Systems",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 4a8 8 0 0 0-8 8c0 4 2.5 8 6 8h4a2.5 2.5 0 0 0 0-5h3a3 3 0 0 0 3-3 8 8 0 0 0-8-8Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+        <circle cx="9" cy="10" r="1" fill="currentColor" />
+        <circle cx="12.5" cy="8" r="1" fill="currentColor" />
+        <circle cx="15" cy="11" r="1" fill="currentColor" />
+      </svg>`,
+    items: skills.skills_and_tools.styling,
+  },
+  {
+    title: "Network & Data",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="6" cy="12" r="2.2" stroke="currentColor" stroke-width="1.6" />
+        <circle cx="18" cy="6" r="2.2" stroke="currentColor" stroke-width="1.6" />
+        <circle cx="18" cy="18" r="2.2" stroke="currentColor" stroke-width="1.6" />
+        <path d="M7.8 10.9 15.9 7.1M7.8 13.1l8.1 3.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+      </svg>`,
+    items: skills.skills_and_tools.network_and_data,
+  },
+  {
+    title: "Testing",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.6" />
+        <path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>`,
+    items: skills.skills_and_tools.testing,
+  },
+  {
+    title: "Visualization & CMS",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M5 20V9M10 20V4M15 20v-8M20 20v-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+      </svg>`,
+    items: skills.skills_and_tools.visualization_and_cms,
+  },
+  {
+    title: "Build Tools",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M21 15.5 13.5 8m-2.3-2.3 2.3 2.3-6.5 6.5a2.1 2.1 0 0 1-3 0 2.1 2.1 0 0 1 0-3l6.5-6.5Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>`,
+    items: skills.skills_and_tools.build_tools,
+  },
+  {
+    title: "Productivity Toolkit",
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 9h16v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9Zm3-3a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3H7V6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+        <path d="M10 14h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+      </svg>`,
+    items: skills.skills_and_tools.tools,
+  },
+];
 ---
 
 <style>
   .heroSection {
-    padding: 0 12px;
+    padding-inline: 12px;
   }
 
   .about {
@@ -16,10 +79,67 @@ import Contact from '@sections/Contact.astro';
   }
 
   .workSection {
-    padding: 0 12px;
+    padding-inline: 12px;
     display: flex;
     flex-direction: column;
     gap: 12px;
+  }
+
+  .experienceSection {
+    padding-inline: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .experienceCard {
+    padding-bottom: 24px;
+  }
+
+  .experienceCard:not(:last-child) {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .experienceHeader {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .experienceMeta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .experienceLogo {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 6px 20px rgb(0 0 0 / 0.15);
+  }
+
+  .experienceDate {
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  .responsibilityList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-left: 20px;
+    list-style: disc;
+  }
+
+  .responsibilityList li {
+    color: var(--color-muted);
+    line-height: 1.5;
   }
 
   .sectionHeader {
@@ -30,15 +150,218 @@ import Contact from '@sections/Contact.astro';
   }
 
   .aboutSection {
-    padding: 0 12px;
+    padding-inline: 12px;
   }
 
   .attendingSection {
-    padding: 0 12px;
+    padding-inline: 12px;
+  }
+
+  .articlesSection {
+    padding-inline: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .articlesList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .articleCard {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition:
+      transform var(--transition-base),
+      box-shadow var(--transition-base),
+      border-color var(--transition-base);
+  }
+
+  .articleCard:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-cut);
+    border-color: var(--color-accent-soft);
+  }
+
+  .articleCard h4 {
+    margin: 0;
+    color: var(--color-text);
+    font-size: 1.25rem;
+  }
+
+  .conferencesSection {
+    padding-inline: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .conferencesList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .conferenceCard {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition:
+      transform var(--transition-base),
+      box-shadow var(--transition-base),
+      border-color var(--transition-base);
+  }
+
+  .conferenceCard:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-cut);
+    border-color: var(--color-accent-soft);
+  }
+
+  .conferenceHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .conferenceCard h4 {
+    margin: 0;
+    color: var(--color-text);
+    font-size: 1.25rem;
+  }
+
+  .conferenceType {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    background: var(--color-accent-soft);
+    color: var(--color-accent-strong);
+    font-size: 0.85rem;
+    font-weight: 600;
+    width: fit-content;
+  }
+
+  .conferenceDescription {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .languagesSection {
+    position: relative;
+    padding-block: 48px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-top: 16px;
+  }
+
+  .languagesSection::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(124, 77, 255, 0.08),
+      rgba(16, 185, 129, 0.06)
+    );
+    z-index: 0;
+  }
+
+  .languagesSection > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .skillsGrid {
+    margin-top: 32px;
+    display: grid;
+    gap: 16px;
+  }
+
+  .skillCard {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(124, 77, 255, 0.08);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: var(--shadow-cut);
+    backdrop-filter: blur(6px);
+  }
+
+  .skillCardHeader {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .skillIcon {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    background: radial-gradient(
+      circle at 20% 20%,
+      var(--color-accent),
+      var(--color-accent-strong)
+    );
+    display: grid;
+    place-items: center;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .skillCard h3 {
+    margin-bottom: 4px;
+  }
+
+  .skillList {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .skillList li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text-muted);
+    font-weight: 500;
+  }
+
+  .skillList li::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-highlight);
+    display: inline-flex;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
   }
   @media screen and (width >= 768px) {
     .heroSection {
-      padding: 0 32px;
+      padding-inline: 32px;
     }
     .hero {
       flex-direction: row;
@@ -51,7 +374,7 @@ import Contact from '@sections/Contact.astro';
     }
 
     .workSection {
-      padding: 0 32px;
+      padding-inline: 32px;
     }
 
     .workImagesWrapper {
@@ -60,168 +383,191 @@ import Contact from '@sections/Contact.astro';
       gap: 24px;
     }
 
-    .imageAndTextWrapper {
-      display: flex;
-      justify-content: space-between;
+    .experienceSection {
+      padding-inline: 32px;
+    }
+
+    .experienceLayout {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
     }
 
     .attendingSection {
-      padding: 0 32px;
-    }
-    .servicesSection {
-      padding: 0 32px;
+      padding-inline: 32px;
     }
 
-    .faqSection {
-      padding: 0 32px;
+    .articlesSection {
+      padding-inline: 32px;
+    }
+
+    .conferencesSection {
+      padding-inline: 32px;
+    }
+
+    .articlesList {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .conferencesList {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .servicesSection {
+      padding-inline: 32px;
+    }
+
+    .skillsGrid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
   @media screen and (width >= 1200px) {
     .heroSection {
-      padding: 0 48px;
+      padding-inline: 48px;
     }
 
     .workSection {
-      padding: 0 48px;
+      padding-inline: 48px;
+    }
+
+    .experienceSection {
+      padding-inline: 48px;
     }
 
     .aboutSection {
-      padding: 0 48px;
+      padding-inline: 48px;
     }
 
     .attendingSection {
-      padding: 0 48px;
+      padding-inline: 48px;
+    }
+
+    .articlesSection {
+      padding-inline: 48px;
+    }
+
+    .conferencesSection {
+      padding-inline: 48px;
     }
 
     .aboutImgAndText {
       grid-template-columns: 2fr 1fr;
     }
+
+    /* .skillsGrid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    } */
   }
 </style>
 
 <MainLayout title="About me" description=" Lorem ipsum dolor sit amet">
-  <section class="heroSection">
-    <div class="hero">
-      <h1>Veranika <br /> Kasparevych</h1>
-    </div>
-
-    <div class="about">
-      <div class="sectionHeader">
-        <h2>about.</h2>
-        <CustomLink href="/about" text="Learn more" />
-      </div>
-      <div>
-        Hello, I'm a freelancer specializing in minimal design with 10 years of
-        expertise — based in Tokyo, working remote. Let’s create!
-      </div>
-
-      <div class="imageAndTextWrapper">
-        <div><img src="../../src/styles/img.jpg" /></div>
-        <div>
-          Hello, I'm a freelancer specializing in minimal design with 10 years
-          of expertise — based in Tokyo, working remote. Let’s create!
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="workSection">
+  <section class="experienceSection">
     <div class="sectionHeader">
-      <h2>technologies.</h2>
-      <CustomLink href="/work" text="Learn more" />
+      <h2>Experience</h2>
     </div>
-    <div class="workImagesWrapper">
-      <div><img src="../../src/styles/img.jpg" /></div>
-      <div><img src="../../src/styles/img.jpg" /></div>
-      <div><img src="../../src/styles/img.jpg" /></div>
-      <div><img src="../../src/styles/img.jpg" /></div>
+
+    {
+      experience.experience.map((exp) => (
+        <article class="experienceCard">
+          <div class="experienceHeader">
+            <div class="experienceMeta">
+              {exp.logo && (
+                <img
+                  class="experienceLogo"
+                  src={exp.logo}
+                  alt={`${exp.company} logo`}
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
+              <div>
+                <h5>{exp.job_title}</h5>
+                <p>{exp.company}</p>
+              </div>
+            </div>
+            <p class="experienceDate">{exp.date}</p>
+          </div>
+
+          {exp.responsibilities?.length > 0 && (
+            <ul class="responsibilityList">
+              {exp.responsibilities.map((resp: string) => (
+                <li>{resp}</li>
+              ))}
+            </ul>
+          )}
+        </article>
+      ))
+    }
+  </section>
+
+  <section class="attendingSection languagesSection">
+    <div>
+      <h2>Languages & Frameworks</h2>
+    </div>
+    <div class="skillsGrid">
+      {
+        skillSections.map(({ title, icon, items }) => (
+          <article class="skillCard">
+            <div class="skillCardHeader">
+              <span class="skillIcon" set:html={icon} />
+              <div>
+                <h3>{title}</h3>
+              </div>
+            </div>
+            <ul class="skillList">
+              {items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
     </div>
   </section>
 
-  <section class="attendingSection">
+  <section class="attendingSection articlesSection">
     <div>
-      <h2>articles.</h2>
+      <h2>Articles</h2>
     </div>
-    <ul class="servicesWrapper">
-      <li>Lorem</li>
-      <li>Lorem</li>
-      <li>Lorem</li>
-      <li>Lorem</li>
+    <ul class="articlesList">
+      {
+        articles.articles.map((article) => (
+          <li>
+            <article class="articleCard">
+              <h4>{article.title}</h4>
+              <CustomLink href={article.link} text={article.buttonText} />
+            </article>
+          </li>
+        ))
+      }
     </ul>
   </section>
 
-  <section class="attendingSection">
+  <section class="attendingSection conferencesSection">
     <div>
-      <h2>conferences | certificates.</h2>
+      <h2>Conferences | Certificates</h2>
     </div>
-    <ul class="servicesWrapper">
-      <li>Lorem</li>
-      <li>Lorem</li>
-      <li>Lorem</li>
-      <li>Lorem</li>
+    <ul class="conferencesList">
+      {
+        activities.presentations.map((presentation) => (
+          <li>
+            <article class="conferenceCard">
+              <div class="conferenceHeader">
+                <h4>{presentation.title}</h4>
+                <span class="conferenceType">{presentation.type}</span>
+              </div>
+              {presentation.description && (
+                <p class="conferenceDescription">{presentation.description}</p>
+              )}
+            </article>
+          </li>
+        ))
+      }
     </ul>
-  </section>
-
-  <section class="attendingSection">
-    <div>
-      <h2>languages.</h2>
-    </div>
-    <ul class="servicesWrapper">
-      <ul>
-        {
-          skills.skills_and_tools.languages_and_frameworks.map((language) => (
-            <li>{language}</li>
-          ))
-        }
-      </ul>
-
-      <ul>
-        {
-          skills.skills_and_tools.network_and_data.map((network) => (
-            <li>{network}</li>
-          ))
-        }
-      </ul>
-
-      <ul>
-        {skills.skills_and_tools.styling.map((styles) => <li>{styles}</li>)}
-      </ul>
-
-      <ul>
-        {skills.skills_and_tools.testing.map((test) => <li>{test}</li>)}
-      </ul>
-
-      <ul>
-        {
-          skills.skills_and_tools.visualization_and_cms.map((vis) => (
-            <li>{vis}</li>
-          ))
-        }
-      </ul>
-
-      <ul>
-        {skills.skills_and_tools.build_tools.map((build) => <li>{build}</li>)}
-      </ul>
-
-      <ul>
-        {skills.skills_and_tools.tools.map((tool) => <li>{tool}</li>)}
-      </ul>
-    </ul>
-  </section>
-
-  <section class="faqSection">
-    <div>
-      <h2>FAQ</h2>
-    </div>
-    <div class="faqWrapper">
-      <ul class="faqList">
-        <li>Lorem</li>
-        <li>Lorem</li>
-        <li>Lorem</li>
-        <li>Lorem</li>
-      </ul>
-    </div>
   </section>
 
   <Contact />

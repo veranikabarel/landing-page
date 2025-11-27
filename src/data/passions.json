@@ -3,10 +3,7 @@
     {
       "category": "Tech Blogging",
       "description": "Writing articles on latest software development trends and sharing coding tutorials.",
-      "platforms": [
-        "Dev.to",
-        "Espeo blog"
-      ]
+      "platforms": ["Dev.to", "Espeo blog"]
     },
     {
       "category": "Music",

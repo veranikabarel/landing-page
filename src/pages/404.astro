@@ -1,11 +1,11 @@
 ---
-import CustomLink from '@components/CustomLink.astro';
-import MainLayout from '@layouts/MainLayout.astro';
+import CustomLink from "@components/CustomLink.astro";
+import MainLayout from "@layouts/MainLayout.astro";
 ---
 
 <style>
   .notFoundSection {
-    padding: 0 12px;
+    padding-inline: 12px;
   }
 
   .wrapper {
@@ -15,23 +15,23 @@ import MainLayout from '@layouts/MainLayout.astro';
   }
   @media screen and (width >= 768px) {
     .notFoundSection {
-      padding: 0 32px;
+      padding-inline: 32px;
     }
   }
 
   @media screen and (width >= 1200px) {
     .notFoundSection {
-      padding: 0 48px;
+      padding-inline: 48px;
     }
   }
 </style>
 
 <MainLayout title="Nof found | 404" description="Lorem ipsum dolor sit amet">
-  <div class="notFoundSection">
+  <section class="notFoundSection">
     <h1>Page not found</h1>
     <div class="wrapper">
       <CustomLink href="/" text="Back to home page" />
       <p>404</p>
     </div>
-  </div>
+  </section>
 </MainLayout>
