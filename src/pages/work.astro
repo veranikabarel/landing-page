@@ -1,0 +1,108 @@
+---
+import experience from '@data/experience.json';
+import MainLayout from '@layouts/MainLayout.astro';
+import Contact from '@sections/Contact.astro';
+---
+
+<style>
+  .heroSection {
+    padding: 0 12px;
+  }
+  .hero {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .about {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .workSection {
+    padding: 0 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+  }
+
+  @media screen and (width >= 768px) {
+    .heroSection {
+      padding: 0 32px;
+    }
+    .hero {
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 64px;
+    }
+
+    .workSection {
+      padding: 0 32px;
+    }
+
+    .workImagesWrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .aboutSection {
+      padding: 0 32px;
+    }
+
+    .aboutImgAndText {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+  }
+
+  @media screen and (width >= 1200px) {
+    .heroSection {
+      padding: 0 48px;
+    }
+
+    .workSection {
+      padding: 0 48px;
+    }
+  }
+</style>
+
+<MainLayout title="Main page" description="Lorem ipsum dolor sit amet">
+  <section class="heroSection">
+    <!-- Section for experience -->
+    <div class="hero">
+      <h1>Work</h1>
+    </div>
+  </section>
+  <section class="workSection">
+    {
+      experience.experience.map((exp) => (
+        <div>
+          <h5>{exp.job_title}</h5>
+          <p>{exp.company}</p>
+          <div class="sectionHeader">
+            <p>{exp.date}</p>
+          </div>
+
+          <div class="workImagesWrapper">
+            <div>
+              <img src="../../src/styles/img.jpg" />
+            </div>
+            <div>
+              <ul>
+                {exp.responsibilities.map((resp: string) => (
+                  <li>{resp}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div>{/* Testimonials */}</div>
+          </div>
+        </div>
+      ))
+    }
+  </section>
+
+  <Contact />
+</MainLayout>

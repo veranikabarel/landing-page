@@ -1,0 +1,68 @@
+---
+import MainLayout from '@layouts/MainLayout.astro';
+---
+
+<style>
+  .contactSection {
+    padding: 0 12px;
+  }
+  .formWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  @media screen and (width>= 768px) {
+    .contactSection {
+      padding: 0 32px;
+    }
+
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  @media screen and (width >= 1200px) {
+    .contactSection {
+      padding: 0 48px;
+      height: 100vh;
+    }
+    .formWrapper {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    form {
+      width: 50%;
+    }
+  }
+</style>
+
+<MainLayout title="Contact me page" description="Lorem ipsum dolor sit amet">
+  <section class="contactSection">
+    <h1>Contact me!</h1>
+    <div class="formWrapper">
+      <p>loremipsum@email.pl</p>
+
+      <form>
+        <label for="name">Name (4 to 8 characters):</label>
+
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          minlength="4"
+          maxlength="8"
+          size="10"
+        />
+
+        <label for="story">Tell us your story:</label>
+
+        <textarea id="story" name="story" rows="5" cols="33">
+          It was a dark and stormy night...
+        </textarea>
+      </form>
+    </div>
+  </section>
+</MainLayout>

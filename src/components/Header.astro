@@ -1,44 +1,124 @@
 ---
+import CustomButton from '@components/CustomButton.astro';
 import HeaderLink from './HeaderLink.astro';
 ---
 
-<header>
-  <nav>
-    <!-- <h2><a href="/">{SITE_TITLE}</a></h2> -->
-    <div class="internal-links">
-      <HeaderLink href="#about">About</HeaderLink>
-      <HeaderLink href="#experience">Experience</HeaderLink>
-      <HeaderLink href="#skills">Skills</HeaderLink>
-      <HeaderLink href="#languages">Languages</HeaderLink>
-      <HeaderLink href="#blog">Blog</HeaderLink>
-      <HeaderLink href="#contact">Contact</HeaderLink>
-    </div>
-    <div><button>Download CV</button></div>
-  </nav>
-</header>
 <style>
-  header {
-    margin: 0;
-    padding: 0 1em;
-    background: white;
-    /* box-shadow: 0 2px 8px rgba(var(--black), 5%); */
-    position: sticky;
-    top: 0;
+  .topnav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 12px;
+    height: 64px;
+  }
+  .internal-links {
+    display: none;
+    flex-direction: row;
   }
 
-  nav {
+  .internal-links.show {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
   }
-  nav a {
-    padding: 1em 0.5em;
+
+  .internal-links a {
+    padding: 0 12px;
     color: var(--black);
+    text-decoration: none;
     border-bottom: 4px solid transparent;
-    text-decoration: none;
   }
-  nav a.active {
-    text-decoration: none;
-    border-bottom-color: var(--accent);
+
+  .button-wrapper {
+    display: none;
+  }
+  .burger,
+  .close {
+    cursor: pointer;
+    display: block;
+  }
+
+  .close {
+    display: none;
+  }
+
+  .close.show {
+    display: block;
+  }
+
+  @media screen and (min-width: 768px) {
+    .burger,
+    .close {
+      display: none;
+    }
+
+    .internal-links {
+      display: flex;
+      flex-direction: row;
+    }
   }
 </style>
+
+<header>
+  <nav class="topnav">
+    <div class="menu-icons">
+      <div class="burger" id="burger">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          ><path fill="currentColor" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"
+          ></path></svg
+        >
+      </div>
+      <div class="close" id="close">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          ><path
+            fill="currentColor"
+            d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"
+          ></path></svg
+        >
+      </div>
+    </div>
+
+    <div class="internal-links" id="navLinks">
+      <HeaderLink href="/">Home</HeaderLink>
+      <HeaderLink href="/about">About</HeaderLink>
+      <HeaderLink href="/work">Work</HeaderLink>
+      <HeaderLink href="/contact">Contact</HeaderLink>
+    </div>
+
+    <div class="button-wrapper">
+      <CustomButton onclick={() => {}} text="Download CV" />
+    </div>
+  </nav>
+</header>
+
+<script is:inline>
+  const burger = document.getElementById('burger');
+  const close = document.getElementById('close');
+  const navLinks = document.getElementById('navLinks');
+
+  function openMenu() {
+    navLinks.classList.add('show');
+    close.classList.add('show');
+    burger.style.display = 'none';
+  }
+
+  function closeMenu() {
+    navLinks.classList.remove('show');
+    close.classList.remove('show');
+    burger.style.display = 'block';
+  }
+
+  burger.addEventListener('click', openMenu);
+  close.addEventListener('click', closeMenu);
+
+  const links = navLinks.querySelectorAll('a');
+  links.forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+</script>

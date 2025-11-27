@@ -1,0 +1,39 @@
+---
+const { href, text, ...props } = Astro.props;
+---
+
+<style>
+  .button {
+    text-decoration: none;
+    text-align: center;
+    height: fit-content;
+    color: var(--black);
+    background-color: var(--gray);
+    font-family: inherit;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition:
+      background-color 0.3s,
+      color 0.3s;
+  }
+
+  .button:hover {
+    background-color: var(--yellow);
+    color: var(--black);
+  }
+
+  .button:focus {
+    outline: none;
+  }
+
+  .button:active {
+    background-color: var(--yellow);
+    color: var(--white);
+  }
+
+  .button:visited {
+    color: var(--black);
+  }
+</style>
+
+<a href={href} class="button">{text}</a>
