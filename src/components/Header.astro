@@ -1,124 +1,233 @@
 ---
-import CustomButton from '@components/CustomButton.astro';
-import HeaderLink from './HeaderLink.astro';
+import CustomButton from "@components/CustomButton.astro";
+import HeaderLink from "./HeaderLink.astro";
 ---
 
 <style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(18px);
+  }
+
   .topnav {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 0 12px;
-    height: 64px;
+    justify-content: flex-end;
+    gap: 1.5rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
   }
+
+  /* .branding {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    text-decoration: none;
+    color: inherit;
+    font-weight: 600;
+  } */
+
+  /* .brand-mark {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-strong));
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    box-shadow: 0 12px 20px rgba(124, 77, 255, 0.35);
+  } */
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--color-text-muted);
+  }
+
+  .menu-toggle {
+    /* width: 48px;
+    height: 48px; */
+    color: var(--color-text);
+  }
+
+  .menu-toggle svg {
+    width: 24px;
+    height: 24px;
+  }
+
   .internal-links {
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    right: 1rem;
     display: none;
-    flex-direction: row;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.25rem;
+    background: #fff;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: var(--shadow-soft);
+    min-width: min(280px, 90vw);
   }
 
   .internal-links.show {
     display: flex;
   }
 
-  .internal-links a {
-    padding: 0 12px;
-    color: var(--black);
-    text-decoration: none;
-    border-bottom: 4px solid transparent;
+  .nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .nav-list a {
+    padding: 0.35rem 0.25rem;
+    font-weight: 500;
   }
 
   .button-wrapper {
     display: none;
   }
-  .burger,
-  .close {
-    cursor: pointer;
-    display: block;
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
   }
 
-  .close {
-    display: none;
-  }
+  @media (min-width: 768px) {
+    .topnav {
+      padding: 1rem 2rem;
+      justify-content: space-between;
+    }
 
-  .close.show {
-    display: block;
-  }
-
-  @media screen and (min-width: 768px) {
-    .burger,
-    .close {
+    .nav-actions {
       display: none;
     }
 
     .internal-links {
-      display: flex;
+      position: static;
+      display: flex !important;
       flex-direction: row;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 0;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      min-width: unset;
+    }
+
+    .nav-list {
+      flex-direction: row;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    .button-wrapper {
+      display: block;
     }
   }
 </style>
 
-<header>
+<header class="site-header" aria-label="Primary">
   <nav class="topnav">
-    <div class="menu-icons">
-      <div class="burger" id="burger">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          ><path fill="currentColor" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"
-          ></path></svg
-        >
-      </div>
-      <div class="close" id="close">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          ><path
-            fill="currentColor"
-            d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"
-          ></path></svg
-        >
-      </div>
-    </div>
+    <!-- <a class="branding" href="/">
+      <span class="brand-mark">VK</span>
+    </a> -->
 
-    <div class="internal-links" id="navLinks">
-      <HeaderLink href="/">Home</HeaderLink>
-      <HeaderLink href="/about">About</HeaderLink>
-      <HeaderLink href="/work">Work</HeaderLink>
-      <HeaderLink href="/contact">Contact</HeaderLink>
+    <div class="internal-links" id="primary-navigation">
+      <ul class="nav-list" role="menubar">
+        <li role="none">
+          <HeaderLink href="/">Home</HeaderLink>
+        </li>
+        <li role="none">
+          <HeaderLink href="/about">About</HeaderLink>
+        </li>
+        <li role="none">
+          <HeaderLink href="/work">Work</HeaderLink>
+        </li>
+        <li role="none">
+          <HeaderLink href="/contact">Contact</HeaderLink>
+        </li>
+      </ul>
     </div>
 
     <div class="button-wrapper">
-      <CustomButton onclick={() => {}} text="Download CV" />
+      <CustomButton
+        href="/cv-template.md"
+        download="Veranika-Kasperevych-CV-Template.md"
+        text="Download CV"
+        aria-label="Download Veranika Kasparevych CV template"
+      />
+    </div>
+
+    <div class="nav-actions">
+      <div
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Toggle navigation"
+        aria-controls="primary-navigation"
+        aria-expanded="false"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"
+          ></path>
+        </svg>
+      </div>
     </div>
   </nav>
 </header>
 
 <script is:inline>
-  const burger = document.getElementById('burger');
-  const close = document.getElementById('close');
-  const navLinks = document.getElementById('navLinks');
+  const toggle = document.getElementById("menuToggle");
+  const navLinks = document.getElementById("primary-navigation");
 
-  function openMenu() {
-    navLinks.classList.add('show');
-    close.classList.add('show');
-    burger.style.display = 'none';
-  }
+  const closeMenu = () => {
+    navLinks.classList.remove("show");
+    toggle?.setAttribute("aria-expanded", "false");
+  };
 
-  function closeMenu() {
-    navLinks.classList.remove('show');
-    close.classList.remove('show');
-    burger.style.display = 'block';
-  }
+  const openMenu = () => {
+    navLinks.classList.add("show");
+    toggle?.setAttribute("aria-expanded", "true");
+  };
 
-  burger.addEventListener('click', openMenu);
-  close.addEventListener('click', closeMenu);
+  toggle?.addEventListener("click", () => {
+    const isExpanded = toggle.getAttribute("aria-expanded") === "true";
+    if (isExpanded) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
 
-  const links = navLinks.querySelectorAll('a');
+  const links = navLinks.querySelectorAll("a");
   links.forEach((link) => {
-    link.addEventListener('click', closeMenu);
+    link.addEventListener("click", closeMenu);
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 768) {
+      navLinks.classList.add("show");
+    } else {
+      closeMenu();
+    }
   });
 </script>

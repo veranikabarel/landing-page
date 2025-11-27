@@ -5,18 +5,10 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@layouts/*": [
-        "src/layouts/*"
-      ],
-       "@sections/*": [
-        "src/sections/*"
-      ], 
-        "@data/*": [
-        "src/data/*"
-      ], 
-    },
-  },
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@sections/*": ["src/sections/*"],
+      "@data/*": ["src/data/*"]
+    }
+  }
 }

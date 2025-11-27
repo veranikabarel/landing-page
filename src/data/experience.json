@@ -1,9 +1,22 @@
 {
   "experience": [
     {
+      "job_title": "Software Engineer",
+      "company": "UBS",
+      "date": "06/2025 - Present",
+      "logo": "/logos/ubs.svg",
+      "responsibilities": [
+        "Building data-rich client experiences for global wealth platforms with Astro, React, and TypeScript.",
+        "Partnering with design and product teams to translate accessibility-first concepts into production UI.",
+        "Improving monitoring pipelines by instrumenting new metrics and alerting dashboards.",
+        "Facilitating sprint rituals, demos, and code reviews across a distributed engineering team."
+      ]
+    },
+    {
       "job_title": "Front-end Developer",
       "company": "Omnilogy Sp. z o.o.",
-      "date": "07/2023 - Present",
+      "date": "07/2023 - 07/2025",
+      "logo": "/logos/omnilogy.svg",
       "responsibilities": [
         "Developed high-performance web applications with a focus on observability, ensuring efficient monitoring and reliability.",
         "Collaborated with cross-functional teams to design, implement, and troubleshoot new features, enhancing application functionality.",
@@ -19,6 +32,7 @@
       "job_title": "Front-end Developer",
       "company": "Espeo Software",
       "date": "06/2022 - 07/2023",
+      "logo": "/logos/espeo.svg",
       "responsibilities": [
         "Collaborated with UI/UX designers to build intuitive and visually appealing interfaces, ensuring an optimal user experience.",
         "Developed reusable components, ensuring scalability and maintainability of the front-end codebase across multiple projects.",
@@ -28,20 +42,6 @@
         "Implemented responsive designs to optimize performance across devices and browsers.",
         "Developed new features, including the integration of third-party APIs and services."
       ]
-    },
-    {
-      "job_title": "CEO",
-      "company": "WOOL MORNING",
-      "date": "10/2019 - 09/2022",
-      "location": "Wrocław, Poland",
-      "responsibilities": []
-    },
-    {
-      "job_title": "Lawyer",
-      "company": "ALTO | SEL Energy Sp. z o. o. | Lumen Polska",
-      "date": "04/2016 - 10/2019",
-      "location": "Wrocław, Poland",
-      "responsibilities": []
     }
   ]
 }
