@@ -3,7 +3,6 @@ import CustomButton from "@components/CustomButton.astro";
 import CustomLink from "@components/CustomLink.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 import Contact from "@sections/Contact.astro";
-import profilePicture from "../styles/img.jpg";
 import workspacePhoto from "../styles/computer.jpg";
 
 const heroStats = [
@@ -14,23 +13,24 @@ const heroStats = [
 
 <style>
   .hero-section {
-    background:
-      linear-gradient(
-        145deg,
-        rgba(124, 77, 255, 0.07),
-        rgba(16, 185, 129, 0.05)
-      ),
-      #fff;
+    background: transparent;
+    border: none;
+    position: relative;
+  }
+
+  .hero-section::before {
+    display: none;
   }
 
   .hero-grid {
-    display: grid;
-    gap: clamp(2rem, 5vw, 4rem);
-    align-items: center;
+    display: block;
+    max-width: 100%;
+    width: 100%;
   }
 
   .hero-copy h1 {
     margin-top: 0.5rem;
+    filter: none;
   }
 
   .hero-lede {
@@ -51,6 +51,11 @@ const heroStats = [
     gap: 0.5rem;
     color: var(--color-text);
     font-weight: 600;
+    transition: color var(--transition-base), text-shadow var(--transition-base);
+  }
+
+  .hero-contact a:hover {
+    color: var(--color-electric-blue);
   }
 
   .hero-stats {
@@ -62,70 +67,45 @@ const heroStats = [
 
   .stat-card {
     padding: 1.5rem;
-    border-radius: var(--radius-md);
-    background: var(--color-surface-muted);
-    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 0;
+    background: transparent;
+    border: none;
+    transition: transform var(--transition-base);
+  }
+
+  .stat-card:hover {
+    transform: translateY(-2px);
   }
 
   .stat-value {
     display: block;
     font-size: clamp(2rem, 4vw, 2.8rem);
-    font-weight: 700;
-    color: var(--color-text);
+    font-weight: 600;
+    background: var(--gradient-signature);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     line-height: 1.1;
+    filter: none;
   }
 
   .stat-label {
     color: var(--color-text-muted);
   }
 
-  .hero-media {
-    position: relative;
-    display: grid;
-    gap: 1.5rem;
-  }
-
-  .hero-media figure {
-    margin: 0;
-    position: relative;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    box-shadow: var(--shadow-soft);
-  }
-
-  .hero-media img {
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-  }
-
-  .hero-note {
-    padding: 1rem 1.25rem;
-    border-radius: var(--radius-md);
-    background: #fff;
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    box-shadow: var(--shadow-cut);
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
 
   .about-section {
-    background: #fff;
+    background: transparent;
+    border: none;
   }
 
   .section-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: var(--heading-margin-bottom);
   }
 
   .story-grid {
     display: grid;
-    gap: clamp(1.5rem, 4vw, 3rem);
+    gap: var(--element-gap-large);
   }
 
   .story-grid img {
@@ -133,23 +113,22 @@ const heroStats = [
     aspect-ratio: 4 / 3;
     object-fit: cover;
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-soft);
+    box-shadow: none;
   }
 
   .tech-section {
-    /* background: linear-gradient(120deg, rgba(124, 77, 255, 0.08), rgba(16, 185, 129, 0.08));
-     */
-    background: #fff;
+    background: transparent;
+    border: none;
   }
 
   .tech-section .section-header {
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--heading-margin-bottom);
   }
 
   .tech-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
+    gap: var(--element-gap);
   }
 
   .tech-grid .icon-tile {
@@ -162,10 +141,6 @@ const heroStats = [
   }
 
   @media (min-width: 900px) {
-    .hero-grid {
-      grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
-    }
-
     .story-grid {
       grid-template-columns: minmax(280px, 1fr) minmax(0, 1.2fr);
       align-items: center;
@@ -212,20 +187,6 @@ const heroStats = [
             ))
           }
         </ul>
-      </div>
-
-      <div class="hero-media animate-float">
-        <figure>
-          <img
-            src={profilePicture.src}
-            alt="Portrait of Veranika Kasperevych smiling"
-            loading="lazy"
-            decoding="async"
-          />
-        </figure>
-        <div class="hero-note">
-          <strong>Currently in Wrocław, Poland</strong>
-        </div>
       </div>
     </div>
   </section>
