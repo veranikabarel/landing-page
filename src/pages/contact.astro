@@ -7,23 +7,23 @@ const email = "veranikabarel@gmail.com";
 
 <style>
   .contactSection {
-    padding-inline: 12px;
+    padding: 0;
   }
 
   .contactSection h1 {
-    margin-bottom: 2rem;
+    margin-bottom: var(--heading-margin-bottom-large);
   }
 
   .formWrapper {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: var(--section-gap);
   }
 
   .emailDisplay {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: var(--element-gap);
   }
 
   .emailDisplay p {
@@ -67,13 +67,13 @@ const email = "veranikabarel@gmail.com";
   .form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: var(--element-gap-medium);
   }
 
   .formGroup {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--element-gap);
   }
 
   .formGroup label {
@@ -98,13 +98,14 @@ const email = "veranikabarel@gmail.com";
   .formGroup input:focus,
   .formGroup textarea:focus {
     outline: none;
-    border-color: var(--color-accent-strong);
-    box-shadow: 0 0 0 3px var(--color-accent-soft);
+    background: var(--color-surface);
+    box-shadow: none;
+    border-color: var(--color-border-strong);
   }
 
   .formGroup input:invalid:not(:placeholder-shown),
   .formGroup textarea:invalid:not(:placeholder-shown) {
-    border-color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
   }
 
   .formGroup textarea {
@@ -126,15 +127,11 @@ const email = "veranikabarel@gmail.com";
   }
 
   .submitButton {
-    margin-top: 0.5rem;
+    margin-top: var(--element-gap);
     align-self: flex-start;
   }
 
   @media screen and (width >= 768px) {
-    .contactSection {
-      padding-inline: 32px;
-    }
-
     .form {
       width: 100%;
     }
@@ -142,7 +139,6 @@ const email = "veranikabarel@gmail.com";
 
   @media screen and (width >= 1200px) {
     .contactSection {
-      padding-inline: 48px;
       height: 100vh;
     }
 

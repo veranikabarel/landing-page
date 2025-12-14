@@ -35,7 +35,8 @@ const isActive = href === pathname || href === "/" + subpath?.[0];
     bottom: -0.2rem;
     width: 100%;
     height: 2px;
-    background: var(--color-accent-strong);
+    background: linear-gradient(90deg, #FFB6D9, #DDA0DD);
+    box-shadow: none;
     transform: scaleX(0);
     transform-origin: left;
     transition: transform var(--transition-base);
@@ -43,11 +44,11 @@ const isActive = href === pathname || href === "/" + subpath?.[0];
 
   .header-link:hover,
   .header-link:focus {
-    color: var(--color-text);
+    color: var(--color-electric-blue);
   }
 
   .header-link.active {
-    color: var(--color-text);
+    color: var(--color-electric-blue);
     font-weight: 600;
   }
 

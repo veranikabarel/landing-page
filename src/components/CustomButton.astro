@@ -15,28 +15,23 @@ const {
 <style>
   .cta {
     border: none;
-    border-radius: var(--radius-md);
-    padding: 0.85rem 1.75rem;
+    border-radius: 14px;
+    padding: 12px 20px;
     font-weight: 600;
-    background: linear-gradient(
-      135deg,
-      var(--color-accent),
-      var(--color-accent-strong)
-    );
-    color: #fff;
+    background: linear-gradient(135deg, #FFB6D9, #DDA0DD);
+    color: white;
     cursor: pointer;
     font-family: inherit;
-    box-shadow: 0 15px 30px rgba(124, 77, 255, 0.35);
+    box-shadow: none;
     transition:
       transform 220ms ease,
-      box-shadow var(--transition-base),
-      background var(--transition-base),
-      color var(--transition-base);
+      filter var(--transition-base);
   }
 
   .cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 25px 40px rgba(95, 46, 234, 0.35);
+    box-shadow: none;
+    filter: brightness(1.05);
   }
 
   .cta:active {
@@ -46,14 +41,14 @@ const {
   .cta.outline {
     background: transparent;
     color: var(--color-text);
-    border: 1px solid var(--color-border);
+    border: none;
     box-shadow: none;
   }
 
   .cta.outline:hover {
-    color: var(--color-accent-strong);
-    border-color: var(--color-accent-strong);
+    color: var(--color-electric-blue);
     box-shadow: none;
+    background: var(--color-sky-blue-tint);
   }
 </style>
 

@@ -5,24 +5,15 @@ import MainLayout from "@layouts/MainLayout.astro";
 
 <style>
   .notFoundSection {
-    padding-inline: 12px;
+    padding: 0;
   }
 
   .wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-  }
-  @media screen and (width >= 768px) {
-    .notFoundSection {
-      padding-inline: 32px;
-    }
-  }
-
-  @media screen and (width >= 1200px) {
-    .notFoundSection {
-      padding-inline: 48px;
-    }
+    gap: var(--element-gap);
+    margin-top: var(--element-gap-large);
   }
 </style>
 

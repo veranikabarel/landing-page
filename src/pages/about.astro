@@ -2,7 +2,6 @@
 import CustomLink from "@components/CustomLink.astro";
 import experience from "@data/experience.json";
 import skills from "@data/skills.json";
-import articles from "@data/articles.json";
 import activities from "@data/activities.json";
 import MainLayout from "@layouts/MainLayout.astro";
 import Contact from "@sections/Contact.astro";
@@ -70,7 +69,7 @@ const skillSections = [
 
 <style>
   .heroSection {
-    padding-inline: 12px;
+    padding: 0;
   }
 
   .about {
@@ -79,40 +78,38 @@ const skillSections = [
   }
 
   .workSection {
-    padding-inline: 12px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: var(--element-gap);
   }
 
   .experienceSection {
-    padding-inline: 12px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: var(--element-gap-large);
   }
 
   .experienceCard {
-    padding-bottom: 24px;
+    padding-bottom: var(--element-gap-large);
   }
 
   .experienceCard:not(:last-child) {
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: none;
   }
 
   .experienceHeader {
     display: flex;
     justify-content: space-between;
-    gap: 16px;
+    gap: var(--element-gap);
     align-items: center;
     flex-wrap: wrap;
-    margin-bottom: 12px;
+    margin-bottom: var(--element-gap);
   }
 
   .experienceMeta {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: var(--element-gap);
   }
 
   .experienceLogo {
@@ -120,7 +117,7 @@ const skillSections = [
     height: 48px;
     border-radius: 12px;
     object-fit: cover;
-    box-shadow: 0 6px 20px rgb(0 0 0 / 0.15);
+    box-shadow: none;
   }
 
   .experienceDate {
@@ -132,7 +129,7 @@ const skillSections = [
   .responsibilityList {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: var(--element-gap);
     padding-left: 20px;
     list-style: disc;
   }
@@ -143,102 +140,52 @@ const skillSections = [
   }
 
   .sectionHeader {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 12px;
+    margin-bottom: var(--heading-margin-bottom);
   }
 
   .aboutSection {
-    padding-inline: 12px;
+    padding: 0;
   }
 
   .attendingSection {
-    padding-inline: 12px;
-  }
-
-  .articlesSection {
-    padding-inline: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .articlesList {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    list-style: none;
     padding: 0;
-    margin: 0;
-  }
-
-  .articleCard {
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    transition:
-      transform var(--transition-base),
-      box-shadow var(--transition-base),
-      border-color var(--transition-base);
-  }
-
-  .articleCard:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-cut);
-    border-color: var(--color-accent-soft);
-  }
-
-  .articleCard h4 {
-    margin: 0;
-    color: var(--color-text);
-    font-size: 1.25rem;
   }
 
   .conferencesSection {
-    padding-inline: 12px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: var(--element-gap);
   }
 
   .conferencesList {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: var(--element-gap);
     list-style: none;
     padding: 0;
     margin: 0;
   }
 
   .conferenceCard {
-    background: rgba(255, 255, 255, 0.9);
+    background: transparent;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    padding: 20px;
+    padding: var(--element-gap-large);
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: var(--element-gap);
     transition:
-      transform var(--transition-base),
-      box-shadow var(--transition-base),
-      border-color var(--transition-base);
+      transform var(--transition-base);
   }
 
   .conferenceCard:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-cut);
-    border-color: var(--color-accent-soft);
   }
 
   .conferenceHeader {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: var(--element-gap);
   }
 
   .conferenceCard h4 {
@@ -252,8 +199,8 @@ const skillSections = [
     align-items: center;
     gap: 0.35rem;
     padding: 0.4rem 0.9rem;
-    border-radius: 999px;
-    background: var(--color-accent-soft);
+    border-radius: 0;
+    background: transparent;
     color: var(--color-accent-strong);
     font-size: 0.85rem;
     font-weight: 600;
@@ -268,10 +215,11 @@ const skillSections = [
 
   .languagesSection {
     position: relative;
-    padding-block: 48px;
+    padding-block: var(--section-padding);
+    padding-inline: 0;
     border-radius: var(--radius-lg);
     overflow: hidden;
-    margin-top: 16px;
+    margin-top: var(--element-gap);
   }
 
   .languagesSection::before {
@@ -292,26 +240,26 @@ const skillSections = [
   }
 
   .skillsGrid {
-    margin-top: 32px;
+    margin-top: var(--element-gap-large);
     display: grid;
-    gap: 16px;
+    gap: var(--element-gap);
   }
 
   .skillCard {
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(124, 77, 255, 0.08);
+    background: transparent;
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    padding: 20px;
+    padding: var(--element-gap-large);
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    box-shadow: var(--shadow-cut);
-    backdrop-filter: blur(6px);
+    gap: var(--element-gap-large);
+    box-shadow: none;
+    backdrop-filter: none;
   }
 
   .skillCardHeader {
     display: flex;
-    gap: 16px;
+    gap: var(--element-gap);
     align-items: flex-start;
   }
 
@@ -330,14 +278,14 @@ const skillSections = [
     flex-shrink: 0;
   }
 
-  .skillCard h3 {
-    margin-bottom: 4px;
+  .skillCard h4 {
+    margin-bottom: var(--space-1);
   }
 
   .skillList {
     list-style: none;
     display: grid;
-    gap: 12px;
+    gap: var(--element-gap);
     padding: 0;
     margin: 0;
   }
@@ -345,7 +293,7 @@ const skillSections = [
   .skillList li {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: var(--element-gap);
     color: var(--color-text-muted);
     font-weight: 500;
   }
@@ -357,67 +305,29 @@ const skillSections = [
     border-radius: 50%;
     background: var(--color-highlight);
     display: inline-flex;
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+    box-shadow: none;
   }
   @media screen and (width >= 768px) {
-    .heroSection {
-      padding-inline: 32px;
-    }
     .hero {
       flex-direction: row;
       justify-content: space-between;
-      margin-bottom: 64px;
-    }
-
-    .about {
-      gap: 64px;
-    }
-
-    .workSection {
-      padding-inline: 32px;
     }
 
     .workImagesWrapper {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
-    .experienceSection {
-      padding-inline: 32px;
+      gap: var(--element-gap-large);
     }
 
     .experienceLayout {
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
-    .attendingSection {
-      padding-inline: 32px;
-    }
-
-    .articlesSection {
-      padding-inline: 32px;
-    }
-
-    .conferencesSection {
-      padding-inline: 32px;
-    }
-
-    .articlesList {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      gap: var(--element-gap-large);
     }
 
     .conferencesList {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
-
-    .servicesSection {
-      padding-inline: 32px;
+      gap: var(--element-gap-large);
     }
 
     .skillsGrid {
@@ -426,48 +336,26 @@ const skillSections = [
   }
 
   @media screen and (width >= 1200px) {
-    .heroSection {
-      padding-inline: 48px;
-    }
-
-    .workSection {
-      padding-inline: 48px;
-    }
-
-    .experienceSection {
-      padding-inline: 48px;
-    }
-
-    .aboutSection {
-      padding-inline: 48px;
-    }
-
-    .attendingSection {
-      padding-inline: 48px;
-    }
-
-    .articlesSection {
-      padding-inline: 48px;
-    }
-
-    .conferencesSection {
-      padding-inline: 48px;
-    }
-
     .aboutImgAndText {
       grid-template-columns: 2fr 1fr;
     }
-
-    /* .skillsGrid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    } */
   }
 </style>
 
 <MainLayout title="About me" description=" Lorem ipsum dolor sit amet">
+  <section class="heroSection">
+    <h1>About</h1>
+    <p>
+      Showcase websites, ecommerce builds, and digital experiences. Case
+      studies and live links are in progress and will be published here
+      soon.
+    </p>
+  </section>
+
   <section class="experienceSection">
     <div class="sectionHeader">
-      <h2>Experience</h2>
+      <h3>Experience</h3>
+      
     </div>
 
     {
@@ -505,9 +393,6 @@ const skillSections = [
   </section>
 
   <section class="attendingSection languagesSection">
-    <div>
-      <h2>Languages & Frameworks</h2>
-    </div>
     <div class="skillsGrid">
       {
         skillSections.map(({ title, icon, items }) => (
@@ -515,7 +400,7 @@ const skillSections = [
             <div class="skillCardHeader">
               <span class="skillIcon" set:html={icon} />
               <div>
-                <h3>{title}</h3>
+                <h4>{title}</h4>
               </div>
             </div>
             <ul class="skillList">
@@ -529,27 +414,9 @@ const skillSections = [
     </div>
   </section>
 
-  <section class="attendingSection articlesSection">
-    <div>
-      <h2>Articles</h2>
-    </div>
-    <ul class="articlesList">
-      {
-        articles.articles.map((article) => (
-          <li>
-            <article class="articleCard">
-              <h4>{article.title}</h4>
-              <CustomLink href={article.link} text={article.buttonText} />
-            </article>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
-
   <section class="attendingSection conferencesSection">
     <div>
-      <h2>Conferences | Certificates</h2>
+      <h3>Conferences | Certificates</h3>
     </div>
     <ul class="conferencesList">
       {
