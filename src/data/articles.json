@@ -1,14 +1,18 @@
 {
   "articles": [
     {
+      "slug": "creating-dynatrace-apps",
       "title": "Creating Dynatrace Apps",
-      "link": "Webinar",
-      "buttonText": "Read the article"
+      "date": "2024-01-15",
+      "description": "Learn how to build powerful applications using the Dynatrace platform and extend its capabilities with custom integrations.",
+      "content": "In this comprehensive guide, we'll explore the process of creating Dynatrace Apps from scratch. Dynatrace Apps allow you to extend the platform's functionality and create custom solutions tailored to your organization's needs.\n\n## Getting Started\n\nTo begin creating Dynatrace Apps, you'll need to understand the platform's architecture and the tools available for development. The Dynatrace platform provides a robust API and development framework that makes it easy to build custom applications.\n\n## Key Features\n\n- **Custom Dashboards**: Create personalized dashboards that display the metrics most important to your team\n- **Automated Workflows**: Build automation that responds to specific events and conditions\n- **Integration Capabilities**: Connect Dynatrace with other tools in your tech stack\n\n## Best Practices\n\nWhen developing Dynatrace Apps, it's important to follow best practices for performance, security, and user experience. Always test your applications thoroughly before deploying them to production environments.\n\n## Conclusion\n\nCreating Dynatrace Apps opens up a world of possibilities for customizing and extending the platform. With the right approach and tools, you can build powerful solutions that enhance your team's productivity and insights."
     },
     {
-      "title": "Creating Dynatrace Apps",
-      "link": "Webinar",
-      "buttonText": "Read the article"
+      "slug": "webinar-best-practices",
+      "title": "Webinar Best Practices for Developers",
+      "date": "2024-02-20",
+      "description": "Discover effective strategies for hosting technical webinars that engage your audience and deliver valuable content.",
+      "content": "Hosting webinars is an excellent way to share knowledge, connect with your community, and establish yourself as a thought leader in your field. In this article, we'll cover best practices for creating and delivering successful technical webinars.\n\n## Planning Your Webinar\n\nBefore you start, it's crucial to plan your content carefully. Identify your target audience, choose a relevant topic, and structure your presentation to keep viewers engaged throughout.\n\n## Technical Setup\n\n- **Stable Internet Connection**: Ensure you have a reliable, high-speed connection\n- **Quality Audio/Video**: Invest in a good microphone and webcam\n- **Screen Sharing Tools**: Use tools that allow smooth screen sharing and annotation\n- **Backup Plans**: Always have a backup plan in case of technical difficulties\n\n## Engagement Strategies\n\nKeep your audience engaged by:\n- Starting with a compelling hook\n- Using interactive elements like polls and Q&A sessions\n- Sharing real-world examples and case studies\n- Encouraging questions throughout the presentation\n\n## Follow-Up\n\nAfter the webinar, follow up with attendees by sharing resources, answering additional questions, and gathering feedback to improve future sessions.\n\n## Conclusion\n\nWith proper planning and execution, webinars can be a powerful tool for knowledge sharing and community building. Focus on delivering value and creating an engaging experience for your audience."
     }
   ]
 }
