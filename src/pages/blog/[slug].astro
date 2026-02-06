@@ -115,33 +115,27 @@ function parseMarkdown(content: string): string {
   .articleContent h2 {
     margin-top: var(--element-gap-large);
     margin-bottom: var(--element-gap);
-    color: var(--color-text);
-    font-size: 1.75rem;
+    color: var(--color-text-primary);
+    font-size: clamp(1.5rem, 3vw, 1.75rem);
   }
 
   .articleContent h3 {
     margin-top: var(--element-gap);
     margin-bottom: var(--space-4);
-    color: var(--color-text);
-    font-size: 1.5rem;
+    color: var(--color-text-primary);
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
   }
 
   .articleContent p {
-    color: var(--color-text-muted);
-    line-height: 1.75;
+    color: var(--color-text-primary);
+    line-height: 1.5;
     margin-bottom: var(--element-gap);
   }
 
   .articleContent ul,
   .articleContent ol {
-    color: var(--color-text-muted);
-    line-height: 1.75;
-    margin-bottom: var(--element-gap);
-    padding-left: 1.5rem;
-  }
-
-  .articleContent li {
-    margin-bottom: var(--space-2);
+    color: var(--color-text-primary);
+    line-height: 1.5;
   }
 
   .backLink {

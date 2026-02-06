@@ -1,73 +1,57 @@
-# codejournal.io --- Light Neon Style Guide
+# Style Guide
 
-## Brand Essence
+## 1. Color System
 
-**Theme:** Light Cute Neon Tech\
-**Personality:** soft, modern, feminine, clean, optimistic\
-**Audience:** beginner--intermediate web developers\
-**Promise:** learning to code can feel light, aesthetic, and empowering
+### Backgrounds
 
-------------------------------------------------------------------------
+- **Background / Primary** → `#F4F7F5`
+  - Main canvas: carousel slides,bpage background
+- **Background / Card** → `#FFFFFF`
+  - Code Card, Callouts, elevated surfaces
 
-## Color System
+### Text
 
-### Base (Light-first)
+- **Text / Primary** → `#1F2A26`
+  - Headings, body text, code, CTA text
+- **Text / Secondary** → `#6C7A73`
+  - Labels (e.g. Problem / Fix), meta info, captions, supporting text
 
--   Cloud White `#FAFAFA`
--   Soft Pearl `#F5F6FA`
+### Accent
 
-### Primary Neon Accents
+- **Accent / Neon Mint** → `#3CFFD6`
+  - Use sparingly for: CTA accent line, highlights, dividers, glow
 
--   Neon Purple `#A800FF`
--   Electric Blue `#00C4FF`
+### Borders
 
-### Soft Supporting Colors
-
--   Lavender Tint `#EFE6FF`
--   Sky Blue Tint `#E6F7FF`
-
-### Neutrals
-
--   Charcoal Text `#2B2B2B`
--   Muted Gray `#8A8A8A`
-
-### Signature Accent Gradient
-
-``` css
-linear-gradient(135deg, #A800FF, #00C4FF);
-```
-
-**Usage:** borders, underlines, buttons, highlights (never full
-backgrounds)
+- **Border / Subtle** → `#E3E8E5`
+  - 1px only; mostly for cards on a light background
 
 ------------------------------------------------------------------------
 
-## Typography
+## 2. Typography System
 
-### Headings
+### Fonts
 
--   Poppins SemiBold
--   Exo 2
+- **Headings** — Space Grotesk
+- **Body** — Inter
+- **Code** — JetBrains Mono
 
-### Accent / Tech Titles (sparingly)
+### Headings (Space Grotesk)
 
--   Orbitron
+- **H1 (Slide title):** 44px / 700 / line-height 120%
+- **H2 (Section title):** 30px / 600 / line-height 130%
+- **H3 (Callout):** 22px / 600 / line-height 140%
 
-### Body
+### Body (Inter)
 
--   Inter
--   Poppins Regular
+- **Body Large:** 16px / 500 / line-height 150%
+- **Body Regular:** 14px / 400 / line-height 150%
+- **Caption:** 12px / 400 / line-height 140%
 
-------------------------------------------------------------------------
+### Code (JetBrains Mono)
 
-## Logo & Wordmark
-
--   lowercase wordmark: **codejournal.io**
--   clean rounded sans-serif
--   subtle neon gradient underline or glow
--   optional ✦ or ♡ micro-accent
-
-**Rule:** logo stays minimal, glow is delicate
+- **Code block:** 13px / 400 / line-height 150%
+- **Inline code:** 12px / 400 / line-height 140%
 
 ------------------------------------------------------------------------
 
@@ -75,16 +59,16 @@ backgrounds)
 
 ### Core Look
 
--   light background
+-   light background (Primary `#F4F7F5`)
 -   lots of white space
--   soft rounded cards
--   delicate neon accents
+-   cards with subtle 1px borders
+-   neon mint accents used sparingly
 -   minimal icons
 
-### Neon Treatment
+### Accent Treatment
 
--   thin strokes
--   soft glow at low opacity (10--20%)
+-   thin strokes and accent lines
+-   soft glow at low opacity (10–20%)
 -   never overpower content
 
 ### Accent Symbols
@@ -94,83 +78,30 @@ backgrounds)
 
 ------------------------------------------------------------------------
 
-## Instagram Style Rules
-
-### Feed Aesthetic
-
--   light background posts
--   neon accents for titles
--   clean layouts
--   pastel-neon highlights
-
-### Captions
-
--   lowercase
--   friendly
--   short
--   0--2 emojis max (💙💜✨)
-
-### Post Types
-
-1.  Journal entries
-2.  Gentle tutorials
-3.  UI snippets
-4.  Learning notes
-
-------------------------------------------------------------------------
-
 ## Website Style Rules
 
 ### Layout
 
--   light UI by default
--   card-based sections
+-   light UI by default (Background Primary)
+-   card-based sections (Background Card, Border Subtle)
 -   generous spacing
 
 ### Buttons
 
+- **Primary (CTA):** Neon Mint background, Text Primary, 1px border, 14px radius, 12px 20px padding
+- **Outline:** Transparent background, border and hover use Accent
+
 ``` css
-background: linear-gradient(135deg, #A800FF, #00C4FF);
-color: white;
+/* Primary */
+background: #3CFFD6;
+color: #1F2A26;
+border: 1px solid #E3E8E5;
 border-radius: 14px;
 padding: 12px 20px;
 ```
 
 ### Hover Effects
 
--   subtle glow
+-   subtle glow (accent)
 -   soft lift
 -   smooth transitions
-
-------------------------------------------------------------------------
-
-## Tone of Voice
-
--   calm
--   encouraging
--   gentle confidence
--   reflective
-
-**Examples** - "today i learned..." - "soft progress is still progress
-✦" - "little steps, real growth 💜"
-
-------------------------------------------------------------------------
-
-## Content Pillars
-
-1.  Learning journal
-2.  Frontend basics
-3.  UI & CSS aesthetics
-4.  Tools & workflows
-5.  Motivation & progress
-
-------------------------------------------------------------------------
-
-## Brand Rule
-
-If it doesn't feel: ✔ light\
-✔ clean\
-✔ modern\
-✔ softly neon
-
-...it doesn't belong to **codejournal.io**.
