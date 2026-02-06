@@ -226,11 +226,7 @@ const skillSections = [
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      135deg,
-      rgba(124, 77, 255, 0.08),
-      rgba(16, 185, 129, 0.06)
-    );
+    background: transparent;
     z-index: 0;
   }
 
@@ -267,14 +263,10 @@ const skillSections = [
     width: 52px;
     height: 52px;
     border-radius: 16px;
-    background: radial-gradient(
-      circle at 20% 20%,
-      var(--color-accent),
-      var(--color-accent-strong)
-    );
+    background: var(--color-accent);
     display: grid;
     place-items: center;
-    color: #fff;
+    color: var(--color-text-primary);
     flex-shrink: 0;
   }
 
