@@ -1,46 +1,42 @@
-/* Light Cute Neon Tech - CodeJournal Style Guide */
+/* CodeJournal Style Guide - Color & Typography System */
 
 :root {
   /* Typography */
-  --font-heading: "Poppins", "Exo 2", system-ui, sans-serif;
-  --font-heading-accent: "Orbitron", system-ui, sans-serif;
-  --font-body: "Inter", "Poppins", system-ui, sans-serif;
+  --font-heading: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-code: "JetBrains Mono", ui-monospace, monospace;
 
-  /* Base (Light-first) */
-  --color-cloud-white: #FAFAFA;
-  --color-soft-pearl: #F5F6FA;
+  /* Backgrounds */
+  --color-bg-primary: #F4F7F5;
+  --color-bg-card: #FFFFFF;
 
-  /* Primary Neon Accents - Light and Feminine */
-  --color-neon-purple: #FFB6D9;
-  --color-electric-blue: #DDA0DD;
+  /* Text */
+  --color-text-primary: #1F2A26;
+  --color-text-secondary: #6C7A73;
 
-  /* Soft Supporting Colors */
-  --color-lavender-tint: #EFE6FF;
-  --color-sky-blue-tint: #E6F7FF;
+  /* Accent */
+  --color-accent: #3CFFD6;
 
-  /* Neutrals */
-  --color-charcoal-text: #2B2B2B;
-  --color-muted-gray: #8A8A8A;
-  --color-white: #FFFFFF;
+  /* Borders */
+  --color-border: #E3E8E5;
 
-  /* Legacy variable mappings for compatibility */
-  --color-bg: var(--color-cloud-white);
-  --color-surface: var(--color-white);
-  --color-surface-muted: var(--color-soft-pearl);
-  --color-text: var(--color-charcoal-text);
-  --color-text-muted: var(--color-muted-gray);
-  --color-border: rgba(255, 182, 217, 0.15);
-  --color-border-strong: rgba(255, 182, 217, 0.25);
-  --color-accent: var(--color-neon-purple);
-  --color-accent-strong: var(--color-electric-blue);
-  --color-accent-soft: rgba(255, 182, 217, 0.1);
-  --color-highlight: var(--color-electric-blue);
+  /* Legacy / compatibility mappings */
+  --color-bg: var(--color-bg-primary);
+  --color-surface: var(--color-bg-card);
+  --color-surface-muted: var(--color-bg-primary);
+  --color-text: var(--color-text-primary);
+  --color-text-muted: var(--color-text-secondary);
+  --color-border-strong: var(--color-border);
+  --color-accent-strong: var(--color-accent);
+  --color-accent-soft: rgba(60, 255, 214, 0.15);
+  --color-highlight: var(--color-accent);
+  --color-white: var(--color-bg-card);
+  --color-muted: var(--color-text-secondary);
 
-  /* Signature Accent Gradient - for borders, underlines, buttons, highlights */
-  --gradient-signature: linear-gradient(135deg, #FFB6D9, #DDA0DD);
-  --gradient-glow: 0 0 12px rgba(255, 182, 217, 0.15), 0 0 20px rgba(221, 160, 221, 0.1);
+  /* Glow (accent used sparingly) */
+  --gradient-glow: 0 0 12px rgba(60, 255, 214, 0.2), 0 0 20px rgba(60, 255, 214, 0.1);
 
-  /* Shadows removed for minimalistic design */
+  /* Shadows */
   --shadow-soft: none;
   --shadow-cut: none;
   --shadow-neon: none;
@@ -67,8 +63,8 @@
   --content-padding-mobile: 0.75rem; /* 12px */
   --content-padding-tablet: 2rem; /* 32px */
   --content-padding-desktop: 3rem; /* 48px */
-  --section-gap: 4rem; /* Gap between sections */
-  --section-padding: clamp(2rem, 4vw, 3.5rem); /* Internal section padding */
+  --section-gap: clamp(2rem, 6vw, 4rem); /* Gap between sections; scales down on small screens */
+  --section-padding: clamp(1.5rem, 4vw, 3.5rem); /* Internal section padding */
   --heading-margin-bottom: 1.5rem; /* Standard margin below headings */
   --heading-margin-bottom-large: 2rem; /* Larger margin for h1 */
   --element-gap: 1rem; /* Standard gap between elements */
@@ -87,10 +83,11 @@
 body {
   margin: 0;
   font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.75;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
   color: var(--color-text);
-  background: var(--color-cloud-white);
+  background: var(--color-bg-primary);
   min-height: 100vh;
   letter-spacing: 0.01em;
   -webkit-font-smoothing: antialiased;
@@ -101,9 +98,7 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(239, 230, 255, 0.4) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(230, 247, 255, 0.3) 0%, transparent 50%);
+  background: transparent;
   pointer-events: none;
   z-index: 0;
 }
@@ -111,7 +106,7 @@ body::before {
 main {
   width: min(1200px, 100%);
   margin: 0 auto;
-  padding: clamp(4rem, 6vw, 7rem) var(--content-padding-mobile) clamp(6rem, 8vw, 10rem);
+  padding: clamp(2.5rem, 6vw, 7rem) var(--content-padding-mobile) clamp(4rem, 8vw, 10rem);
   display: flex;
   flex-direction: column;
   gap: var(--section-gap);
@@ -149,32 +144,37 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading);
-  font-weight: 600;
   margin: 0;
-  color: var(--color-text);
+  color: var(--color-text-primary);
   letter-spacing: -0.02em;
 }
 
+/* H1 — Slide title: 44px / 700 / LH 120% */
 h1 {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  line-height: 1.1;
-  background: var(--gradient-signature);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: none;
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 700;
+  line-height: 1.2;
   margin-bottom: var(--heading-margin-bottom-large);
 }
 
+/* H2 — Section title: 30px / 600 / LH 130% (responsive) */
 h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1.15;
+  font-size: clamp(24px, 4vw, 30px);
+  font-weight: 600;
+  line-height: 1.3;
   margin-bottom: var(--heading-margin-bottom);
 }
 
+/* H3 — Callout: 22px / 600 / LH 140% (responsive) */
 h3 {
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-size: clamp(18px, 3vw, 22px);
+  font-weight: 600;
+  line-height: 1.4;
   margin-bottom: var(--heading-margin-bottom);
+}
+
+h4, h5, h6 {
+  font-weight: 600;
 }
 
 h4 {
@@ -185,25 +185,59 @@ h5 {
   margin-bottom: var(--element-gap);
 }
 
+/* Body Regular: 14px / 400 / LH 150% — set on body; Body Large: 16px / 500 / LH 150% */
 p {
   margin: 0;
-  color: var(--color-text-muted);
+  color: var(--color-text-primary);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.body-large {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.caption {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
 }
 
 a {
   color: inherit;
-  text-decoration-color: rgba(255, 182, 217, 0.4);
+  text-decoration-color: var(--color-accent);
   text-underline-offset: 3px;
   transition:
     color var(--transition-base),
-    text-decoration-color var(--transition-base),
-    text-shadow var(--transition-base);
+    text-decoration-color var(--transition-base);
 }
 
 a:hover {
-  color: var(--color-electric-blue);
+  color: var(--color-accent);
   text-decoration-color: currentColor;
-  text-shadow: none;
+}
+
+/* Code — JetBrains Mono */
+code,
+kbd {
+  font-family: var(--font-code);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-text-primary);
+}
+
+pre,
+pre code {
+  font-family: var(--font-code);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-text-primary);
 }
 
 img,
@@ -235,10 +269,10 @@ section::after {
 }
 
 .eyebrow {
-  font-size: 0.85rem;
+  font-size: 12px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-electric-blue);
+  color: var(--color-text-secondary);
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -251,9 +285,9 @@ section::after {
   padding: 0.4rem 0.9rem;
   border-radius: 0;
   background: transparent;
-  color: var(--color-electric-blue);
-  font-size: 0.9rem;
-  font-weight: 600;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  font-weight: 500;
   border: none;
 }
 
@@ -265,8 +299,8 @@ section::after {
   border-radius: 0;
   background: transparent;
   border: none;
-  font-size: 0.9rem;
-  color: var(--color-text);
+  font-size: 14px;
+  color: var(--color-text-primary);
 }
 
 .sr-only {
@@ -306,8 +340,9 @@ button,
 }
 
 .button {
-  background: var(--gradient-signature);
-  color: white;
+  background: var(--color-accent);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
   border-radius: 14px;
   padding: 12px 20px;
   box-shadow: none;
@@ -315,8 +350,8 @@ button,
 
 .button:hover {
   transform: translateY(-2px);
-  box-shadow: none;
-  filter: brightness(1.05);
+  box-shadow: var(--gradient-glow);
+  filter: brightness(1.02);
 }
 
 .button:active {
@@ -325,18 +360,19 @@ button,
 
 .button-outline {
   background: transparent;
-  border: none;
-  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
 }
 
 .button-outline:hover {
-  color: var(--color-electric-blue);
+  color: var(--color-accent);
+  border-color: var(--color-accent);
   box-shadow: none;
-  background: var(--color-sky-blue-tint);
+  background: transparent;
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-electric-blue);
+  outline: 2px solid var(--color-accent);
   outline-offset: 3px;
   box-shadow: none;
 }
@@ -347,6 +383,26 @@ ul {
   margin: 0;
 }
 
+/* Restore list appearance inside long-form content */
+.articleContent ul,
+.prose ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin: 0 0 var(--element-gap);
+}
+
+.articleContent ol,
+.prose ol {
+  list-style: decimal;
+  padding-left: 1.5rem;
+  margin: 0 0 var(--element-gap);
+}
+
+.articleContent li,
+.prose li {
+  margin-bottom: var(--space-2);
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -355,7 +411,7 @@ form {
 
 label {
   font-weight: 600;
-  color: var(--color-text);
+  color: var(--color-text-primary);
 }
 
 input,
@@ -363,8 +419,8 @@ textarea {
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border);
   padding: 0.85rem 1rem;
-  background: var(--color-white);
-  color: var(--color-text);
+  background: var(--color-bg-card);
+  color: var(--color-text-primary);
   width: 100%;
   transition:
     background-color var(--transition-base),
@@ -373,10 +429,10 @@ textarea {
 
 input:focus,
 textarea:focus {
-  background: var(--color-white);
+  background: var(--color-bg-card);
   box-shadow: none;
   outline: none;
-  border-color: var(--color-border-strong);
+  border-color: var(--color-accent);
 }
 
 textarea {
