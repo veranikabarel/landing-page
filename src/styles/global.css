@@ -124,6 +124,7 @@ body::before {
   z-index: 0;
 }
 
+
 main {
   width: min(1200px, 100%);
   margin: 0 auto;
@@ -538,6 +539,7 @@ textarea {
 }
 
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0px);
@@ -565,6 +567,7 @@ textarea {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
