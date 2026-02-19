@@ -4,30 +4,33 @@ import CustomLink from "@components/CustomLink.astro";
 
 <style>
   .contactSection {
-    padding: clamp(2rem, 5vw, 3.5rem);
-    background: linear-gradient(
-      135deg,
-      rgba(124, 77, 255, 0.07),
-      rgba(16, 185, 129, 0.05)
-    );
+    /* padding-block: var(--section-padding); */
+    padding-inline: 0;
+    background: transparent;
+    border: none;
+    position: relative;
+  }
+
+  .contactSection::before {
+    display: none;
   }
 
   .contactSectionHeader {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    gap: var(--element-gap);
+    margin-bottom: var(--element-gap);
   }
 
   .contactHeadingRow {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--element-gap);
   }
 
   .socialIcons {
     display: flex;
-    gap: 0.85rem;
+    gap: var(--element-gap);
     list-style: none;
     padding: 0;
     margin: 0;
@@ -37,28 +40,26 @@ import CustomLink from "@components/CustomLink.astro";
     width: 44px;
     height: 44px;
     border-radius: 999px;
-    border: 1px solid rgba(15, 23, 42, 0.12);
+    border: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     color: var(--color-text);
-    background: #fff;
+    background: transparent;
     transition:
       transform var(--transition-base),
-      border-color var(--transition-base),
-      box-shadow var(--transition-base);
+      color var(--transition-base);
   }
 
   .socialIcons a:hover {
     transform: translateY(-2px);
-    border-color: var(--color-accent-strong);
-    box-shadow: var(--shadow-soft);
+    color: var(--color-accent);
   }
 
   .contactWrapper {
-    margin-bottom: 2rem;
+    margin-bottom: var(--element-gap-large);
     display: grid;
-    gap: 1rem;
+    gap: var(--element-gap);
   }
 
   .contactWrapper p {
@@ -74,22 +75,35 @@ import CustomLink from "@components/CustomLink.astro";
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: var(--color-highlight);
+    background: var(--color-accent);
     display: inline-flex;
     position: relative;
+    box-shadow: none;
   }
 
   .availabilityWrapper p {
-    margin-top: 1rem;
-    color: var(--color-highlight);
+    margin-top: var(--element-gap);
   }
 
   .availabilityDot::after {
     content: "";
     position: absolute;
-    inset: 0;
+    inset: -4px;
     border-radius: inherit;
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+    box-shadow: none;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.2);
+    }
   }
 
   @media screen and (width >= 768px) {
@@ -104,9 +118,9 @@ import CustomLink from "@components/CustomLink.astro";
     }
   }
 
-  @media screen and (width >= 1200px) {
+  @media (min-width: 1200px) {
     .contactSection {
-      padding: 3.5rem;
+      padding-block: 0;
     }
   }
 </style>
@@ -126,10 +140,7 @@ import CustomLink from "@components/CustomLink.astro";
       </div>
       <ul class="socialIcons" aria-label="Social media links">
         <li>
-          <a
-            href="mailto:veranikabarel@gmail.com"
-            aria-label="Send me an email"
-          >
+          <a href="mailto:vkasparevych@gmail.com" aria-label="Send me an email">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"

@@ -18,37 +18,37 @@ const placeholderProjects = [
 
 <style>
   .heroSection {
-    padding-inline: 12px;
+    padding: 0;
   }
   .hero {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: var(--element-gap);
   }
 
   .hero p {
-    /* max-width: 560px; */
     color: var(--color-text-muted);
   }
 
   .workSection {
-    padding-inline: 12px;
+    padding: 0;
   }
 
   .projectGrid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: var(--element-gap-large);
   }
 
   .projectCard {
     border: 1px solid var(--color-border);
     border-radius: 16px;
-    padding: 24px;
+    padding: var(--element-gap-large);
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: var(--element-gap);
     min-height: 280px;
+    background: transparent;
   }
 
   .projectThumb {
@@ -69,35 +69,18 @@ const placeholderProjects = [
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 16px;
+    gap: var(--element-gap);
   }
 
   @media screen and (width >= 768px) {
-    .heroSection {
-      padding-inline: 32px;
-    }
     .hero {
       flex-direction: row;
       justify-content: space-between;
       align-items: flex-end;
     }
 
-    .workSection {
-      padding-inline: 32px;
-    }
-
     .projectGrid {
       grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media screen and (width >= 1200px) {
-    .heroSection {
-      padding-inline: 48px;
-    }
-
-    .workSection {
-      padding-inline: 48px;
     }
   }
 </style>
@@ -116,7 +99,7 @@ const placeholderProjects = [
     </div>
   </section>
 
-  <section class="workSection">
+  <!-- <section class="workSection">
     <div class="projectGrid">
       {
         placeholderProjects.map((project) => (
@@ -133,7 +116,7 @@ const placeholderProjects = [
         ))
       }
     </div>
-  </section>
+  </section> -->
 
   <Contact />
 </MainLayout>

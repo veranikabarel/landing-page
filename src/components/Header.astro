@@ -16,11 +16,13 @@ import HeaderLink from "./HeaderLink.astro";
     align-items: center;
     justify-content: flex-end;
     gap: 1.5rem;
-    padding: 0.75rem 1.25rem;
-    border-radius: var(--radius-lg);
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+    padding: 0 0.75rem;
+    border-radius: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    margin-bottom: var(--section-margin-bottom);
   }
 
   /* .branding {
@@ -75,11 +77,12 @@ import HeaderLink from "./HeaderLink.astro";
     flex-direction: column;
     gap: 0.5rem;
     padding: 1.25rem;
-    background: #fff;
-    border-radius: var(--radius-lg);
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    box-shadow: var(--shadow-soft);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 0;
+    box-shadow: none;
     min-width: min(280px, 90vw);
+    backdrop-filter: blur(18px);
   }
 
   .internal-links.show {
@@ -109,7 +112,7 @@ import HeaderLink from "./HeaderLink.astro";
 
   @media (min-width: 768px) {
     .topnav {
-      padding: 1rem 2rem;
+      padding: 0 1.75rem;
       justify-content: space-between;
     }
 
@@ -144,6 +147,13 @@ import HeaderLink from "./HeaderLink.astro";
       display: block;
     }
   }
+
+  @media (width >= 1200px) {
+    .topnav {
+      padding: 0;
+      margin-bottom: 0;
+    }
+  }
 </style>
 
 <header class="site-header" aria-label="Primary">
@@ -160,21 +170,24 @@ import HeaderLink from "./HeaderLink.astro";
         <li role="none">
           <HeaderLink href="/about">About</HeaderLink>
         </li>
-        <li role="none">
+        <!-- <li role="none">
           <HeaderLink href="/work">Work</HeaderLink>
         </li>
         <li role="none">
-          <HeaderLink href="/contact">Contact</HeaderLink>
+          <HeaderLink href="/blog">Blog</HeaderLink>
         </li>
+        <li role="none">
+          <HeaderLink href="/contact">Contact</HeaderLink>
+        </li> -->
       </ul>
     </div>
 
     <div class="button-wrapper">
       <CustomButton
-        href="/cv-template.md"
-        download="Veranika-Kasperevych-CV-Template.md"
+        href="/cv-veranika-kasparevych.pdf"
+        download="cv-veranika-kasparevych.pdf"
         text="Download CV"
-        aria-label="Download Veranika Kasparevych CV template"
+        aria-label="Download Veranika Kasparevych CV"
       />
     </div>
 
