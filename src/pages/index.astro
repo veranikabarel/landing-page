@@ -160,13 +160,12 @@ const heroStats = [
     display: flex;
     flex-direction: column;
     gap: var(--element-gap);
-  height: 100%;  
-  object-fit: cover; 
-  border-radius: var(--radius-lg);
-  box-shadow: none;
-  } */
-
-  .story-copy {
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: none;
+  }
+  */ .story-copy {
     display: flex;
     flex-direction: column;
     gap: var(--element-gap);
@@ -201,16 +200,23 @@ const heroStats = [
   }
 
   @media (min-width: 1200px) {
-  @media (min-width: 1200px) {
-    .story-grid {
-      grid-template-columns: minmax(280px, 1fr) minmax(0, 1.2fr);
-      align-items: center;
-    }
+    @media (min-width: 1200px) {
+      .story-grid {
+        grid-template-columns: minmax(280px, 1fr) minmax(0, 1.2fr);
+        align-items: center;
+      }
 
-    .hero-section {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
+      .hero-section {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+      }
+
+      .hero-section {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+      }
     }
 
     .hero-section {
@@ -231,6 +237,10 @@ const heroStats = [
           Front-end engineer based in Wroclaw, Poland, with almost four years of
           experience developing interactive, user-friendly, and feature-rich web
           applications. Passionate about crafting seamless digital experiences
+          using modern technologies like React, Next.js, and Astro. Front-end
+          engineer based in Wroclaw, Poland, with almost four years of
+          experience developing interactive, user-friendly, and feature-rich web
+          applications. Passionate about crafting seamless digital experiences
           using modern technologies like React, Next.js, and Astro.
           Front-end engineer based in Wroclaw, Poland, with almost four years of
           experience developing interactive, user-friendly, and feature-rich web
@@ -240,33 +250,33 @@ const heroStats = [
 
         <div class="hero-contact">
           <a href="mailto:vkasparevych@gmail.com">
-          <a href="mailto:vkasparevych@gmail.com">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-            >
-              <path
-                fill="currentColor"
-                d="M19 4H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 4l-7 4l-7-4V6l7 4l7-4z"
-              ></path>
-            </svg>
-            vkasparevych@gmail.com
-            vkasparevych@gmail.com
+            <a href="mailto:vkasparevych@gmail.com">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  d="M19 4H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 4l-7 4l-7-4V6l7 4l7-4z"
+                ></path>
+              </svg>
+              vkasparevych@gmail.com
+            </a>
           </a>
-        </div>
 
-        <ul class="hero-stats">
-          {
-            heroStats.map((stat) => (
-              <li class="stat-card">
-                <span class="stat-value">{stat.value}</span>
-                <span class="stat-label">{stat.label}</span>
-              </li>
-            ))
-          }
-        </ul>
+          <ul class="hero-stats">
+            {
+              heroStats.map((stat) => (
+                <li class="stat-card">
+                  <span class="stat-value">{stat.value}</span>
+                  <span class="stat-label">{stat.label}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -280,12 +290,13 @@ const heroStats = [
     </div>
     <div class="story-grid">
       <!-- <img
-      <!-- <img
-        src={workspacePhoto.src}
-        alt="Minimalist workspace with a laptop and headphones"
-        loading="lazy"
-        decoding="async"
-      /> -->
+   
+      src={workspacePhoto.src}
+      alt="Minimalist workspace with a laptop and headphones"
+      loading="lazy"
+      decoding="async"
+    /> -->
+
       <div class="story-copy">
       /> -->
       <div class="story-copy">
@@ -296,26 +307,17 @@ const heroStats = [
           Astro—pairing solid engineering practices with refined visual polish.
           I take strong ownership of my work, caring deeply about quality,
           performance, and long-term maintainability.
-
           <br />
           <br />
           Outside of work, I’m usually experimenting with side projects, sharing knowledge
           with the dev community, or sketching new interface ideas. Collaboration
           lights me up, and I love translating bold concepts into reliable, accessible,
           and scalable UI—always striving to learn, adapt, and deliver meaningful
-          user experiences.
-          I take strong ownership of my work, caring deeply about quality,
-          performance, and long-term maintainability.
-
-          <br />
-          <br />
-          Outside of work, I’m usually experimenting with side projects, sharing knowledge
-          with the dev community, or sketching new interface ideas. Collaboration
-          lights me up, and I love translating bold concepts into reliable, accessible,
-          and scalable UI—always striving to learn, adapt, and deliver meaningful
-          user experiences.
+          user experiences. I take strong ownership of my work, caring deeply about
+          quality, performance, and long-term maintainability.
         </p>
       </div>
+
       <div class="tech-grid">
         <div class="icon-tile">
           <svg
@@ -561,6 +563,6 @@ const heroStats = [
         </div>
       </div>
     </div>
+    <Contact />
   </section>
-  <Contact />
 </MainLayout>
