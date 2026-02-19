@@ -7,18 +7,18 @@
   --font-code: "JetBrains Mono", ui-monospace, monospace;
 
   /* Backgrounds */
-  --color-bg-primary: #F4F7F5;
-  --color-bg-card: #FFFFFF;
+  --color-bg-primary: #f4f7f5;
+  --color-bg-card: #ffffff;
 
   /* Text */
-  --color-text-primary: #1F2A26;
-  --color-text-secondary: #6C7A73;
+  --color-text-primary: #1f2a26;
+  --color-text-secondary: #6c7a73;
 
   /* Accent */
-  --color-accent: #3CFFD6;
+  --color-accent: #3cffd6;
 
   /* Borders */
-  --color-border: #E3E8E5;
+  --color-border: #e3e8e5;
 
   /* Legacy / compatibility mappings */
   --color-bg: var(--color-bg-primary);
@@ -34,7 +34,8 @@
   --color-muted: var(--color-text-secondary);
 
   /* Glow (accent used sparingly) */
-  --gradient-glow: 0 0 12px rgba(60, 255, 214, 0.2), 0 0 20px rgba(60, 255, 214, 0.1);
+  --gradient-glow:
+    0 0 12px rgba(60, 255, 214, 0.2), 0 0 20px rgba(60, 255, 214, 0.1);
 
   /* Shadows */
   --shadow-soft: none;
@@ -60,16 +61,36 @@
   --space-16: 4rem;
 
   /* Unified Content Spacing */
-  --content-padding-mobile: 0.75rem; /* 12px */
-  --content-padding-tablet: 2rem; /* 32px */
-  --content-padding-desktop: 3rem; /* 48px */
-  --section-gap: clamp(2rem, 6vw, 4rem); /* Gap between sections; scales down on small screens */
-  --section-padding: clamp(1.5rem, 4vw, 3.5rem); /* Internal section padding */
-  --heading-margin-bottom: 1.5rem; /* Standard margin below headings */
-  --heading-margin-bottom-large: 2rem; /* Larger margin for h1 */
-  --element-gap: 1rem; /* Standard gap between elements */
-  --element-gap-medium: 1.5rem; /* Medium gap */
-  --element-gap-large: 2rem; /* Large gap */
+  --content-padding-mobile: 0.75rem;
+  /* 12px */
+  --content-padding-tablet: 2rem;
+  /* 32px */
+  --content-padding-desktop: 3rem;
+  /* 48px */
+
+  --content-margin-mobile: 0.75rem;
+  /* 12px */
+  --content-margin-tablet: 2rem;
+  /* 32px */
+  --content-margin-desktop: 3rem;
+  /* 48px */
+
+  --section-gap: clamp(4rem, 8vw, 10rem);
+  /* Gap between sections; scales down on small screens */
+  --section-padding: clamp(1.5rem, 4vw, 3.5rem);
+  /* Section padding */
+  --section-margin-bottom: clamp(4rem, 8vw, 10rem);
+  /* Section margin bottom */
+  --heading-margin-bottom: 1.5rem;
+  /* Standard margin below headings */
+  --heading-margin-bottom-large: 2rem;
+  /* Larger margin for h1 */
+  --element-gap: 1rem;
+  /* Standard gap between elements */
+  --element-gap-medium: 1.5rem;
+  /* Medium gap */
+  --element-gap-large: 2rem;
+  /* Large gap */
 
   --transition-base: 250ms cubic-bezier(0.4, 0.14, 0.3, 1);
 }
@@ -106,35 +127,23 @@ body::before {
 main {
   width: min(1200px, 100%);
   margin: 0 auto;
-  padding: clamp(2.5rem, 6vw, 7rem) var(--content-padding-mobile) clamp(4rem, 8vw, 10rem);
+  padding: 0 var(--content-padding-mobile);
   display: flex;
   flex-direction: column;
-  gap: var(--section-gap);
   position: relative;
   z-index: 1;
 }
 
-@media screen and (width >= 768px) {
+@media screen and (width >=768px) {
   main {
-    padding-left: var(--content-padding-tablet);
-    padding-right: var(--content-padding-tablet);
+    padding: 0 var(--content-padding-tablet);
   }
 }
 
-@media screen and (width >= 1200px) {
+@media screen and (width >=1200px) {
   main {
-    padding-left: var(--content-padding-desktop);
-    padding-right: var(--content-padding-desktop);
+    padding: 0;
   }
-}
-
-header,
-footer {
-  width: min(1200px, 100%);
-  margin: 0 auto;
-  padding: 1rem clamp(1rem, 6vw, 4rem);
-  position: relative;
-  z-index: 1;
 }
 
 h1,
@@ -173,7 +182,9 @@ h3 {
   margin-bottom: var(--heading-margin-bottom);
 }
 
-h4, h5, h6 {
+h4,
+h5,
+h6 {
   font-weight: 600;
 }
 
@@ -249,17 +260,34 @@ svg {
 section {
   border-radius: 0;
   background: transparent;
-  padding-block: var(--section-padding);
-  padding-inline: 0;
+  /* padding-block: var(--section-padding);
+  padding-inline: 0; */
   box-shadow: none;
   position: relative;
   isolation: isolate;
   border: none;
   width: 100%;
+  /* height: 100vh; */
 }
 
 section::after {
   display: none;
+}
+
+header,
+footer {
+  width: min(1200px, 100%);
+  position: relative;
+  z-index: 1;
+  height: fit-content;
+}
+
+header {
+  margin: 2rem auto;
+}
+
+footer {
+  margin: 0 auto;
 }
 
 .surface-muted {
@@ -282,7 +310,7 @@ section::after {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.4rem 0.9rem;
+  /* padding: 0.4rem 0.9rem; */
   border-radius: 0;
   background: transparent;
   color: var(--color-text-secondary);
@@ -470,8 +498,7 @@ textarea {
   align-items: center;
   justify-content: center;
   min-height: 120px;
-  transition:
-    transform var(--transition-base);
+  transition: transform var(--transition-base);
 }
 
 .icon-tile svg {
@@ -503,6 +530,7 @@ textarea {
     transform: translateY(24px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -514,6 +542,7 @@ textarea {
   100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-12px);
   }

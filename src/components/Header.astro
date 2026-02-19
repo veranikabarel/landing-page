@@ -16,12 +16,13 @@ import HeaderLink from "./HeaderLink.astro";
     align-items: center;
     justify-content: flex-end;
     gap: 1.5rem;
-    padding: 0.75rem 1.25rem;
+    padding: 0 0.75rem;
     border-radius: 0;
     border: none;
     background: transparent;
     box-shadow: none;
     backdrop-filter: none;
+    margin-bottom: var(--section-margin-bottom);
   }
 
   /* .branding {
@@ -111,7 +112,7 @@ import HeaderLink from "./HeaderLink.astro";
 
   @media (min-width: 768px) {
     .topnav {
-      padding: 1rem 2rem;
+      padding: 0 1.75rem;
       justify-content: space-between;
     }
 
@@ -146,6 +147,13 @@ import HeaderLink from "./HeaderLink.astro";
       display: block;
     }
   }
+
+  @media (width >= 1200px) {
+    .topnav {
+      padding: 0;
+      margin-bottom: 0;
+    }
+  }
 </style>
 
 <header class="site-header" aria-label="Primary">
@@ -162,7 +170,7 @@ import HeaderLink from "./HeaderLink.astro";
         <li role="none">
           <HeaderLink href="/about">About</HeaderLink>
         </li>
-        <li role="none">
+        <!-- <li role="none">
           <HeaderLink href="/work">Work</HeaderLink>
         </li>
         <li role="none">
@@ -170,16 +178,16 @@ import HeaderLink from "./HeaderLink.astro";
         </li>
         <li role="none">
           <HeaderLink href="/contact">Contact</HeaderLink>
-        </li>
+        </li> -->
       </ul>
     </div>
 
     <div class="button-wrapper">
       <CustomButton
-        href="/cv-template.md"
-        download="Veranika-Kasperevych-CV-Template.md"
+        href="/cv-veranika-kasparevych.pdf"
+        download="cv-veranika-kasparevych.pdf"
         text="Download CV"
-        aria-label="Download Veranika Kasparevych CV template"
+        aria-label="Download Veranika Kasparevych CV"
       />
     </div>
 

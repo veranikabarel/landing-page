@@ -23,7 +23,7 @@ const isActive = href === pathname || href === "/" + subpath?.[0];
     display: inline-block;
     text-decoration: none;
     position: relative;
-    color: var(--color-text-muted);
+    /* color: var(--color-text-muted); */
     font-weight: 500;
     transition: color var(--transition-base);
   }
@@ -48,7 +48,6 @@ const isActive = href === pathname || href === "/" + subpath?.[0];
   }
 
   .header-link.active {
-    color: var(--color-accent);
     font-weight: 600;
   }
 

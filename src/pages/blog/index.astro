@@ -97,7 +97,10 @@ const sortedArticles = articles.articles.sort((a, b) => {
   }
 </style>
 
-<MainLayout title="Blog" description="Articles, tutorials, and insights on web development and technology.">
+<MainLayout
+  title="Blog"
+  description="Articles, tutorials, and insights on web development and technology."
+>
   <section class="heroSection">
     <div class="hero">
       <div>
@@ -110,7 +113,7 @@ const sortedArticles = articles.articles.sort((a, b) => {
     </div>
   </section>
 
-  <section class="blogSection">
+  <!-- <section class="blogSection">
     <div class="articlesGrid">
       {
         sortedArticles.map((article) => (
@@ -129,8 +132,7 @@ const sortedArticles = articles.articles.sort((a, b) => {
         ))
       }
     </div>
-  </section>
+  </section> -->
 
   <Contact />
 </MainLayout>
-

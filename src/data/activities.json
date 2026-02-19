@@ -3,12 +3,25 @@
     {
       "title": "Creating Dynatrace Apps",
       "type": "Webinar",
-      "description": "Webinar and live coding session on creating Dynatrace apps."
+      "description": "Webinar and live coding session on creating Dynatrace apps.",
+      "link": "https://youtu.be/yU7NFqfL0lw?si=-OAyNlTCV1vWO9W8"
     },
     {
       "title": "Lightning Talk on Astro Framework",
       "type": "Lightning Talk",
       "description": "Brief presentation on the Astro Framework."
+    },
+    {
+      "title": "Astro portfolio template",
+      "type": "Open source",
+      "description": "A free template for creating portfolio website using Astro 2.0 and Tailwind CSS.",
+      "link": "https://astro.build/themes/details/astro-portfolio-template/"
+    },
+    {
+      "title": "Blog articles",
+      "type": "Blog",
+      "description": "Articles on Dev.to platform",
+      "link": "https://dev.to/veranikabarel"
     }
   ]
 }
