@@ -6,26 +6,19 @@
       "date": "06/2025 - Present",
       "logo": "/logos/ubs.svg",
       "responsibilities": [
-        "Building data-rich client experiences for global wealth platforms with Astro, React, and TypeScript.",
-        "Partnering with design and product teams to translate accessibility-first concepts into production UI.",
-        "Improving monitoring pipelines by instrumenting new metrics and alerting dashboards.",
-        "Facilitating sprint rituals, demos, and code reviews across a distributed engineering team."
+        "Built high-performance web app.",
+        "Worked on updating tests with QA team."
       ]
     },
     {
       "job_title": "Front-end Developer",
-      "company": "Omnilogy Sp. z o.o.",
+      "company": "Omnilogy",
       "date": "07/2023 - 07/2025",
       "logo": "/logos/omnilogy.svg",
       "responsibilities": [
-        "Developed high-performance web applications with a focus on observability, ensuring efficient monitoring and reliability.",
-        "Collaborated with cross-functional teams to design, implement, and troubleshoot new features, enhancing application functionality.",
-        "Led the development of a corporate website, overseeing the full project lifecycle from architecture to deployment.",
-        "Integrated content management systems (CMS) with the front-end, improving content management and user experience.",
-        "Wrote unit and end-to-end tests to ensure code quality and maintainability.",
-        "Automated testing processes to streamline development and enhance product quality.",
-        "Actively participated in code reviews, project planning, and task estimation.",
-        "Mentored junior developer, guiding them in best practices and code optimization."
+        "Built high-performance, observable web apps with robust monitoring, testing, and reliability.",
+        "Worked with cross-functional teams to design, implement, and enhance application functionality.",
+        "Led corporate website development, integrated CMS, and managed the full project lifecycle."
       ]
     },
     {
@@ -34,13 +27,9 @@
       "date": "06/2022 - 07/2023",
       "logo": "/logos/espeo.svg",
       "responsibilities": [
-        "Collaborated with UI/UX designers to build intuitive and visually appealing interfaces, ensuring an optimal user experience.",
-        "Developed reusable components, ensuring scalability and maintainability of the front-end codebase across multiple projects.",
-        "Integrated user authentication and worked closely with backend developers to implement seamless, secure functionality.",
-        "Rebuilt web applications using modern frameworks, significantly improving performance and maintainability.",
-        "Customized and extended corporate websites using content management systems (CMS) to enhance functionality and user engagement.",
-        "Implemented responsive designs to optimize performance across devices and browsers.",
-        "Developed new features, including the integration of third-party APIs and services."
+        "Built intuitive, visually appealing interfaces with reusable components for scalability and maintainability.",
+        "Implemented authentication, integrated third-party tools, and collaborated with backend teams for seamless security and performance.",
+        "Customized corporate websites, optimized responsiveness, and enhanced user engagement through CMS and performance improvements."
       ]
     }
   ]

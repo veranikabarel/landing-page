@@ -60,7 +60,9 @@ function parseMarkdown(content: string): string {
     if (isEmpty) {
       if (currentBlock.length > 0) {
         if (inList) {
-          blocks.push(`<ul>${currentBlock.map((item) => `<li>${item}</li>`).join("")}</ul>`);
+          blocks.push(
+            `<ul>${currentBlock.map((item) => `<li>${item}</li>`).join("")}</ul>`,
+          );
           inList = false;
         } else {
           blocks.push(`<p>${currentBlock.join(" ")}</p>`);
@@ -73,7 +75,9 @@ function parseMarkdown(content: string): string {
     // Regular text
     if (inList) {
       // End list and start paragraph
-      blocks.push(`<ul>${currentBlock.map((item) => `<li>${item}</li>`).join("")}</ul>`);
+      blocks.push(
+        `<ul>${currentBlock.map((item) => `<li>${item}</li>`).join("")}</ul>`,
+      );
       currentBlock = [line];
       inList = false;
     } else {
@@ -84,7 +88,9 @@ function parseMarkdown(content: string): string {
   // Handle remaining content
   if (currentBlock.length > 0) {
     if (inList) {
-      blocks.push(`<ul>${currentBlock.map((item) => `<li>${item}</li>`).join("")}</ul>`);
+      blocks.push(
+        `<ul>${currentBlock.map((item) => `<li>${item}</li>`).join("")}</ul>`,
+      );
     } else {
       blocks.push(`<p>${currentBlock.join(" ")}</p>`);
     }
@@ -167,4 +173,3 @@ function parseMarkdown(content: string): string {
 
   <Contact />
 </MainLayout>
-

@@ -4,7 +4,7 @@ import CustomLink from "@components/CustomLink.astro";
 
 <style>
   .contactSection {
-    padding-block: var(--section-padding);
+    /* padding-block: var(--section-padding); */
     padding-inline: 0;
     background: transparent;
     border: none;
@@ -83,7 +83,6 @@ import CustomLink from "@components/CustomLink.astro";
 
   .availabilityWrapper p {
     margin-top: var(--element-gap);
-    color: var(--color-accent);
   }
 
   .availabilityDot::after {
@@ -96,7 +95,8 @@ import CustomLink from "@components/CustomLink.astro";
   }
 
   @keyframes pulse {
-    0%, 100% {
+    0%,
+    100% {
       opacity: 1;
       transform: scale(1);
     }
@@ -118,6 +118,11 @@ import CustomLink from "@components/CustomLink.astro";
     }
   }
 
+  @media (min-width: 1200px) {
+    .contactSection {
+      padding-block: 0;
+    }
+  }
 </style>
 
 <section class="contactSection">
@@ -135,10 +140,7 @@ import CustomLink from "@components/CustomLink.astro";
       </div>
       <ul class="socialIcons" aria-label="Social media links">
         <li>
-          <a
-            href="mailto:veranikabarel@gmail.com"
-            aria-label="Send me an email"
-          >
+          <a href="mailto:vkasparevych@gmail.com" aria-label="Send me an email">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"

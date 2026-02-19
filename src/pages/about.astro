@@ -1,5 +1,4 @@
 ---
-import CustomLink from "@components/CustomLink.astro";
 import experience from "@data/experience.json";
 import skills from "@data/skills.json";
 import activities from "@data/activities.json";
@@ -68,8 +67,16 @@ const skillSections = [
 ---
 
 <style>
+  section {
+    margin-bottom: var(--section-margin-bottom);
+  }
+
   .heroSection {
     padding: 0;
+  }
+
+  .heroSection p {
+    color: var(--color-text-muted);
   }
 
   .about {
@@ -99,9 +106,10 @@ const skillSections = [
 
   .experienceHeader {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: space-between;
     gap: var(--element-gap);
-    align-items: center;
     flex-wrap: wrap;
     margin-bottom: var(--element-gap);
   }
@@ -113,10 +121,10 @@ const skillSections = [
   }
 
   .experienceLogo {
-    width: 48px;
+    width: 30%;
     height: 48px;
-    border-radius: 12px;
-    object-fit: cover;
+    /* border-radius: 12px; */
+    object-fit: scale-down;
     box-shadow: none;
   }
 
@@ -174,8 +182,7 @@ const skillSections = [
     display: flex;
     flex-direction: column;
     gap: var(--element-gap);
-    transition:
-      transform var(--transition-base);
+    transition: transform var(--transition-base);
   }
 
   .conferenceCard:hover {
@@ -192,6 +199,10 @@ const skillSections = [
     margin: 0;
     color: var(--color-text);
     font-size: 1.25rem;
+  }
+
+  .conferenceCard h4 a {
+    text-decoration: none;
   }
 
   .conferenceType {
@@ -215,7 +226,6 @@ const skillSections = [
 
   .languagesSection {
     position: relative;
-    padding-block: var(--section-padding);
     padding-inline: 0;
     border-radius: var(--radius-lg);
     overflow: hidden;
@@ -316,6 +326,14 @@ const skillSections = [
       gap: var(--element-gap-large);
     }
 
+    .experienceHeader {
+      flex-direction: row;
+    }
+
+    .experienceCompanyData {
+      width: -webkit-fill-available;
+    }
+
     .conferencesList {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -335,19 +353,14 @@ const skillSections = [
 </style>
 
 <MainLayout title="About me" description=" Lorem ipsum dolor sit amet">
-  <section class="heroSection">
-    <h1>About</h1>
-    <p>
-      Showcase websites, ecommerce builds, and digital experiences. Case
-      studies and live links are in progress and will be published here
-      soon.
-    </p>
-  </section>
+  <!-- <h1 class="heroSection">About</h1> -->
+  <!-- <p>
+      Highlighting my expertise in UI development, professional experience, technical skills, creative activities, and industry certifications.
+    </p> -->
 
   <section class="experienceSection">
     <div class="sectionHeader">
       <h3>Experience</h3>
-      
     </div>
 
     {
@@ -364,7 +377,7 @@ const skillSections = [
                   decoding="async"
                 />
               )}
-              <div>
+              <div class="experienceCompanyData">
                 <h5>{exp.job_title}</h5>
                 <p>{exp.company}</p>
               </div>
@@ -384,7 +397,11 @@ const skillSections = [
     }
   </section>
 
-  <section class="attendingSection languagesSection">
+  <!-- <section class="attendingSection languagesSection">
+    <div class="sectionHeader">
+      <h3>Skills</h3>
+      
+    </div>
     <div class="skillsGrid">
       {
         skillSections.map(({ title, icon, items }) => (
@@ -404,11 +421,11 @@ const skillSections = [
         ))
       }
     </div>
-  </section>
+  </section> -->
 
   <section class="attendingSection conferencesSection">
     <div>
-      <h3>Conferences | Certificates</h3>
+      <h3>Conferences | Activities</h3>
     </div>
     <ul class="conferencesList">
       {
@@ -416,7 +433,9 @@ const skillSections = [
           <li>
             <article class="conferenceCard">
               <div class="conferenceHeader">
-                <h4>{presentation.title}</h4>
+                <h4>
+                  <a href={presentation.link}>{presentation.title}</a>
+                </h4>
                 <span class="conferenceType">{presentation.type}</span>
               </div>
               {presentation.description && (
