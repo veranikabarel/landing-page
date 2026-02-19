@@ -5,65 +5,65 @@ import activities from "@data/activities.json";
 import MainLayout from "@layouts/MainLayout.astro";
 import Contact from "@sections/Contact.astro";
 
-const skillSections = [
-  {
-    title: "Languages & Frameworks",
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M8 5 3 12l5 7M16 5l5 7-5 7M11.5 4l-2 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-      </svg>`,
-    items: skills.skills_and_tools.languages_and_frameworks,
-  },
-  {
-    title: "Styling Systems",
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M12 4a8 8 0 0 0-8 8c0 4 2.5 8 6 8h4a2.5 2.5 0 0 0 0-5h3a3 3 0 0 0 3-3 8 8 0 0 0-8-8Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-        <circle cx="9" cy="10" r="1" fill="currentColor" />
-        <circle cx="12.5" cy="8" r="1" fill="currentColor" />
-        <circle cx="15" cy="11" r="1" fill="currentColor" />
-      </svg>`,
-    items: skills.skills_and_tools.styling,
-  },
-  {
-    title: "Network & Data",
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <circle cx="6" cy="12" r="2.2" stroke="currentColor" stroke-width="1.6" />
-        <circle cx="18" cy="6" r="2.2" stroke="currentColor" stroke-width="1.6" />
-        <circle cx="18" cy="18" r="2.2" stroke="currentColor" stroke-width="1.6" />
-        <path d="M7.8 10.9 15.9 7.1M7.8 13.1l8.1 3.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-      </svg>`,
-    items: skills.skills_and_tools.network_and_data,
-  },
-  {
-    title: "Testing",
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.6" />
-        <path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-      </svg>`,
-    items: skills.skills_and_tools.testing,
-  },
-  {
-    title: "Visualization & CMS",
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M5 20V9M10 20V4M15 20v-8M20 20v-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-      </svg>`,
-    items: skills.skills_and_tools.visualization_and_cms,
-  },
-  {
-    title: "Build Tools",
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M21 15.5 13.5 8m-2.3-2.3 2.3 2.3-6.5 6.5a2.1 2.1 0 0 1-3 0 2.1 2.1 0 0 1 0-3l6.5-6.5Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-      </svg>`,
-    items: skills.skills_and_tools.build_tools,
-  },
-  {
-    title: "Productivity Toolkit",
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M4 9h16v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9Zm3-3a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3H7V6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
-        <path d="M10 14h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-      </svg>`,
-    items: skills.skills_and_tools.tools,
-  },
-];
+// const skillSections = [
+//   {
+//     title: "Languages & Frameworks",
+//     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+//         <path d="M8 5 3 12l5 7M16 5l5 7-5 7M11.5 4l-2 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+//       </svg>`,
+//     items: skills.skills_and_tools.languages_and_frameworks,
+//   },
+//   {
+//     title: "Styling Systems",
+//     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+//         <path d="M12 4a8 8 0 0 0-8 8c0 4 2.5 8 6 8h4a2.5 2.5 0 0 0 0-5h3a3 3 0 0 0 3-3 8 8 0 0 0-8-8Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+//         <circle cx="9" cy="10" r="1" fill="currentColor" />
+//         <circle cx="12.5" cy="8" r="1" fill="currentColor" />
+//         <circle cx="15" cy="11" r="1" fill="currentColor" />
+//       </svg>`,
+//     items: skills.skills_and_tools.styling,
+//   },
+//   {
+//     title: "Network & Data",
+//     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+//         <circle cx="6" cy="12" r="2.2" stroke="currentColor" stroke-width="1.6" />
+//         <circle cx="18" cy="6" r="2.2" stroke="currentColor" stroke-width="1.6" />
+//         <circle cx="18" cy="18" r="2.2" stroke="currentColor" stroke-width="1.6" />
+//         <path d="M7.8 10.9 15.9 7.1M7.8 13.1l8.1 3.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+//       </svg>`,
+//     items: skills.skills_and_tools.network_and_data,
+//   },
+//   {
+//     title: "Testing",
+//     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+//         <rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.6" />
+//         <path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+//       </svg>`,
+//     items: skills.skills_and_tools.testing,
+//   },
+//   {
+//     title: "Visualization & CMS",
+//     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+//         <path d="M5 20V9M10 20V4M15 20v-8M20 20v-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+//       </svg>`,
+//     items: skills.skills_and_tools.visualization_and_cms,
+//   },
+//   {
+//     title: "Build Tools",
+//     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+//         <path d="M21 15.5 13.5 8m-2.3-2.3 2.3 2.3-6.5 6.5a2.1 2.1 0 0 1-3 0 2.1 2.1 0 0 1 0-3l6.5-6.5Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+//       </svg>`,
+//     items: skills.skills_and_tools.build_tools,
+//   },
+//   {
+//     title: "Productivity Toolkit",
+//     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+//         <path d="M4 9h16v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9Zm3-3a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3H7V6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+//         <path d="M10 14h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+//       </svg>`,
+//     items: skills.skills_and_tools.tools,
+//   },
+// ];
 ---
 
 <style>
