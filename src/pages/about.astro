@@ -1,69 +1,83 @@
 ---
 import experience from "@data/experience.json";
+import education from "@data/education.json";
+import certificates from "@data/certificates.json";
 import skills from "@data/skills.json";
 import activities from "@data/activities.json";
+import Referrals from "@sections/Referrals.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 import Contact from "@sections/Contact.astro";
 
-// const skillSections = [
-//   {
-//     title: "Languages & Frameworks",
-//     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-//         <path d="M8 5 3 12l5 7M16 5l5 7-5 7M11.5 4l-2 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-//       </svg>`,
-//     items: skills.skills_and_tools.languages_and_frameworks,
-//   },
-//   {
-//     title: "Styling Systems",
-//     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-//         <path d="M12 4a8 8 0 0 0-8 8c0 4 2.5 8 6 8h4a2.5 2.5 0 0 0 0-5h3a3 3 0 0 0 3-3 8 8 0 0 0-8-8Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-//         <circle cx="9" cy="10" r="1" fill="currentColor" />
-//         <circle cx="12.5" cy="8" r="1" fill="currentColor" />
-//         <circle cx="15" cy="11" r="1" fill="currentColor" />
-//       </svg>`,
-//     items: skills.skills_and_tools.styling,
-//   },
-//   {
-//     title: "Network & Data",
-//     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-//         <circle cx="6" cy="12" r="2.2" stroke="currentColor" stroke-width="1.6" />
-//         <circle cx="18" cy="6" r="2.2" stroke="currentColor" stroke-width="1.6" />
-//         <circle cx="18" cy="18" r="2.2" stroke="currentColor" stroke-width="1.6" />
-//         <path d="M7.8 10.9 15.9 7.1M7.8 13.1l8.1 3.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-//       </svg>`,
-//     items: skills.skills_and_tools.network_and_data,
-//   },
-//   {
-//     title: "Testing",
-//     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-//         <rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.6" />
-//         <path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-//       </svg>`,
-//     items: skills.skills_and_tools.testing,
-//   },
-//   {
-//     title: "Visualization & CMS",
-//     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-//         <path d="M5 20V9M10 20V4M15 20v-8M20 20v-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-//       </svg>`,
-//     items: skills.skills_and_tools.visualization_and_cms,
-//   },
-//   {
-//     title: "Build Tools",
-//     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-//         <path d="M21 15.5 13.5 8m-2.3-2.3 2.3 2.3-6.5 6.5a2.1 2.1 0 0 1-3 0 2.1 2.1 0 0 1 0-3l6.5-6.5Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-//       </svg>`,
-//     items: skills.skills_and_tools.build_tools,
-//   },
-//   {
-//     title: "Productivity Toolkit",
-//     icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-//         <path d="M4 9h16v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9Zm3-3a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3H7V6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
-//         <path d="M10 14h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-//       </svg>`,
-//     items: skills.skills_and_tools.tools,
-//   },
-// ];
+const companyLogos: Record<string, string> = {
+  UBS: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127 46" width="127" height="46" aria-hidden="true"><path fill="#E60000" d="m74.3 27.7c0 9.5-5.2 10.7-10.4 10.7-8.9 0-10.8-4.6-10.8-11.1v-18.5h-3.3v-1.8h12.5v1.8h-3.5v17.9c0 6.3 1.6 9.5 6.2 9.5s6.9-2.3 6.9-8.9v-18.5h-3.3v-1.8h8.9v1.8h-3l-0.2 18.9zm8.7 8.5v-27.4h-3.5v-1.8h13.8c5.9 0 8.8 3.3 8.8 7.2 0 4.2-3.8 6.5-7.1 7.2 6.5 0.6 8.3 4.8 8.3 7.9 0 6.3-5.4 8.7-10.6 8.7h-13.4v-1.8h3.7zm13.5-21.6c0-2.9-1.5-5.8-4.8-5.8h-3.6v11.9h3.2c3.6 0 5.2-2.9 5.2-6.1zm1.2 14.8c0-4.1-1.8-6.9-5.9-6.9h-3.5v13.8h2.9c4.3-0.1 6.5-2.7 6.5-6.9zm19.5-21c-3.3 0-5.4 1.9-5.4 5.3 0 3 3.3 4.5 6.5 5.6 1.9 0.7 4.3 1.6 6 3.1 1.8 1.7 2.8 4 2.7 6.9-0.1 5.4-3.9 9.1-10.6 9.1-2.5 0-6.4-0.6-8.7-1.9l-0.3-8.1h2c0.2 5.5 2.7 8.3 7.2 8.3 3.6 0 5.6-2.4 5.6-6.1 0-3.2-2.6-4.5-6.6-5.9-1.3-0.4-3.9-1.4-5.7-3.2-1.6-1.6-2.4-3.7-2.4-5.8 0-6.3 4.5-9.1 10.1-9.1 2.2 0 5.5 0.8 7.5 1.9l0.2 7.1h-2c-0.3-5-2.5-7.2-6.1-7.2z"/><path fill="#000000" d="m34.1 13.3-0.8 0.7 0.9 2.9-2.6-1.4-0.9 0.7 2.9 1.6-3.1 2.5-0.8-1.1 1.1-0.9-0.8-1-1.1 0.9-0.9-1.2 1.1-0.9-0.8-1.1-5.6 4.7 5.4 4.3 1-1.2c0.7 0 1.2 0.6 1.5 1.2l-1 1.2 0.6 0.5c1.3-1.2 3.1-2 4.9-2 3.8 0 6.7 3.1 6.7 6.9 0 1.2-0.3 2.6-1 3.7l1 0.8c0 0.7-0.7 1.5-1.4 1.7l-1-0.8c-1.3 1.3-3.1 2-4.9 2-3.8 0-6.7-3-6.7-6.8 0-1.2 0.4-2.5 0.9-3.6l-0.7-0.5-1 1.3c-0.7-0.1-1.3-0.6-1.5-1.3l1-1.1-4.5-3.8v6h1.5c0.2 0.3 0.3 0.6 0.3 0.9s-0.1 0.7-0.3 1h-1.5v0.7c3.3 0.6 6.1 3.4 6.1 6.8 0 3.5-2.7 6.3-6.1 6.9v1.2c-0.3 0.2-0.7 0.3-1.1 0.3s-0.9-0.1-1.2-0.3v-1.2c-3.4-0.5-6-3.4-6-6.9 0-3.4 2.6-6.2 6-6.7v-0.8h-1.6c-0.2-0.3-0.3-0.6-0.3-1s0.1-0.7 0.3-1h1.6v-6l-4.6 3.8 1 1.1c-0.2 0.7-0.8 1.2-1.5 1.3l-1-1.3-0.6 0.6c0.6 1.1 1 2.3 1 3.6 0 3.8-3 6.8-6.7 6.8-1.8 0-3.6-0.7-4.9-2l-1 0.8c-0.6-0.2-1.3-1-1.4-1.7l1-0.8c-0.6-1.1-1-2.4-1-3.7 0-3.8 2.9-6.9 6.7-6.9 1.8 0 3.6 0.8 4.9 2l0.6-0.4-1-1.2c0.2-0.6 0.8-1.1 1.5-1.2l1 1.2 5.4-4.3-5.6-4.7-0.8 1.1 1.1 0.9-0.8 1.1-1.1-0.9-0.8 1 0.9 0.7-0.8 1.1-3-2.5 2.8-1.6-0.8-0.7-2.6 1.4 0.8-2.7-0.8-0.7-1 3.1-3.1-2.5 0.8-1 1.1 0.9 0.9-1-1.1-1 0.8-1 1.1 0.8 0.8-1-2.4-1.8c0.2-0.8 0.7-1.4 1.5-1.9l12.7 10.4v-6.9h-1.3v1.3h-1.3v-1.3h-1.3v1.3h-1.3v-3.9l3 1.3v-1.1l-2.8-1.2 2.8-1.1v-1l-3 1.2v-4h1.3v1.4h1.3v-1.4h1.3v1.4h1.3v-3.1c0.4-0.1 0.8-0.2 1.2-0.2s0.8 0.1 1.1 0.2v17.1l12.7-10.4c0.7 0.5 1.2 1.1 1.5 1.9l-2.4 1.9 0.8 1 1.1-0.8 0.8 1-1.1 1 0.8 1 1.1-0.9 0.8 1-3.1 2.5-0.9-3.2zm-25.9 18.8c0 1.1 0.8 1.8 1.8 1.9l-1.6 1.2c-1.1-0.4-2.1-1.7-2.1-2.9 0-0.4 0.1-0.6 0.2-0.9h-0.3c-1.5 0-2.7-1.4-3-2.8l1.7-1.3v0.5c0 0.9 0.9 1.7 1.8 1.7 1 0 1.9-0.8 1.9-1.8 0-1.2-0.9-2-2.1-2-2.2 0-4.4 2.2-4.4 5 0 0.8 0.2 1.6 0.5 2.3l1-0.8c0.7 0.3 1.2 1 1.4 1.8l-1 0.8c1 0.8 2.2 1.2 3.4 1.2 2.6 0 4.6-2.1 4.6-3.9 0-1.1-0.7-2-1.8-2-1.2 0.2-2 1-2 2zm13.6 4c0 1 0.8 1.8 1.8 1.8 0.7 0 1-0.3 1.5-0.7v2.1c-0.5 0.3-1 0.4-1.6 0.4-1.1 0-2-0.3-2.6-1.3-0.6 1-1.6 1.3-2.7 1.3-0.5 0-1.1-0.1-1.6-0.4v-2.1c0.5 0.5 0.8 0.7 1.5 0.7 1 0 1.8-0.8 1.8-1.8s-0.6-1.8-1.7-1.8c-1.9 0-2.7 1.8-2.7 3.5 0 2.4 1.8 4.5 4.1 4.9v-1.2c0.4-0.2 0.8-0.2 1.1-0.2 0.4 0 0.8 0 1.2 0.2v1.2c2.2-0.3 4.1-2.6 4.1-4.9 0-1.7-0.7-3.5-2.7-3.5-0.8-0.1-1.5 0.8-1.5 1.8zm11.4-8.3c0 0.9 1 1.8 1.9 1.8s1.8-0.8 1.8-1.7v-0.5l1.6 1.3c-0.3 1.6-1.7 2.9-3.3 2.8 0.1 0.3 0.1 0.6 0.1 0.9 0 1.2-1 2.5-2.1 2.9l-1.5-1.3c1-0.1 1.8-0.8 1.8-1.9s-0.9-1.8-1.9-1.8c-1.1 0-1.8 0.9-1.8 2 0 1.3 1.6 3.9 4.7 3.9 1.2 0 2.4-0.4 3.3-1.2l-1-0.8c0.2-0.8 0.7-1.5 1.4-1.8l1 0.8c0.4-0.7 0.6-1.5 0.6-2.3 0-2.2-1.7-5-4.4-5-1.2 0-2.2 0.7-2.2 1.9z"/></svg>`,
+  Omnilogy: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="127" height="48" aria-hidden="true"><path d="M0 0 C1.01167236 0.00273926 2.02334473 0.00547852 3.06567383 0.00830078 C11.90168537 0.13194099 19.77061259 1.12655953 27.6875 5.3125 C27.20769194 9.2709165 25.78586126 12.13009951 23.7421875 15.53125 C22.24799299 18.05477851 20.97263809 20.67796692 19.6875 23.3125 C18.75744141 22.879375 18.75744141 22.879375 17.80859375 22.4375 C7.9495615 18.30445591 -3.41643563 17.23438843 -13.51953125 21.34765625 C-18.53844189 24.04846437 -21.46463289 28.23025701 -23.58203125 33.3984375 C-26.07372087 43.33854688 -25.51020056 55.34928262 -20.3125 64.3125 C-16.84404204 68.68055801 -12.62342645 70.0557993 -7.3125 71.3125 C-4.61680342 71.52027641 -2.06427903 71.64690334 0.625 71.625 C1.67941284 71.61871582 1.67941284 71.61871582 2.75512695 71.61230469 C8.13757972 71.49490115 11.9476234 70.81658575 16.6875 68.3125 C17.595 67.838125 18.5025 67.36375 19.4375 66.875 C26.37813137 58.97039205 26.34712133 47.75468792 26.91674805 37.76245117 C27.62685507 26.52052738 30.06985522 17.46050547 38.50390625 9.625 C51.31939429 -0.73094993 67.33047265 -0.83059738 83.0234375 0.62109375 C93.7494379 2.35753794 102.34503424 6.1274562 109.6875 14.3125 C111.51664626 16.86479711 112.65747644 19.35248279 113.6875 22.3125 C113.98398438 23.13878906 114.28046875 23.96507813 114.5859375 24.81640625 C119.18501968 39.98493877 117.98856715 58.35062468 111.4375 72.75 C106.30958127 81.9772284 99.68275154 86.12560821 89.6875 89.3125 C83.82803571 90.69477718 77.86178738 90.49633836 71.875 90.5 C70.83279297 90.51224609 69.79058594 90.52449219 68.71679688 90.53710938 C59.564625 90.5543451 51.97006215 89.18944398 43.6875 85.3125 C46.6875 79.3125 49.6875 73.3125 52.6875 67.3125 C53.20054688 67.60125 53.71359375 67.89 54.2421875 68.1875 C63.31083037 72.58441776 74.22948794 73.07094666 83.9296875 70.4296875 C91.03297262 67.2469099 93.06795489 63.28038551 95.9375 56.25 C98.17176048 47.31295808 97.64465191 36.67178476 93.6875 28.3125 C89.63044858 23.01579398 84.85992557 21.36997519 78.6875 19.3125 C68.73021889 18.58420965 60.31883606 18.71851532 52.3125 25.25 C48.21852586 30.44619795 46.61416838 34.60569031 46.4765625 41.1640625 C46.44820313 42.09863281 46.41984375 43.03320312 46.390625 43.99609375 C46.33916889 45.93341624 46.2947202 47.8709395 46.2578125 49.80859375 C45.87037214 61.60938149 42.63477881 73.42551795 33.80078125 81.7109375 C23.94528436 89.17998321 12.29126651 90.6647174 0.3125 90.625 C-0.65171875 90.64111328 -1.6159375 90.65722656 -2.609375 90.67382812 C-13.79301212 90.68132386 -24.58534368 88.02244518 -33.25 80.66796875 C-43.444389 70.23190243 -44.61096212 56.35115528 -44.62939453 42.59545898 C-44.47603091 29.9865083 -41.78181439 19.20805244 -32.875 9.79296875 C-23.50696582 1.36682931 -12.11493588 -0.06616349 0 0 Z " fill="#3D2EF1" transform="translate(63.3125,58.6875)"/></svg>`,
+  "Espeo Software": `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 61" width="36" height="48" aria-hidden="true">
+  <g>
+    <path d="M29.7846 38.2763C29.1817 37.2209 28.1905 36.4514 27.0288 36.1369C25.8671 35.8225 24.6298 35.9887 23.5888 36.5992L23.5589 36.6186C21.3496 37.9275 18.7183 38.2923 16.2438 37.6329C13.7693 36.9735 11.6544 35.3438 10.3642 33.1024C9.07409 30.861 8.71443 28.1914 9.3644 25.6809C10.0144 23.1705 11.6207 21.0248 13.83 19.7159L13.8541 19.7033C14.8792 19.0839 15.6222 18.0796 15.9221 16.9081C16.2221 15.7366 16.0548 14.4923 15.4564 13.4451C14.8581 12.3979 13.877 11.6323 12.7259 11.3141C11.5748 10.9959 10.3465 11.1509 9.30735 11.7455L9.29819 11.7514L9.29403 11.7438C7.17013 12.9998 5.31088 14.6678 3.8224 16.6528C2.33393 18.6378 1.2454 20.9007 0.618959 23.3125C-0.00748304 25.7242 -0.159562 28.2375 0.171398 30.7089C0.502358 33.1803 1.30988 35.5614 2.54786 37.7161C3.78583 39.8709 5.43 41.7572 7.38652 43.2673C9.34305 44.7774 11.5736 45.8817 13.9508 46.5173C16.328 47.1528 18.8053 47.3071 21.2413 46.9714C23.6773 46.6356 26.0242 45.8163 28.1481 44.5604V44.5528C29.185 43.9404 29.94 42.9356 30.2474 41.759C30.5548 40.5825 30.3896 39.3302 29.7879 38.2771" fill="#212121"/>
+    <path d="M35.5636 4.59616H35.5578C35.5578 3.37744 35.0806 2.20864 34.2312 1.34688C33.3818 0.485116 32.2297 0.000976562 31.0284 0.000976562C29.8272 0.000976562 28.6751 0.485116 27.8257 1.34688C26.9763 2.20864 26.4991 3.37744 26.4991 4.59616H26.4933V10.8802C23.7682 9.61496 20.7831 9.03313 17.7899 9.18377C14.7967 9.33441 11.8831 10.2131 9.29478 11.7458L9.29892 11.7534C8.78427 12.0568 8.3336 12.4602 7.9726 12.9404C7.61161 13.4206 7.34735 13.9683 7.19497 14.5521C7.04259 15.1359 7.00505 15.7444 7.08448 16.3429C7.16391 16.9415 7.35876 17.5183 7.65791 18.0404C7.95706 18.5625 8.35463 19.0198 8.82796 19.386C9.30128 19.7523 9.84107 20.0203 10.4165 20.1749C10.992 20.3295 11.5918 20.3676 12.1817 20.287C12.7717 20.2065 13.3402 20.0088 13.8549 19.7053L13.8856 19.685C15.4098 18.7886 17.1469 18.3332 18.9083 18.3681C20.6697 18.4031 22.388 18.9271 23.8764 19.8833L16.4758 24.2186V24.2237C15.4587 24.8446 14.7225 25.8458 14.4257 27.0118C14.1288 28.1779 14.295 29.4156 14.8885 30.4585C15.482 31.5015 16.4554 32.2664 17.5992 32.5886C18.743 32.9109 19.9658 32.7646 21.0044 32.1814L33.1771 25.0512L33.1854 25.047L33.2935 24.9838C33.9704 24.5883 34.5346 24.0215 34.9311 23.3386C35.3275 22.6558 35.5425 21.8803 35.5553 21.0879H35.5619L35.5636 4.59616Z" fill="#F90045"/>
+  </g>
+</svg>`,
+};
+
+const skillSections = [
+  {
+    title: "Languages & Frameworks",
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M8 5 3 12l5 7M16 5l5 7-5 7M11.5 4l-2 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>`,
+    items: skills.skills_and_tools.languages_and_frameworks,
+  },
+  {
+    title: "Styling Systems",
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 4a8 8 0 0 0-8 8c0 4 2.5 8 6 8h4a2.5 2.5 0 0 0 0-5h3a3 3 0 0 0 3-3 8 8 0 0 0-8-8Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+        <circle cx="9" cy="10" r="1" fill="currentColor" />
+        <circle cx="12.5" cy="8" r="1" fill="currentColor" />
+        <circle cx="15" cy="11" r="1" fill="currentColor" />
+      </svg>`,
+    items: skills.skills_and_tools.styling,
+  },
+  {
+    title: "Network & Data",
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="6" cy="12" r="2.2" stroke="currentColor" stroke-width="1.6" />
+        <circle cx="18" cy="6" r="2.2" stroke="currentColor" stroke-width="1.6" />
+        <circle cx="18" cy="18" r="2.2" stroke="currentColor" stroke-width="1.6" />
+        <path d="M7.8 10.9 15.9 7.1M7.8 13.1l8.1 3.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+      </svg>`,
+    items: skills.skills_and_tools.network_and_data,
+  },
+  {
+    title: "Testing",
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.6" />
+        <path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>`,
+    items: skills.skills_and_tools.testing,
+  },
+  {
+    title: "Visualization & CMS",
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M5 20V9M10 20V4M15 20v-8M20 20v-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+      </svg>`,
+    items: skills.skills_and_tools.visualization_and_cms,
+  },
+  {
+    title: "Build Tools",
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M21 15.5 13.5 8m-2.3-2.3 2.3 2.3-6.5 6.5a2.1 2.1 0 0 1-3 0 2.1 2.1 0 0 1 0-3l6.5-6.5Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>`,
+    items: skills.skills_and_tools.build_tools,
+  },
+  {
+    title: "Productivity Toolkit",
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 9h16v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9Zm3-3a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3H7V6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+        <path d="M10 14h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+      </svg>`,
+    items: skills.skills_and_tools.tools,
+  },
+];
 ---
 
 <style>
@@ -123,9 +137,54 @@ import Contact from "@sections/Contact.astro";
   .experienceLogo {
     width: 30%;
     height: 48px;
-    /* border-radius: 12px; */
-    object-fit: scale-down;
-    box-shadow: none;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .experienceLogo :global(svg) {
+    width: 100%;
+    height: 48px;
+    object-fit: contain;
+  }
+
+  .educationSection,
+  .certificatesSection {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--element-gap-large);
+  }
+
+  .educationSection .sectionHeader,
+  .certificatesSection .sectionHeader {
+    grid-column: 1 / -1;
+  }
+
+  .educationCard,
+  .certificateCard {
+    padding: var(--element-gap);
+    background: var(--color-surface-muted);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+  }
+
+  .educationMeta,
+  .certificateMeta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .educationMeta h5,
+  .certificateMeta h5 {
+    margin: 0;
+  }
+
+  .educationMeta p,
+  .certificateMeta p {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 0.9rem;
   }
 
   .experienceDate {
@@ -227,9 +286,9 @@ import Contact from "@sections/Contact.astro";
   .languagesSection {
     position: relative;
     padding-inline: 0;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-md);
     overflow: hidden;
-    margin-top: var(--element-gap);
+    margin-top: var(--space-4);
   }
 
   .languagesSection::before {
@@ -246,34 +305,34 @@ import Contact from "@sections/Contact.astro";
   }
 
   .skillsGrid {
-    margin-top: var(--element-gap-large);
+    margin-top: var(--space-4);
     display: grid;
-    gap: var(--element-gap);
+    gap: var(--space-4);
   }
 
   .skillCard {
-    background: transparent;
+    background: var(--color-surface-muted);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    padding: var(--element-gap-large);
+    padding: var(--space-4);
     display: flex;
     flex-direction: column;
-    gap: var(--element-gap-large);
+    gap: var(--space-4);
     box-shadow: none;
     backdrop-filter: none;
   }
 
   .skillCardHeader {
     display: flex;
-    gap: var(--element-gap);
+    gap: var(--space-3);
     align-items: flex-start;
   }
 
   .skillIcon {
-    width: 52px;
-    height: 52px;
-    border-radius: 16px;
-    background: var(--color-accent);
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    background: var(--color-accent-soft);
     display: grid;
     place-items: center;
     color: var(--color-text-primary);
@@ -287,7 +346,7 @@ import Contact from "@sections/Contact.astro";
   .skillList {
     list-style: none;
     display: grid;
-    gap: var(--element-gap);
+    gap: var(--space-2);
     padding: 0;
     margin: 0;
   }
@@ -295,17 +354,17 @@ import Contact from "@sections/Contact.astro";
   .skillList li {
     display: flex;
     align-items: center;
-    gap: var(--element-gap);
+    gap: var(--space-2);
     color: var(--color-text-muted);
-    font-weight: 500;
+    font-weight: 400;
   }
 
   .skillList li::before {
     content: "";
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    background: var(--color-highlight);
+    background: var(--color-accent-soft);
     display: inline-flex;
     box-shadow: none;
   }
@@ -343,6 +402,11 @@ import Contact from "@sections/Contact.astro";
     .skillsGrid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    .educationSection,
+    .certificatesSection {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   @media screen and (width >= 1200px) {
@@ -368,13 +432,10 @@ import Contact from "@sections/Contact.astro";
         <article class="experienceCard">
           <div class="experienceHeader">
             <div class="experienceMeta">
-              {exp.logo && (
-                <img
+              {companyLogos[exp.company] && (
+                <span
                   class="experienceLogo"
-                  src={exp.logo}
-                  alt={`${exp.company} logo`}
-                  loading="lazy"
-                  decoding="async"
+                  set:html={companyLogos[exp.company]}
                 />
               )}
               <div class="experienceCompanyData">
@@ -397,10 +458,9 @@ import Contact from "@sections/Contact.astro";
     }
   </section>
 
-  <!-- <section class="attendingSection languagesSection">
+  <section class="attendingSection languagesSection">
     <div class="sectionHeader">
       <h3>Skills</h3>
-      
     </div>
     <div class="skillsGrid">
       {
@@ -421,7 +481,44 @@ import Contact from "@sections/Contact.astro";
         ))
       }
     </div>
-  </section> -->
+  </section>
+
+  <section class="educationSection">
+    <div class="sectionHeader">
+      <h3>Education</h3>
+    </div>
+    {
+      education.education.map((edu) => (
+        <article class="educationCard">
+          <div class="educationMeta">
+            <h5>{edu.degree}</h5>
+            <p>{edu.institution}</p>
+            <p>
+              {edu.dates} · {edu.location}
+            </p>
+          </div>
+        </article>
+      ))
+    }
+  </section>
+
+  <section class="certificatesSection">
+    <div class="sectionHeader">
+      <h3>Certificates</h3>
+    </div>
+    {
+      certificates.certificates.map((cert) => (
+        <article class="certificateCard">
+          <div class="certificateMeta">
+            <h5>{cert.name}</h5>
+            <p>
+              {cert.issuer} · {cert.date}
+            </p>
+          </div>
+        </article>
+      ))
+    }
+  </section>
 
   <section class="attendingSection conferencesSection">
     <div>
@@ -447,6 +544,8 @@ import Contact from "@sections/Contact.astro";
       }
     </ul>
   </section>
+
+  <Referrals />
 
   <Contact />
 </MainLayout>
