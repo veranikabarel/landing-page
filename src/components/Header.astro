@@ -12,81 +12,94 @@ import HeaderLink from "./HeaderLink.astro";
   }
 
   .topnav {
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    gap: 1.5rem;
-    padding: 0 0.75rem;
-    border-radius: 0;
-    border: none;
-    background: transparent;
-    box-shadow: none;
-    backdrop-filter: none;
+    justify-content: space-between;
+    padding: 1rem 0.75rem;
     margin-bottom: var(--section-margin-bottom);
-  }
-
-  /* .branding {
-    display: flex;
-    align-items: center;
-    gap: 0.65rem;
-    text-decoration: none;
-    color: inherit;
-    font-weight: 600;
-  } */
-
-  /* .brand-mark {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-strong));
-    color: #fff;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    box-shadow: 0 12px 20px rgba(124, 77, 255, 0.35);
-  } */
-
-  .brand-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.1;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.3em;
-    color: var(--color-text-muted);
-  }
-
-  .menu-toggle {
-    /* width: 48px;
-    height: 48px; */
-    color: var(--color-text);
-  }
-
-  .menu-toggle svg {
-    width: 24px;
-    height: 24px;
   }
 
   .internal-links {
     position: absolute;
-    top: calc(100% + 0.75rem);
-    right: 1rem;
-    display: none;
+    top: calc(100% + 1rem);
+
+    display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 2rem;
+
     padding: 1.25rem;
     background: var(--color-bg-card);
-    border: 1px solid var(--color-border);
-    border-radius: 0;
-    box-shadow: none;
-    min-width: min(280px, 90vw);
+    border-radius: 14px;
     backdrop-filter: blur(18px);
+
+    width: 100vw;
+    left: 0;
+    right: 0;
+
+    transform: translateY(-8px) scale(0.98);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+      transform 280ms cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 200ms ease,
+      visibility 0ms linear 280ms;
   }
 
   .internal-links.show {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transition:
+      transform 280ms cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 200ms ease,
+      visibility 0ms;
+  }
+
+  .nav-list {
     display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+  }
+
+  .menu-toggle {
+    width: 28px;
+    height: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    height: 2px;
+    width: 100%;
+    background: var(--color-text);
+    border-radius: 2px;
+    transition:
+      transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 200ms ease;
+  }
+
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
   }
 
   .nav-list {
@@ -100,10 +113,6 @@ import HeaderLink from "./HeaderLink.astro";
     font-weight: 500;
   }
 
-  .button-wrapper {
-    display: none;
-  }
-
   .nav-actions {
     display: flex;
     align-items: center;
@@ -113,7 +122,6 @@ import HeaderLink from "./HeaderLink.astro";
   @media (min-width: 768px) {
     .topnav {
       padding: 0 1.75rem;
-      justify-content: space-between;
     }
 
     .nav-actions {
@@ -122,20 +130,28 @@ import HeaderLink from "./HeaderLink.astro";
 
     .internal-links {
       position: static;
-      display: flex !important;
+
+      display: flex;
       flex-direction: row;
       align-items: center;
       gap: 1.5rem;
+
       padding: 0;
       background: transparent;
-      border: none;
-      box-shadow: none;
-      min-width: unset;
-    }
+      filter: none;
+      backdrop-filter: none;
 
+      width: 100%;
+      min-width: unset;
+
+      transform: none;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transition: none;
+    }
     .nav-list {
       flex-direction: row;
-      align-items: center;
       gap: 1.25rem;
     }
 
@@ -144,7 +160,7 @@ import HeaderLink from "./HeaderLink.astro";
     }
 
     .button-wrapper {
-      display: block;
+      display: flex;
     }
   }
 
@@ -158,10 +174,6 @@ import HeaderLink from "./HeaderLink.astro";
 
 <header class="site-header" aria-label="Primary">
   <nav class="topnav">
-    <!-- <a class="branding" href="/">
-      <span class="brand-mark">VK</span>
-    </a> -->
-
     <div class="internal-links" id="primary-navigation">
       <ul class="nav-list" role="menubar">
         <li role="none">
@@ -199,10 +211,9 @@ import HeaderLink from "./HeaderLink.astro";
         aria-controls="primary-navigation"
         aria-expanded="false"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path fill="currentColor" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"
-          ></path>
-        </svg>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </div>
   </nav>
@@ -212,35 +223,19 @@ import HeaderLink from "./HeaderLink.astro";
   const toggle = document.getElementById("menuToggle");
   const navLinks = document.getElementById("primary-navigation");
 
-  const closeMenu = () => {
-    navLinks.classList.remove("show");
-    toggle?.setAttribute("aria-expanded", "false");
+  const toggleMenu = () => {
+    const isOpen = navLinks.classList.toggle("show");
+    toggle.classList.toggle("active", isOpen);
+    toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
   };
 
-  const openMenu = () => {
-    navLinks.classList.add("show");
-    toggle?.setAttribute("aria-expanded", "true");
-  };
+  toggle?.addEventListener("click", toggleMenu);
 
-  toggle?.addEventListener("click", () => {
-    const isExpanded = toggle.getAttribute("aria-expanded") === "true";
-    if (isExpanded) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
-  });
-
-  const links = navLinks.querySelectorAll("a");
-  links.forEach((link) => {
-    link.addEventListener("click", closeMenu);
-  });
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth >= 768) {
-      navLinks.classList.add("show");
-    } else {
-      closeMenu();
-    }
+  navLinks.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("show");
+      toggle.classList.remove("active");
+      toggle.setAttribute("aria-expanded", "false");
+    });
   });
 </script>
