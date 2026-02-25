@@ -1,0 +1,327 @@
+---
+import referrals from "@data/referrals.json";
+
+const items = referrals.referrals ?? [];
+---
+
+<style>
+  .referralsSection {
+    margin-bottom: var(--section-margin-bottom);
+    display: flex;
+    flex-direction: column;
+    gap: var(--element-gap-large);
+  }
+
+  .referralsHeader {
+    display: flex;
+    flex-direction: column;
+    gap: var(--element-gap);
+  }
+
+  .referralsIntro {
+    color: var(--color-text-muted);
+    max-width: 40rem;
+  }
+
+  .carousel {
+    position: relative;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    padding: var(--element-gap-large);
+    background: var(--color-bg-card);
+    overflow: hidden;
+  }
+
+  .carouselTrackWrapper {
+    overflow: hidden;
+  }
+
+  .carouselTrack {
+    display: flex;
+    transition: transform var(--transition-base);
+    will-change: transform;
+  }
+
+  .carouselSlide {
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--element-gap-large);
+  }
+
+  .referralMeta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--element-gap);
+  }
+
+  .referralPerson {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .referralName {
+    font-weight: 600;
+  }
+
+  .referralRole {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+
+  .referralRelationship {
+    color: var(--color-muted);
+    font-size: 0.9rem;
+  }
+
+  .referralQuote {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+  }
+
+  .referralLocation {
+    color: var(--color-muted);
+    font-size: 0.85rem;
+  }
+
+  .carouselControls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: var(--element-gap-large);
+    gap: var(--element-gap);
+  }
+
+  .controlButtons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .carouselButton {
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+    color: var(--color-text-primary);
+    transition:
+      background-color var(--transition-base),
+      border-color var(--transition-base),
+      transform 150ms ease;
+  }
+
+  .carouselButton:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transform: translateY(-1px);
+  }
+
+  .carouselButton:disabled {
+    opacity: 0.4;
+    cursor: default;
+    transform: none;
+  }
+
+  .carouselDots {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .carouselDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    border: none;
+    background: var(--color-border);
+    padding: 0;
+    cursor: pointer;
+    transition:
+      background-color var(--transition-base),
+      width var(--transition-base);
+  }
+
+  .carouselDot[aria-current="true"] {
+    width: 18px;
+    background: var(--color-accent);
+  }
+
+  .carouselStatus {
+    font-size: 0.85rem;
+    color: var(--color-muted);
+  }
+
+  @media screen and (width >= 768px) {
+    .carouselSlide {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: var(--element-gap-large);
+    }
+
+    .referralMeta {
+      max-width: 40%;
+    }
+
+    .referralQuote {
+      font-size: 1.05rem;
+    }
+  }
+</style>
+
+{
+  items.length > 0 && (
+    <section class="referralsSection" aria-label="Referrals">
+      <div class="referralsHeader">
+        <p class="eyebrow">Referrals</p>
+        <h3>What people say about working with me</h3>
+        <p class="referralsIntro">
+          A few words from people I've collaborated with closely across teams
+          and projects.
+        </p>
+      </div>
+
+      <div
+        class="carousel"
+        aria-roledescription="carousel"
+        aria-label="Referral carousel"
+      >
+        <div class="carouselTrackWrapper">
+          <ul class="carouselTrack" data-referrals-track>
+            {items.map((item, index) => (
+              <li
+                class="carouselSlide"
+                data-referral-slide
+                data-index={index}
+                aria-hidden={index === 0 ? "false" : "true"}
+              >
+                <div class="referralMeta">
+                  <div class="referralPerson">
+                    <span class="referralName">{item.name}</span>
+                    <span class="referralRole">{item.role}</span>
+                    {item.relationship && (
+                      <span class="referralRelationship">
+                        {item.relationship}
+                      </span>
+                    )}
+                  </div>
+                  {item.location && (
+                    <span class="referralLocation">{item.location}</span>
+                  )}
+                </div>
+                <p class="referralQuote">“{item.quote}”</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="carouselControls">
+          <div class="controlButtons">
+            <button
+              type="button"
+              class="carouselButton"
+              data-referrals-prev
+              aria-label="Previous referral"
+            >
+              ←
+            </button>
+            <button
+              type="button"
+              class="carouselButton"
+              data-referrals-next
+              aria-label="Next referral"
+            >
+              →
+            </button>
+          </div>
+
+          <div class="carouselDots" role="tablist" aria-label="Select referral">
+            {items.map((_, index) => (
+              <button
+                type="button"
+                class="carouselDot"
+                data-referrals-dot={index}
+                role="tab"
+                aria-label={`Show referral ${index + 1}`}
+                aria-current={index === 0 ? "true" : "false"}
+              />
+            ))}
+          </div>
+
+          <p class="carouselStatus" data-referrals-status>
+            1 / {items.length}
+          </p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<script is:inline>
+  const track = document.querySelector("[data-referrals-track]");
+  const slides = Array.from(document.querySelectorAll("[data-referral-slide]"));
+  const prevButton = document.querySelector("[data-referrals-prev]");
+  const nextButton = document.querySelector("[data-referrals-next]");
+  const dots = Array.from(document.querySelectorAll("[data-referrals-dot]"));
+  const status = document.querySelector("[data-referrals-status]");
+
+  if (!track || slides.length <= 1) {
+    if (prevButton) prevButton.disabled = true;
+    if (nextButton) nextButton.disabled = true;
+  } else {
+    let currentIndex = 0;
+
+    const update = (index) => {
+      currentIndex = index;
+      const offset = -index * 100;
+      track.style.transform = `translateX(${offset}%)`;
+
+      slides.forEach((slide, i) => {
+        slide.setAttribute("aria-hidden", i === index ? "false" : "true");
+      });
+
+      dots.forEach((dot, i) => {
+        dot.setAttribute("aria-current", i === index ? "true" : "false");
+      });
+
+      if (status) {
+        status.textContent = `${index + 1} / ${slides.length}`;
+      }
+
+      if (prevButton) {
+        prevButton.disabled = index === 0;
+      }
+      if (nextButton) {
+        nextButton.disabled = index === slides.length - 1;
+      }
+    };
+
+    const goTo = (index) => {
+      const nextIndex = Math.max(0, Math.min(slides.length - 1, index));
+      update(nextIndex);
+    };
+
+    prevButton?.addEventListener("click", () => {
+      goTo(currentIndex - 1);
+    });
+
+    nextButton?.addEventListener("click", () => {
+      goTo(currentIndex + 1);
+    });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        goTo(index);
+      });
+    });
+
+    update(0);
+  }
+</script>

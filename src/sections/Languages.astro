@@ -2,10 +2,40 @@
 import languages from "@data/languages.json";
 ---
 
-<style></style>
+<style>
+  section {
+    margin-bottom: var(--section-margin-bottom);
+  }
+
+  .sectionHeader {
+    margin-bottom: var(--heading-margin-bottom);
+  }
+
+  .languagesList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-4);
+  }
+
+  .languagesList li {
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface-muted);
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+  }
+</style>
 
 <section id="languages" class="section">
-  <ul>
+  <div class="sectionHeader">
+    <h3>Languages</h3>
+  </div>
+  <ul class="languagesList">
     {
       languages.languages.map((language) => (
         <li>

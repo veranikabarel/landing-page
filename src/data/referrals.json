@@ -1,0 +1,25 @@
+{
+  "referrals": [
+    {
+      "name": "Anna Kowalska",
+      "role": "Product Manager at Omnilogy",
+      "relationship": "Worked together on Dynatrace app initiatives",
+      "quote": "Veranika brings a rare mix of design sensitivity and engineering discipline. She consistently translated vague product ideas into clear, testable UI flows that our users loved.",
+      "location": "Wrocław, Poland"
+    },
+    {
+      "name": "Michael Lee",
+      "role": "Tech Lead at Espeo Software",
+      "relationship": "Front-end teammate on multiple client projects",
+      "quote": "I could always trust Veranika with the most visible parts of our applications. She cares deeply about accessibility, performance, and clean architecture on the front end.",
+      "location": "Poznań, Poland"
+    },
+    {
+      "name": "Sara Novak",
+      "role": "Head of Marketing, SaaS client",
+      "relationship": "Stakeholder for a marketing site redesign",
+      "quote": "Our new website finally matched the story we wanted to tell. Collaborating with Veranika was smooth, fast, and she proactively suggested better solutions than what we initially requested.",
+      "location": "Remote"
+    }
+  ]
+}
