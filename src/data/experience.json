@@ -4,7 +4,6 @@
       "job_title": "Software Engineer",
       "company": "UBS",
       "date": "06/2025 - Present",
-      "logo": "/logos/ubs.svg",
       "responsibilities": [
         "Built high-performance web app.",
         "Worked on updating tests with QA team."
@@ -14,7 +13,6 @@
       "job_title": "Front-end Developer",
       "company": "Omnilogy",
       "date": "07/2023 - 07/2025",
-      "logo": "/logos/omnilogy.svg",
       "responsibilities": [
         "Built high-performance, observable web apps with robust monitoring, testing, and reliability.",
         "Worked with cross-functional teams to design, implement, and enhance application functionality.",
@@ -25,7 +23,6 @@
       "job_title": "Front-end Developer",
       "company": "Espeo Software",
       "date": "06/2022 - 07/2023",
-      "logo": "/logos/espeo.svg",
       "responsibilities": [
         "Built intuitive, visually appealing interfaces with reusable components for scalability and maintainability.",
         "Implemented authentication, integrated third-party tools, and collaborated with backend teams for seamless security and performance.",

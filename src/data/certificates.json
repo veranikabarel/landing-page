@@ -1,0 +1,24 @@
+{
+  "certificates": [
+    {
+      "name": "Frontend Development",
+      "issuer": "Frontend Masters",
+      "date": "2023"
+    },
+    {
+      "name": "Introduction to Computer Science",
+      "issuer": "CS50",
+      "date": "2022"
+    },
+    {
+      "name": "JavaScript Fundamentals",
+      "issuer": "Girls.js",
+      "date": "2019"
+    },
+    {
+      "name": "Web Development",
+      "issuer": "Rails Girls Warsaw",
+      "date": "2018"
+    }
+  ]
+}
