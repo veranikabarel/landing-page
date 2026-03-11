@@ -23,9 +23,13 @@ const isActive = href === pathname || href === "/" + subpath?.[0];
     display: inline-block;
     text-decoration: none;
     position: relative;
-    /* color: var(--color-text-muted); */
+    color: var(--color-text);
     font-weight: 500;
     transition: color var(--transition-base);
+  }
+
+  .header-link:visited {
+    color: var(--color-text);
   }
 
   .header-link::after {
@@ -42,13 +46,13 @@ const isActive = href === pathname || href === "/" + subpath?.[0];
     transition: transform var(--transition-base);
   }
 
-  .header-link:hover,
-  .header-link:focus {
+  .header-link:hover {
     color: var(--color-accent);
   }
 
   .header-link.active {
     font-weight: 600;
+    color: var(--color-accent);
   }
 
   .header-link.active::after {
