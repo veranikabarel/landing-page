@@ -72,7 +72,7 @@ const items = referrals.referrals ?? [];
 
   .referralRelationship {
     color: var(--color-muted);
-    font-size: 0.9rem;
+    font-size: 0.7rem;
   }
 
   .referralQuote {
@@ -82,6 +82,11 @@ const items = referrals.referrals ?? [];
   }
 
   .referralLocation {
+    color: var(--color-muted);
+    font-size: 0.85rem;
+  }
+
+  .referralDate {
     color: var(--color-muted);
     font-size: 0.85rem;
   }
@@ -162,15 +167,17 @@ const items = referrals.referrals ?? [];
   @media screen and (width >= 768px) {
     .carouselSlide {
       flex-direction: row;
-      justify-content: space-between;
-      gap: var(--element-gap-large);
     }
 
     .referralMeta {
-      max-width: 40%;
+      flex: 0 0 30%;
+      max-width: 30%;
+      padding-right: var(--element-gap-large);
+      border-right: 1px solid var(--color-border);
     }
 
     .referralQuote {
+      flex: 1;
       font-size: 1.05rem;
     }
   }
@@ -181,7 +188,6 @@ const items = referrals.referrals ?? [];
     <section class="referralsSection" aria-label="Referrals">
       <div class="referralsHeader">
         <p class="eyebrow">Referrals</p>
-        <h3>What people say about working with me</h3>
         <p class="referralsIntro">
           A few words from people I've collaborated with closely across teams
           and projects.
@@ -212,9 +218,6 @@ const items = referrals.referrals ?? [];
                       </span>
                     )}
                   </div>
-                  {item.location && (
-                    <span class="referralLocation">{item.location}</span>
-                  )}
                 </div>
                 <p class="referralQuote">“{item.quote}”</p>
               </li>

@@ -1,25 +1,46 @@
 {
   "referrals": [
     {
-      "name": "Anna Kowalska",
-      "role": "Product Manager at Omnilogy",
-      "relationship": "Worked together on Dynatrace app initiatives",
-      "quote": "Veranika brings a rare mix of design sensitivity and engineering discipline. She consistently translated vague product ideas into clear, testable UI flows that our users loved.",
-      "location": "Wrocław, Poland"
+      "name": "Łukasz Błaszyński",
+      "relationship": "Łukasz was my mentor at Espeo Software",
+      "role": "Senior Frontend Developer at Espeo Software",
+      "quote": "If I had to choose one person who will work with me as a front-end developer in my next project, it would be Veranika. She is a true professional. We were working together for 1 year. During that time she shows that she is learning very fast and always appreciates new technical challenges. Veranika is also a very high soft-skilled person. In day to day work she takes the initiative and can easily take the pressure of communication with a client on herself. She will be a dream member of any web project team as she is combining both technical knowledge and great communication skills."
     },
     {
-      "name": "Michael Lee",
-      "role": "Tech Lead at Espeo Software",
-      "relationship": "Front-end teammate on multiple client projects",
-      "quote": "I could always trust Veranika with the most visible parts of our applications. She cares deeply about accessibility, performance, and clean architecture on the front end.",
-      "location": "Poznań, Poland"
+      "name": "Maciej Hoffmann",
+      "relationship": "Maciej worked with me at Espeo Software on different teams",
+      "role": "Growth Manager at Espeo Software",
+      "quote": "Veranika has been demonstrating her expertise by contributing to our company blog on artificial intelligence. Within a year, she progressed to the role of Regular Front-end Developer. Her significant involvement in various projects, along with her direct role in internal initiatives, has improved Espeo's client services and our reputation as a vendor. Veranika consistently displays professionalism, and I hope we will be able to work together in the future."
     },
     {
-      "name": "Sara Novak",
-      "role": "Head of Marketing, SaaS client",
-      "relationship": "Stakeholder for a marketing site redesign",
-      "quote": "Our new website finally matched the story we wanted to tell. Collaborating with Veranika was smooth, fast, and she proactively suggested better solutions than what we initially requested.",
-      "location": "Remote"
+      "name": "Arkadiusz Chorian",
+      "relationship": "Arkadiusz worked with me on the same team",
+      "role": "Software Architect / Rust, Go, .NET, Azure, Web3 & Blockchain",
+      "quote": "From the first day of the project, I established good contact with Veranika. It quickly became apparent that behind the facade of a friendly and open person, there was also a true professional. I was impressed by how well she understands the technical aspects, and how diligently and effectively she carries out her tasks. She can acquire the necessary information herself and, when we consulted each other, we discussed not just roadblocks but the business essence of the matter and user experience. Veranika is proactive, takes responsibility, and always thinks about how her work impacts the overall product. I believe she is perfectly suited for the role of a developer, and it is worth supporting her development."
+    },
+    {
+      "name": "Tomasz Liberski",
+      "relationship": "Tomasz was senior to me at Espeo but did not manage me directly",
+      "role": "Service Delivery Director",
+      "quote": "I witnessed Veranika graduate from the junior academy at Espeo, where she gained her first commercial experience working on client projects. She seamlessly blends her cheerful demeanor with a professional approach and has consistently proven to be a reliable team member. From the beginning, she has shown a strong thirst for knowledge and an eagerness to learn, which has been instrumental in her rapid growth during the early stages of her career."
+    },
+    {
+      "name": "Agnieszka Hołownia-Niedzielska",
+      "relationship": "Agnieszka worked with me on the same team",
+      "role": "Senior Solutions Consultant, Hyperledger Fabric Certified Service Provider",
+      "quote": "Veranika has not only technical front-end skills but also high work standards and is a driven person. I managed as Project Manager/Business Owner one of the projects Veranika was a part of. She communicates openly and efficiently, making sure the team is well informed too. Her skills make her a valuable team member, who cooperates easily with everyone and follows the agile process. Due to her impeccable English and professional easy-going approach, she is a great person to work in projects that require high soft skills like communicating directly with a client or external team."
+    },
+    {
+      "name": "Paulina Kolasa",
+      "relationship": "Paulina worked with me on the same team at Espeo Software",
+      "role": "Frontend Developer",
+      "quote": "Veranika worked with me as a frontend developer at Espeo Software. She has a deep understanding of HTML, CSS, and JavaScript, and is proficient in React. She has an eye for design and is able to create visually appealing and user-friendly interfaces that enhance the overall user experience. Throughout her time at Espeo, Veranika demonstrated excellent communication and collaboration skills. She worked closely with our designers and backend developers to ensure that the frontend and backend of our applications were seamlessly integrated. She is a reliable and dedicated team player whose positive attitude and willingness to learn and take on new challenges make her an asset to any organization."
+    },
+    {
+      "name": "Michał Starski",
+      "relationship": "Michał worked with me early in my frontend journey on different teams",
+      "role": "Lead Software Engineer at Just Join IT",
+      "quote": "I met Veranika at the beginning of her frontend journey. She struck me as a very motivated and open person who is willing to take challenging tasks for the sake of her development. She is a strong team player who is not afraid of leading people when a situation requires it."
     }
   ]
 }
