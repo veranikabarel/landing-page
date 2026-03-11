@@ -182,68 +182,66 @@ import HeaderLink from "./HeaderLink.astro";
         <li role="none">
           <HeaderLink href="/about">About</HeaderLink>
         </li>
+
         <li role="none">
-          <li role="none">
-            <HeaderLink href="/work">Work</HeaderLink>
-          </li>
-          <li role="none">
-            <HeaderLink
-              href="https://dev.to/veranikabarel"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Blog
-            </HeaderLink>
-          </li>
-          <!-- <li role="none">
+          <HeaderLink href="/work">Work</HeaderLink>
+        </li>
+        <li role="none">
+          <HeaderLink
+            href="https://dev.to/veranikabarel"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Blog
+          </HeaderLink>
+        </li>
+        <!-- <li role="none">
           <HeaderLink href="/contact">Contact</HeaderLink>
         </li> -->
-        </li>
       </ul>
+    </div>
+    <div class="button-wrapper">
+      <CustomButton
+        href="/cv-veranika-kasparevych.pdf"
+        download="cv-veranika-kasparevych.pdf"
+        text="Download CV"
+        aria-label="Download Veranika Kasparevych CV"
+      />
+    </div>
 
-      <div class="button-wrapper">
-        <CustomButton
-          href="/cv-veranika-kasparevych.pdf"
-          download="cv-veranika-kasparevych.pdf"
-          text="Download CV"
-          aria-label="Download Veranika Kasparevych CV"
-        />
-      </div>
-
-      <div class="nav-actions">
-        <div
-          class="menu-toggle"
-          id="menuToggle"
-          aria-label="Toggle navigation"
-          aria-controls="primary-navigation"
-          aria-expanded="false"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+    <div class="nav-actions">
+      <div
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Toggle navigation"
+        aria-controls="primary-navigation"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </div>
   </nav>
-
-  <script is:inline>
-    const toggle = document.getElementById("menuToggle");
-    const navLinks = document.getElementById("primary-navigation");
-
-    const toggleMenu = () => {
-      const isOpen = navLinks.classList.toggle("show");
-      toggle.classList.toggle("active", isOpen);
-      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    };
-
-    toggle?.addEventListener("click", toggleMenu);
-
-    navLinks.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("show");
-        toggle.classList.remove("active");
-        toggle.setAttribute("aria-expanded", "false");
-      });
-    });
-  </script>
 </header>
+
+<script is:inline>
+  const toggle = document.getElementById("menuToggle");
+  const navLinks = document.getElementById("primary-navigation");
+
+  const toggleMenu = () => {
+    const isOpen = navLinks.classList.toggle("show");
+    toggle.classList.toggle("active", isOpen);
+    toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  };
+
+  toggle?.addEventListener("click", toggleMenu);
+
+  navLinks.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("show");
+      toggle.classList.remove("active");
+      toggle.setAttribute("aria-expanded", "false");
+    });
+  });
+</script>
