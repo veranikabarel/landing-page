@@ -1,0 +1,10 @@
+{
+  "projects": [
+    {
+      "title": "Astro landing page template",
+      "description": "Reusable Astro template I designed for modern marketing sites and personal portfolios.",
+      "link": "https://astro.build/themes/details/astro-portfolio-template/",
+      "thumbnail": "/thumbnails/code-terminal.svg"
+    }
+  ]
+}

@@ -1,5 +1,15 @@
 ---
 const { href, text, variant = "primary", ...props } = Astro.props;
+
+const isExternal = typeof href === "string" && /^https?:\/\//.test(href);
+
+const linkProps = {
+  ...props,
+  ...(isExternal && {
+    target: "_blank",
+    rel: "noopener noreferrer",
+  }),
+};
 ---
 
 <style>
@@ -60,7 +70,7 @@ const { href, text, variant = "primary", ...props } = Astro.props;
 <a
   href={href}
   class:list={["cta-link", { outline: variant === "outline" }]}
-  {...props}
+  {...linkProps}
 >
   {text}
 </a>
