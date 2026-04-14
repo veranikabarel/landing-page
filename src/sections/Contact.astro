@@ -39,7 +39,7 @@ import CustomLink from "@components/CustomLink.astro";
   .socialIcons a {
     width: 44px;
     height: 44px;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     border: none;
     display: inline-flex;
     align-items: center;
@@ -52,7 +52,7 @@ import CustomLink from "@components/CustomLink.astro";
   }
 
   .socialIcons a:hover {
-    transform: translateY(-2px);
+    transform: translateY(var(--translate-lift-sm));
     color: var(--color-accent);
   }
 
