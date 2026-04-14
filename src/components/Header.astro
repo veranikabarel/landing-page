@@ -30,7 +30,7 @@ import HeaderLink from "./HeaderLink.astro";
 
     padding: 1.25rem;
     background: var(--color-bg-card);
-    border-radius: 14px;
+    border-radius: var(--radius-md);
     backdrop-filter: blur(18px);
 
     width: 100vw;
@@ -44,7 +44,7 @@ import HeaderLink from "./HeaderLink.astro";
 
     transition:
       transform 280ms cubic-bezier(0.4, 0, 0.2, 1),
-      opacity 200ms ease,
+      opacity var(--transition-fast),
       visibility 0ms linear 280ms;
   }
 
@@ -56,7 +56,7 @@ import HeaderLink from "./HeaderLink.astro";
 
     transition:
       transform 280ms cubic-bezier(0.4, 0, 0.2, 1),
-      opacity 200ms ease,
+      opacity var(--transition-fast),
       visibility 0ms;
   }
 
@@ -87,7 +87,7 @@ import HeaderLink from "./HeaderLink.astro";
     border-radius: 2px;
     transition:
       transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
-      opacity 200ms ease;
+      opacity var(--transition-fast);
   }
 
   .menu-toggle.active span:nth-child(1) {

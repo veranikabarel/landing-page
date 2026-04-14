@@ -108,7 +108,7 @@ const items = referrals.referrals ?? [];
   .carouselButton {
     width: 36px;
     height: 36px;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     border: 1px solid var(--color-border);
     background: transparent;
     display: inline-flex;
@@ -120,13 +120,13 @@ const items = referrals.referrals ?? [];
     transition:
       background-color var(--transition-base),
       border-color var(--transition-base),
-      transform 150ms ease;
+      transform var(--transition-fast);
   }
 
   .carouselButton:hover {
     border-color: var(--color-accent);
     color: var(--color-accent);
-    transform: translateY(-1px);
+    transform: translateY(calc(var(--translate-lift-sm) / 2));
   }
 
   .carouselButton:disabled {
@@ -144,7 +144,7 @@ const items = referrals.referrals ?? [];
   .carouselDot {
     width: 6px;
     height: 6px;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     border: none;
     background: var(--color-border);
     padding: 0;
