@@ -15,8 +15,8 @@ const {
 <style>
   .cta {
     border: 1px solid var(--color-border);
-    border-radius: 14px;
-    padding: 12px 20px;
+    border-radius: var(--radius-md);
+    padding: var(--button-padding);
     font-weight: 600;
     background: var(--color-accent);
     color: var(--color-text-primary);
@@ -25,13 +25,13 @@ const {
     box-shadow: none;
     width: max-content;
     transition:
-      transform 220ms ease,
+      transform var(--transition-fast),
       box-shadow var(--transition-base),
       filter var(--transition-base);
   }
 
   .cta:hover {
-    transform: translateY(-2px);
+    transform: translateY(var(--translate-lift-sm));
     box-shadow: var(--gradient-glow);
     filter: brightness(1.02);
   }
