@@ -1,29 +1,108 @@
 ---
-import CustomLink from "@components/CustomLink.astro";
-import MainLayout from "@layouts/MainLayout.astro";
+import BaseLayout from '@layouts/BaseLayout.astro';
 ---
 
 <style>
-  .notFoundSection {
-    padding: 0;
-    height: 80vh;
+  .not-found {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
-  .wrapper {
+  .not-found-left {
+    background: var(--blue);
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: var(--element-gap);
-    margin-top: var(--element-gap-large);
+    align-items: flex-end;
+    padding: 120px 48px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .not-found-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(140px, 20vw, 300px);
+    line-height: 0.85;
+    color: var(--white);
+    opacity: 0.12;
+    letter-spacing: -0.02em;
+    user-select: none;
+  }
+
+  .not-found-right {
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 60px 60px;
+  }
+
+  .not-found-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    color: var(--blue);
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+
+  .not-found-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(60px, 7vw, 100px);
+    line-height: 0.9;
+    color: var(--black);
+    margin-bottom: 28px;
+  }
+
+  .not-found-body {
+    font-size: 16px;
+    line-height: 1.65;
+    color: #555;
+    max-width: 360px;
+    margin-bottom: 52px;
+    font-weight: 300;
+  }
+
+  @media (max-width: 767px) {
+    .not-found {
+      grid-template-columns: 1fr;
+    }
+
+    .not-found-left {
+      min-height: 40vh;
+      padding: 100px 24px 36px;
+    }
+
+    .not-found-right {
+      padding: 40px 24px 60px;
+    }
   }
 </style>
 
-<MainLayout title="Nof found | 404" description="Lorem ipsum dolor sit amet">
-  <section class="notFoundSection">
-    <h1>Page not found</h1>
-    <div class="wrapper">
-      <CustomLink href="/" text="Back to home page" />
-      <p>404</p>
+<BaseLayout title="404 – Page Not Found">
+  <section class="not-found">
+    <div class="not-found-left">
+      <div class="not-found-num">404</div>
+    </div>
+    <div class="not-found-right">
+      <div class="not-found-label">Error · 404</div>
+      <h1 class="not-found-heading">PAGE<br />NOT<br />FOUND</h1>
+      <p class="not-found-body">
+        The page you're looking for doesn't exist or has been moved.
+        Let's get you back to somewhere familiar.
+      </p>
+      <a href="/" class="hero-cta">
+        Back to home
+        <span class="hero-cta-arrow">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path
+              d="M2 7H12M12 7L7 2M12 7L7 12"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+      </a>
     </div>
   </section>
-</MainLayout>
+</BaseLayout>
