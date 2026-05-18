@@ -1,27 +1,35 @@
 {
   "presentations": [
     {
+      "label": "OBSERVABILITY",
+      "tag": "Webinar · Dynatrace",
       "title": "Creating Dynatrace Apps",
       "type": "Webinar",
-      "description": "Webinar and live coding session on creating Dynatrace apps.",
+      "description": "Webinar and live coding session on creating Dynatrace apps. Demonstrating observability tooling for frontend teams.",
       "link": "https://youtu.be/yU7NFqfL0lw?si=-OAyNlTCV1vWO9W8"
     },
     {
-      "title": "Lightning Talk on Astro Framework",
-      "type": "Lightning Talk",
-      "description": "Brief presentation on the Astro Framework."
-    },
-    {
-      "title": "Astro portfolio template",
+      "label": "ASTRO",
+      "tag": "Open Source · 2024",
+      "title": "Astro Portfolio Template",
       "type": "Open source",
-      "description": "A free template for creating portfolio website using Astro 4.0 and Tailwind CSS.",
+      "description": "Reusable Astro template designed for modern marketing sites and personal portfolios. Featured on Astro's official themes marketplace.",
       "link": "https://astro.build/themes/details/astro-portfolio-template/"
     },
     {
-      "title": "Blog articles",
+      "label": "BLOG",
+      "tag": "Writing · Dev.to",
+      "title": "Technical Blog Articles",
       "type": "Blog",
-      "description": "Articles on Dev.to platform",
+      "description": "Sharing knowledge about front-end engineering, React patterns, and the Astro framework with the developer community.",
       "link": "https://dev.to/veranikabarel"
+    },
+    {
+      "label": "TALK",
+      "tag": "Lightning Talk",
+      "title": "Lightning Talk on Astro",
+      "type": "Lightning Talk",
+      "description": "Brief presentation on the Astro Framework for my colleagues."
     }
   ]
 }

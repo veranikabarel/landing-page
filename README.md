@@ -1,47 +1,68 @@
-# Veranika Barel | Knitting Portfolio Website
+# Veranika Kasparevych — Personal Landing Page
 
-## 🚀 Project Structure
+Personal portfolio and landing page for Veranika Kasparevych, Front-end Engineer. Built with Astro, vanilla CSS, and TypeScript.
 
-Inside of your Astro project, you'll see the following folders and files:
+## Tech Stack
+
+- **Framework:** [Astro](https://astro.build) v6
+- **Styling:** Vanilla CSS with CSS custom properties
+- **Fonts:** Bebas Neue, DM Sans (Google Fonts)
+- **Language:** TypeScript
+- **Tooling:** Prettier
+
+## Project Structure
 
 ```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+src/
+├── data/               # JSON content files (edit these to update page content)
+│   ├── activities.json   — work cards (projects, talks, blog)
+│   ├── experience.json   — work history
+│   ├── referrals.json    — testimonials / carousel
+│   ├── skills.json       — tech skills by category
+│   └── languages.json    — spoken languages
+├── layouts/
+│   └── BaseLayout.astro  — shared layout (nav, footer, cursor, scripts)
+├── pages/
+│   ├── index.astro       — home page
+│   └── 404.astro         — not found page
+└── styles/
+    └── global.css        — all styles
+
+public/
+├── cv-veranika-kasparevych.pdf
+├── favicon.svg
+├── logos/
+└── thumbnails/
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Page Sections
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+1. **Hero** — name, bio, stats, and CTA
+2. **Marquee** — scrolling tech keywords
+3. **Work** — project cards sourced from `activities.json`
+4. **Skills** — tech stack grid sourced from `skills.json` and `languages.json`
+5. **Experience** — work history sourced from `experience.json`
+6. **Referrals** — testimonial carousel sourced from `referrals.json`
+7. **Contact** — email, GitHub, LinkedIn links
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+## Updating Content
 
-Any static assets, like images, can be placed in the `public/` directory.
+All page content lives in `src/data/`. No code changes needed to update text:
 
-## 🧞 Commands
+| File | Controls |
+| :--- | :--- |
+| `activities.json` | Work section cards |
+| `experience.json` | Experience section |
+| `referrals.json` | Testimonials carousel |
+| `skills.json` | Skills grid categories |
+| `languages.json` | Languages spoken group |
 
-All commands are run from the root of the project, from a terminal:
+## Commands
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+| Command | Action |
+| :--- | :--- |
+| `npm install` | Install dependencies |
+| `npm run dev` | Start dev server at `localhost:4321` |
+| `npm run build` | Type-check and build to `./dist/` |
+| `npm run preview` | Preview production build locally |
+| `npm run format` | Format all files with Prettier |
