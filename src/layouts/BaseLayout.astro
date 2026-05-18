@@ -1,0 +1,182 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = 'Veranika Kasparevych – Front-end Engineer',
+  description = 'Front-end engineer with 4+ years building interactive, user-centric applications. Specialising in React, Next.js, and Astro.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={Astro.url} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/favicon.svg" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a href="#main" class="skip-to-content">Skip to main content</a>
+
+    <!-- Custom Cursor (desktop only) -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- Mobile Drawer -->
+    <div
+      class="mobile-drawer"
+      id="mobileDrawer"
+      role="navigation"
+      aria-label="Mobile navigation"
+    >
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+      <a
+        href="/cv-veranika-kasparevych.pdf"
+        class="mobile-drawer-cv"
+        target="_blank"
+        rel="noopener noreferrer">Download CV</a
+      >
+    </div>
+
+    <!-- Nav -->
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a
+        href="/cv-veranika-kasparevych.pdf"
+        class="nav-cv"
+        target="_blank"
+        rel="noopener noreferrer">Download CV</a
+      >
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M8 12V4M8 4L4 8M8 4L12 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer>
+      <span class="footer-copy">© 2026 Veranika Kasparevych</span>
+    </footer>
+
+    <script>
+      // Custom cursor — uses transform for GPU-composited movement
+      const cursor = document.getElementById('cursor');
+      const ring = document.getElementById('cursorRing');
+      let mx = 0, my = 0, rx = 0, ry = 0;
+
+      document.addEventListener('mousemove', (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+        if (cursor) cursor.style.transform = `translate(${mx - 6}px, ${my - 6}px)`;
+      });
+
+      (function animRing() {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        if (ring) ring.style.transform = `translate(${rx - 20}px, ${ry - 20}px)`;
+        requestAnimationFrame(animRing);
+      })();
+
+      document.querySelectorAll('a, button').forEach((el) => {
+        el.addEventListener('mouseenter', () => {
+          if (!cursor || !ring) return;
+          cursor.style.width = '6px';
+          cursor.style.height = '6px';
+          ring.style.width = '60px';
+          ring.style.height = '60px';
+        });
+        el.addEventListener('mouseleave', () => {
+          if (!cursor || !ring) return;
+          cursor.style.width = '12px';
+          cursor.style.height = '12px';
+          ring.style.width = '40px';
+          ring.style.height = '40px';
+        });
+      });
+
+      // Hamburger menu
+      const hamburger = document.getElementById('hamburger');
+      const drawer = document.getElementById('mobileDrawer');
+      hamburger?.addEventListener('click', () => {
+        const open = hamburger.classList.toggle('open');
+        drawer?.classList.toggle('open', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+      });
+      drawer?.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          hamburger?.classList.remove('open');
+          drawer.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      });
+
+      // Back to top
+      const backToTop = document.getElementById('backToTop');
+      backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      // Nav scroll background + back-to-top visibility
+      const nav = document.querySelector('nav');
+      window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY > 60;
+        nav?.classList.toggle('scrolled', scrolled);
+        backToTop?.classList.toggle('visible', window.scrollY > window.innerHeight * 0.8);
+      }, { passive: true });
+
+      // Scroll fade-in animations
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setTimeout(() => entry.target.classList.add('visible'), 80);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 },
+      );
+
+      document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

@@ -1,442 +1,362 @@
 ---
-import CustomLink from "@components/CustomLink.astro";
-// import CustomLink from "@components/CustomLink.astro";
-import MainLayout from "@layouts/MainLayout.astro";
-import Contact from "@sections/Contact.astro";
+import BaseLayout from '../layouts/BaseLayout.astro';
+import activitiesData from '../data/activities.json';
+import experienceData from '../data/experience.json';
+import referralsData from '../data/referrals.json';
+import skillsData from '../data/skills.json';
+import languagesData from '../data/languages.json';
 
-const heroStats = [
-  { value: "3+", label: "Years shipping UI" },
-  { value: "React + Next.js", label: "Preferred stack" },
-];
+const { presentations } = activitiesData;
+const { experience } = experienceData;
+const { referrals } = referralsData;
+const { skills_and_tools } = skillsData;
+const { languages } = languagesData;
+
+const cardClasses = ['wc-1', 'wc-2', 'wc-3', 'wc-4'];
+const skillGroupTitles: Record<string, string> = {
+  languages_and_frameworks: 'Languages & Frameworks',
+  styling: 'Styling Systems',
+  testing: 'Testing',
+  tools: 'Tooling',
+  visualization_and_cms: 'Visualization & CMS',
+  network_and_data: 'Network & Data',
+  build_tools: 'Build Tools',
+};
 ---
 
-<style>
-  section {
-    margin-bottom: var(--section-margin-bottom);
-  }
-
-  section {
-    margin-bottom: var(--section-margin-bottom);
-  }
-
-  .hero-section {
-    background: transparent;
-    border: none;
-    position: relative;
-  }
-
-  .hero-section::before {
-    display: none;
-    background: transparent;
-    border: none;
-    position: relative;
-  }
-
-  .hero-section::before {
-    display: none;
-  }
-
-  .hero-grid {
-    display: block;
-    max-width: 100%;
-    width: 100%;
-    display: block;
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .hero-copy h1 {
-    margin-top: 0.5rem;
-    filter: none;
-    filter: none;
-  }
-
-  .hero-lede {
-    margin-top: 1rem;
-    font-size: 1.1rem;
-  }
-
-  .hero-contact {
-    margin-top: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .hero-contact a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--color-text);
-    font-weight: 600;
-    transition:
-      color var(--transition-base),
-      text-shadow var(--transition-base);
-  }
-
-  .hero-contact a:hover {
-    color: var(--color-accent);
-    transition:
-      color var(--transition-base),
-      text-shadow var(--transition-base);
-  }
-
-  .hero-contact a:hover {
-    color: var(--color-accent);
-  }
-
-  .hero-stats {
-    margin-top: 2.5rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    row-gap: 1rem;
-    row-gap: 1rem;
-  }
-
-  .stat-card {
-    padding: 1.5rem;
-    border-radius: 0;
-    background: transparent;
-    border: none;
-    transition: transform var(--transition-base);
-  }
-
-  .stat-card:hover {
-    transform: translateY(var(--translate-lift-sm));
-    border-radius: 0;
-    background: transparent;
-    border: none;
-    transition: transform var(--transition-base);
-  }
-
-  .stat-card:hover {
-    transform: translateY(var(--translate-lift-sm));
-  }
-
-  .stat-value {
-    display: block;
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    font-weight: 600;
-    color: var(--color-accent);
-    font-weight: 600;
-    color: var(--color-accent);
-    line-height: 1.1;
-  }
-
-  .stat-label {
-    color: var(--color-text-muted);
-  }
-
-  .about-section {
-    background: transparent;
-    border: none;
-    background: transparent;
-    border: none;
-  }
-
-  .section-header {
-    margin-bottom: var(--heading-margin-bottom);
-    margin-bottom: var(--heading-margin-bottom);
-  }
-
-  .story-grid {
-    display: grid;
-    gap: var(--element-gap-large);
-    min-height: 300px;
-    gap: var(--element-gap-large);
-    min-height: 300px;
-  }
-
-  /* .story-grid img {
-  /* .story-grid img {
-    width: 100%;
-  height: 100%;  
-  object-fit: cover; 
-  border-radius: var(--radius-lg);
-  box-shadow: none;
-  } */
-
-  .story-copy {
-    display: flex;
-    flex-direction: column;
-    gap: var(--element-gap);
-    height: 100%;
-    object-fit: cover;
-    border-radius: var(--radius-lg);
-    box-shadow: none;
-  }
-  */ .story-copy {
-    display: flex;
-    flex-direction: column;
-    gap: var(--element-gap);
-  }
-
-  .tech-section {
-    background: transparent;
-    border: none;
-    background: transparent;
-    border: none;
-  }
-
-  .tech-section .section-header {
-    margin-bottom: var(--heading-margin-bottom);
-    margin-bottom: var(--heading-margin-bottom);
-  }
-
-  .tech-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    /* gap: var(--element-gap); */
-    /* gap: var(--element-gap); */
-  }
-
-  .tech-grid .icon-tile {
-    min-height: 110px;
-  }
-
-  .tech-grid svg {
-    width: clamp(40px, 8vw, 64px);
-    height: clamp(40px, 8vw, 64px);
-  }
-
-  @media (min-width: 1200px) {
-    @media (min-width: 1200px) {
-      .story-grid {
-        grid-template-columns: minmax(280px, 1fr) minmax(0, 1.2fr);
-        align-items: center;
-      }
-
-      .hero-section {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-      }
-
-      .hero-section {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-      }
-    }
-
-    .hero-section {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-    }
-  }
-</style>
-
-<MainLayout title="Main page" description="Lorem ipsum dolor sit amet">
-  <section class="hero-section surface-muted">
-    <div class="hero-grid">
-      <div class="hero-copy animate-fade-up">
-        <p class="eyebrow">Front-end developer</p>
-        <h1>Veranika Kasparevych</h1>
-        <p class="hero-lede">
-          Front-end engineer based in Wroclaw, Poland, with almost four years of
-          experience developing interactive, user-friendly, and feature-rich web
-          applications. Passionate about crafting seamless digital experiences
-          using modern technologies like React, Next.js, and Astro.
-        </p>
-
-        <div class="hero-contact">
-          <a href="mailto:vkasparevych@gmail.com">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-            >
-              <path
-                fill="currentColor"
-                d="M19 4H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 4l-7 4l-7-4V6l7 4l7-4z"
-              ></path>
-            </svg>
-            vkasparevych@gmail.com
-          </a>
-
-          <ul class="hero-stats">
-            {
-              heroStats.map((stat) => (
-                <li class="stat-card">
-                  <span class="stat-value">{stat.value}</span>
-                  <span class="stat-label">{stat.label}</span>
-                </li>
-              ))
-            }
-          </ul>
+<BaseLayout title="Veranika Kasparevych – Front-end Engineer">
+  <!-- — HERO — -->
+  <section class="hero">
+    <div class="hero-left">
+      <h1 class="hero-name">
+        VERANIKA<br />
+        <span>KASPAREVYCH</span>
+      </h1>
+    </div>
+    <div class="hero-right">
+      <div class="hero-available">Currently available for partnerships</div>
+      <p class="hero-bio">
+        Front-end engineer with <strong>4+ years</strong> building interactive, user-centric
+        applications. I pair <strong>solid engineering</strong> with refined visual
+        polish — crafting seamless digital experiences using React, Next.js, and Astro.
+      </p>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">4+</div>
+          <div class="stat-label">Years shipping UI</div>
+        </div>
+        <div>
+          <div class="stat-num">React + Next.js</div>
+          <div class="stat-label">Preferred stack</div>
         </div>
       </div>
+      <a href="mailto:vkasparevych@gmail.com" class="hero-cta">
+        Get in touch
+        <span class="hero-cta-arrow">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path
+              d="M2 7H12M12 7L7 2M12 7L7 12"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </span>
+      </a>
+      <a href="#work" class="hero-scroll-label">
+        <span>Scroll to explore</span>
+        <div class="hero-scroll-arrow"></div>
+      </a>
     </div>
   </section>
 
-  <section class="about-section">
-    <div class="section-header">
+  <!-- — WORK — -->
+  <section class="section" id="work">
+    <div class="section-header fade-up">
       <div>
-        <p class="eyebrow">Design-first engineering mindset</p>
+        <div class="section-num">01 / Work</div>
+        <h2 class="section-label">SELECTED<br />PROJECTS</h2>
       </div>
-      <CustomLink href="/about" text="More about me" variant="outline" />
     </div>
-    <div class="story-grid">
-      <!-- <img
-   
-      src={workspacePhoto.src}
-      alt="Minimalist workspace with a laptop and headphones"
-      loading="lazy"
-      decoding="async"
-    /> -->
+    <div class="work-grid">
+      {
+        presentations.map((item, i) => (
+          <div
+            class={`work-card ${cardClasses[i % cardClasses.length]} fade-up`}
+          >
+            <div class="work-card-inner">
+              <div class="work-card-bg-text">{item.label}</div>
+              <div class="work-tag">{item.tag}</div>
+              <div class="work-title">{item.title}</div>
+              <div class="work-desc">{item.description}</div>
+              {item.link && (
+                <a href={item.link} class="work-link" target="_blank" rel="noopener noreferrer">
+                  View →
+                </a>
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
 
-      <div class="story-copy">
-        <p>
-          Creative front-end developer with a passion for building intuitive,
-          user-centric web applications. I specialize in crafting seamless
-          digital experiences using modern technologies like React, Next.js, and
-          Astro—pairing solid engineering practices with refined visual polish.
-          I take strong ownership of my work, caring deeply about quality,
-          performance, and long-term maintainability.
-          <br />
-          <br />
-          Outside of work, I’m usually experimenting with side projects, sharing knowledge
-          with the dev community, or sketching new interface ideas. Collaboration
-          lights me up, and I love translating bold concepts into reliable, accessible,
-          and scalable UI—always striving to learn, adapt, and deliver meaningful
-          user experiences. I take strong ownership of my work, caring deeply about
-          quality, performance, and long-term maintainability.
-        </p>
+  <!-- — SKILLS — -->
+  <section class="skills-section" id="skills">
+    <div class="skills-left fade-up">
+      <div
+        class="section-num"
+        style="color:rgba(255,255,255,0.3);margin-bottom:12px;"
+      >
+        02 / Skills
       </div>
-
-      <div class="tech-grid">
-        <div class="tech-grid">
-          <div class="icon-tile">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="128"
-              height="128"
-              viewBox="0 0 128 128"
-            >
-              <path fill="#f0db4f" d="M1.408 1.408h125.184v125.185H1.408z"
-              ></path>
-              <path
-                fill="#323330"
-                d="M116.347 96.736c-.917-5.711-4.641-10.508-15.672-14.981c-3.832-1.761-8.104-3.022-9.377-5.926c-.452-1.69-.512-2.642-.226-3.665c.821-3.32 4.784-4.355 7.925-3.403c2.023.678 3.938 2.237 5.093 4.724c5.402-3.498 5.391-3.475 9.163-5.879c-1.381-2.141-2.118-3.129-3.022-4.045c-3.249-3.629-7.676-5.498-14.756-5.355l-3.688.477c-3.534.893-6.902 2.748-8.877 5.235c-5.926 6.724-4.236 18.492 2.975 23.335c7.104 5.332 17.54 6.545 18.873 11.531c1.297 6.104-4.486 8.08-10.234 7.378c-4.236-.881-6.592-3.034-9.139-6.949c-4.688 2.713-4.688 2.713-9.508 5.485c1.143 2.499 2.344 3.63 4.26 5.795c9.068 9.198 31.76 8.746 35.83-5.176c.165-.478 1.261-3.666.38-8.581M69.462 58.943H57.753l-.048 30.272c0 6.438.333 12.34-.714 14.149c-1.713 3.558-6.152 3.117-8.175 2.427c-2.059-1.012-3.106-2.451-4.319-4.485c-.333-.584-.583-1.036-.667-1.071l-9.52 5.83c1.583 3.249 3.915 6.069 6.902 7.901c4.462 2.678 10.459 3.499 16.731 2.059c4.082-1.189 7.604-3.652 9.448-7.401c2.666-4.915 2.094-10.864 2.07-17.444c.06-10.735.001-21.468.001-32.237"
-              ></path>
-            </svg>
+      <h2 class="section-label">TECH<br />STACK</h2>
+      <p class="skills-intro">
+        A full toolkit for building modern, performant, and maintainable web
+        applications — from architecture to pixel-perfect polish.
+      </p>
+    </div>
+    <div class="skills-grid fade-up">
+      {
+        Object.entries(skills_and_tools).map(([key, items]) => (
+          <div class="skill-group">
+            <div class="skill-group-title">{skillGroupTitles[key] ?? key}</div>
+            {items.map((s) => (
+              <span class="skill-tag">{s}</span>
+            ))}
           </div>
+        ))
+      }
+      <div class="skill-group">
+        <div class="skill-group-title">Languages spoken</div>
+        {
+          languages.map((l) => (
+            <span class="skill-tag">
+              {l.language} ({l.proficiency})
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 
-          <div class="icon-tile">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="128"
-              height="128"
-              viewBox="0 0 128 128"
-            >
-              <g fill="#61dafb">
-                <circle cx="64" cy="64" r="11.4"></circle>
-                <path
-                  d="M107.3 45.2c-2.2-.8-4.5-1.6-6.9-2.3c.6-2.4 1.1-4.8 1.5-7.1c2.1-13.2-.2-22.5-6.6-26.1c-1.9-1.1-4-1.6-6.4-1.6c-7 0-15.9 5.2-24.9 13.9c-9-8.7-17.9-13.9-24.9-13.9c-2.4 0-4.5.5-6.4 1.6c-6.4 3.7-8.7 13-6.6 26.1c.4 2.3.9 4.7 1.5 7.1c-2.4.7-4.7 1.4-6.9 2.3C8.2 50 1.4 56.6 1.4 64s6.9 14 19.3 18.8c2.2.8 4.5 1.6 6.9 2.3c-.6 2.4-1.1 4.8-1.5 7.1c-2.1 13.2.2 22.5 6.6 26.1c1.9 1.1 4 1.6 6.4 1.6c7.1 0 16-5.2 24.9-13.9c9 8.7 17.9 13.9 24.9 13.9c2.4 0 4.5-.5 6.4-1.6c6.4-3.7 8.7-13 6.6-26.1c-.4-2.3-.9-4.7-1.5-7.1c2.4-.7 4.7-1.4 6.9-2.3c12.5-4.8 19.3-11.4 19.3-18.8s-6.8-14-19.3-18.8M92.5 14.7c4.1 2.4 5.5 9.8 3.8 20.3c-.3 2.1-.8 4.3-1.4 6.6c-5.2-1.2-10.7-2-16.5-2.5c-3.4-4.8-6.9-9.1-10.4-13c7.4-7.3 14.9-12.3 21-12.3c1.3 0 2.5.3 3.5.9M81.3 74c-1.8 3.2-3.9 6.4-6.1 9.6c-3.7.3-7.4.4-11.2.4c-3.9 0-7.6-.1-11.2-.4q-3.3-4.8-6-9.6c-1.9-3.3-3.7-6.7-5.3-10c1.6-3.3 3.4-6.7 5.3-10c1.8-3.2 3.9-6.4 6.1-9.6c3.7-.3 7.4-.4 11.2-.4c3.9 0 7.6.1 11.2.4q3.3 4.8 6 9.6c1.9 3.3 3.7 6.7 5.3 10c-1.7 3.3-3.4 6.6-5.3 10m8.3-3.3c1.5 3.5 2.7 6.9 3.8 10.3c-3.4.8-7 1.4-10.8 1.9c1.2-1.9 2.5-3.9 3.6-6c1.2-2.1 2.3-4.2 3.4-6.2M64 97.8c-2.4-2.6-4.7-5.4-6.9-8.3c2.3.1 4.6.2 6.9.2s4.6-.1 6.9-.2c-2.2 2.9-4.5 5.7-6.9 8.3m-18.6-15c-3.8-.5-7.4-1.1-10.8-1.9c1.1-3.3 2.3-6.8 3.8-10.3c1.1 2 2.2 4.1 3.4 6.1c1.2 2.2 2.4 4.1 3.6 6.1m-7-25.5c-1.5-3.5-2.7-6.9-3.8-10.3c3.4-.8 7-1.4 10.8-1.9c-1.2 1.9-2.5 3.9-3.6 6c-1.2 2.1-2.3 4.2-3.4 6.2M64 30.2c2.4 2.6 4.7 5.4 6.9 8.3c-2.3-.1-4.6-.2-6.9-.2s-4.6.1-6.9.2c2.2-2.9 4.5-5.7 6.9-8.3m22.2 21l-3.6-6c3.8.5 7.4 1.1 10.8 1.9c-1.1 3.3-2.3 6.8-3.8 10.3c-1.1-2.1-2.2-4.2-3.4-6.2M31.7 35c-1.7-10.5-.3-17.9 3.8-20.3c1-.6 2.2-.9 3.5-.9c6 0 13.5 4.9 21 12.3c-3.5 3.8-7 8.2-10.4 13c-5.8.5-11.3 1.4-16.5 2.5c-.6-2.3-1-4.5-1.4-6.6M7 64c0-4.7 5.7-9.7 15.7-13.4c2-.8 4.2-1.5 6.4-2.1c1.6 5 3.6 10.3 6 15.6c-2.4 5.3-4.5 10.5-6 15.5C15.3 75.6 7 69.6 7 64m28.5 49.3c-4.1-2.4-5.5-9.8-3.8-20.3c.3-2.1.8-4.3 1.4-6.6c5.2 1.2 10.7 2 16.5 2.5c3.4 4.8 6.9 9.1 10.4 13c-7.4 7.3-14.9 12.3-21 12.3c-1.3 0-2.5-.3-3.5-.9M96.3 93c1.7 10.5.3 17.9-3.8 20.3c-1 .6-2.2.9-3.5.9c-6 0-13.5-4.9-21-12.3c3.5-3.8 7-8.2 10.4-13c5.8-.5 11.3-1.4 16.5-2.5c.6 2.3 1 4.5 1.4 6.6m9-15.6c-2 .8-4.2 1.5-6.4 2.1c-1.6-5-3.6-10.3-6-15.6c2.4-5.3 4.5-10.5 6-15.5c13.8 4 22.1 10 22.1 15.6c0 4.7-5.8 9.7-15.7 13.4"
-                ></path>
-              </g>
-            </svg>
+  <!-- — EXPERIENCE — -->
+  <section class="exp-section" id="experience">
+    <div class="section-header fade-up">
+      <div>
+        <div class="section-num">03 / Experience</div>
+        <h2 class="section-label">WHERE I'VE<br />WORKED</h2>
+      </div>
+    </div>
+    <div class="exp-list">
+      {
+        experience.map((job, i) => (
+          <div class="exp-item fade-up">
+            <div class="exp-period">{job.date}</div>
+            <div>
+              <div class="exp-role">{job.job_title}</div>
+              <div class="exp-company">{job.company}</div>
+              <ul class="exp-bullets">
+                {job.responsibilities.map((r) => (
+                  <li>{r}</li>
+                ))}
+              </ul>
+            </div>
+            <div class="exp-num">0{i + 1}</div>
           </div>
+        ))
+      }
+    </div>
+  </section>
 
-          <div class="icon-tile">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="128"
-              height="128"
-              viewBox="0 0 128 128"
-            >
-              <circle cx="64" cy="64" r="64"></circle>
-              <path
-                fill="url(#deviconNextjs0)"
-                d="M106.317 112.014L49.167 38.4H38.4v51.179h8.614v-40.24l52.54 67.884a64 64 0 0 0 6.763-5.209"
-              ></path>
-              <path
-                fill="url(#deviconNextjs1)"
-                d="M81.778 38.4h8.533v51.2h-8.533z"></path>
-              <defs>
-                <linearGradient
-                  id="deviconNextjs0"
-                  x1="109"
-                  x2="144.5"
-                  y1="116.5"
-                  y2="160.5"
-                  gradientTransform="scale(.71111)"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop stop-color="#fff"></stop>
-                  <stop offset="1" stop-color="#fff" stop-opacity="0"></stop>
-                </linearGradient>
-                <linearGradient
-                  id="deviconNextjs1"
-                  x1="121"
-                  x2="120.799"
-                  y1="54"
-                  y2="106.875"
-                  gradientTransform="scale(.71111)"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop stop-color="#fff"></stop>
-                  <stop offset="1" stop-color="#fff" stop-opacity="0"></stop>
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-
-          <div class="icon-tile">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="128"
-              height="128"
-              viewBox="0 0 128 128"
-            >
-              <defs>
-                <linearGradient
-                  id="deviconAstro0"
-                  x1="882.997"
-                  x2="638.955"
-                  y1="27.113"
-                  y2="866.902"
-                  gradientTransform="scale(.1)"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop offset="0" stop-color="#000014"></stop>
-                  <stop offset="1" stop-color="#150426"></stop>
-                </linearGradient>
-                <linearGradient
-                  id="deviconAstro1"
-                  x1="1001.68"
-                  x2="790.326"
-                  y1="652.45"
-                  y2="1094.91"
-                  gradientTransform="scale(.1)"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop offset="0" stop-color="#ff1639"></stop>
-                  <stop offset="1" stop-color="#ff1639" stop-opacity="0"></stop>
-                </linearGradient>
-              </defs>
-              <path
-                fill="url(#deviconAstro0)"
-                d="M81.504 9.465c.973 1.207 1.469 2.836 2.457 6.09l21.656 71.136a90 90 0 0 0-25.89-8.765L65.629 30.28a1.833 1.833 0 0 0-3.52.004L48.18 77.902a90.1 90.1 0 0 0-26.003 8.778l21.758-71.14c.996-3.25 1.492-4.876 2.464-6.083a8 8 0 0 1 3.243-2.398c1.433-.575 3.136-.575 6.535-.575H71.72c3.402 0 5.105 0 6.543.579a8 8 0 0 1 3.242 2.402Zm0 0"
-              ></path>
-              <path
-                fill="#ff5d01"
-                d="M84.094 90.074c-3.57 3.055-10.696 5.137-18.903 5.137c-10.07 0-18.515-3.137-20.754-7.356c-.8 2.418-.98 5.184-.98 6.954c0 0-.527 8.675 5.508 14.71a5.67 5.67 0 0 1 5.672-5.671c5.37 0 5.367 4.683 5.363 8.488v.336c0 5.773 3.527 10.719 8.543 12.805a11.6 11.6 0 0 1-1.172-5.098c0-5.508 3.23-7.555 6.988-9.938c2.989-1.894 6.309-4 8.594-8.222a15.5 15.5 0 0 0 1.875-7.41a15.6 15.6 0 0 0-.734-4.735m0 0"
-              ></path>
-              <path
-                fill="url(#deviconAstro1)"
-                d="M84.094 90.074c-3.57 3.055-10.696 5.137-18.903 5.137c-10.07 0-18.515-3.137-20.754-7.356c-.8 2.418-.98 5.184-.98 6.954c0 0-.527 8.675 5.508 14.71a5.67 5.67 0 0 1 5.672-5.671c5.37 0 5.367 4.683 5.363 8.488v.336c0 5.773 3.527 10.719 8.543 12.805a11.6 11.6 0 0 1-1.172-5.098c0-5.508 3.23-7.555 6.988-9.938c2.989-1.894 6.309-4 8.594-8.222a15.5 15.5 0 0 0 1.875-7.41a15.6 15.6 0 0 0-.734-4.735m0 0"
-              ></path>
-            </svg>
-          </div>
+  <!-- — TESTIMONIALS — -->
+  <section class="testimonials" id="testimonials">
+    <div class="section-header fade-up">
+      <div>
+        <div
+          class="section-num"
+          style="color:rgba(255,255,255,0.4);margin-bottom:12px;"
+        >
+          04 / Referrals
         </div>
+        <h2 class="section-label">WHAT<br />THEY SAY</h2>
+      </div>
+    </div>
+    <div class="carousel" id="carousel">
+      <div class="carousel-track" id="carouselTrack">
+        {
+          referrals.map((r) => (
+            <div class="testimonial-card carousel-slide">
+              <p class="t-quote">"{r.quote}"</p>
+              <div class="t-author">{r.name}</div>
+              <div class="t-role">{r.role}</div>
+            </div>
+          ))
+        }
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="prevBtn" aria-label="Previous">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path
+              d="M10 12L6 8L10 4"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </button>
+        <div class="carousel-dots" id="carouselDots">
+          {
+            referrals.map((_, i) => (
+              <button
+                class="dot"
+                data-index={String(i)}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))
+          }
+        </div>
+        <button class="carousel-btn" id="nextBtn" aria-label="Next">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path
+              d="M6 4L10 8L6 12"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </button>
       </div>
     </div>
   </section>
 
-  <section>
-    <Contact />
+  <script>
+    const track = document.getElementById('carouselTrack');
+    const dots = Array.from(document.querySelectorAll('.dot'));
+    const total = dots.length;
+    let current = 0;
+
+    function goTo(index: number) {
+      current = (index + total) % total;
+      if (track) track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    document
+      .getElementById('prevBtn')
+      ?.addEventListener('click', () => goTo(current - 1));
+    document
+      .getElementById('nextBtn')
+      ?.addEventListener('click', () => goTo(current + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+    let autoplay = setInterval(() => goTo(current + 1), 6000);
+    const carousel = document.getElementById('carousel');
+    carousel?.addEventListener('mouseenter', () => clearInterval(autoplay));
+    carousel?.addEventListener('mouseleave', () => {
+      autoplay = setInterval(() => goTo(current + 1), 6000);
+    });
+
+    goTo(0);
+  </script>
+
+  <!-- — MARQUEE — -->
+  <div class="marquee-wrap">
+    <div class="marquee-inner">
+      <span class="marquee-item">React</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Next.js</span><span class="marquee-dot">·</span
+      >
+      <span class="marquee-item">TypeScript</span><span class="marquee-dot"
+        >·</span
+      >
+      <span class="marquee-item">Astro</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Design-first Engineering</span><span
+        class="marquee-dot">·</span
+      >
+      <span class="marquee-item">Front-end Developer</span><span
+        class="marquee-dot">·</span
+      >
+      <span class="marquee-item">React</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Next.js</span><span class="marquee-dot">·</span
+      >
+      <span class="marquee-item">TypeScript</span><span class="marquee-dot"
+        >·</span
+      >
+      <span class="marquee-item">Astro</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Design-first Engineering</span><span
+        class="marquee-dot">·</span
+      >
+      <span class="marquee-item">Front-end Developer</span><span
+        class="marquee-dot">·</span
+      >
+    </div>
+  </div>
+
+  <!-- — CONTACT — -->
+  <section class="contact-section" id="contact">
+    <div class="fade-up">
+      <div class="section-num" style="margin-bottom:12px;">05 / Contact</div>
+      <h2 class="contact-heading">
+        LET'S<br />BUILD<br /><em>SOMETHING</em><br />GREAT
+      </h2>
+    </div>
+    <div class="fade-up">
+      <p class="contact-body">
+        Currently available for new partnerships and freelance projects. I'd
+        love to hear about what you're building.
+      </p>
+      <div class="contact-big-email">vkasparevych@gmail.com</div>
+      <div class="contact-links" style="margin-bottom:40px;">
+        <a
+          href="https://github.com/veranikabarel"
+          class="contact-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="contact-link-icon">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+              ></path>
+            </svg>
+          </span>
+          GitHub · veranikabarel
+        </a>
+        <a
+          href="https://www.linkedin.com/in/veranika-kasparevych/"
+          class="contact-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="contact-link-icon">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path
+                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+              ></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </span>
+          LinkedIn · Veranika Kasparevych
+        </a>
+      </div>
+      <a href="mailto:vkasparevych@gmail.com" class="btn-primary"
+        >Get in touch →</a
+      >
+    </div>
   </section>
-</MainLayout>
+</BaseLayout>
