@@ -65,25 +65,26 @@ After editing JSON files, run `npm run validate` to catch typos or missing field
 feature/xxx → develop → main
 ```
 
-- **main** — production, auto-deploys to GitHub Pages
-- **develop** — integration branch, build artifact uploaded on push
+- **main** — production, auto-deploys to Netlify
+- **develop** — integration branch, gets a Netlify branch preview on every push
 - **feature/xxx** — individual features, merge into develop
 
 ## Automations
 
-| Automation             | Trigger                         | File                                |
-| ---------------------- | ------------------------------- | ----------------------------------- |
-| Pre-commit formatting  | Every commit                    | `.husky/pre-commit` + `lint-staged` |
-| CI (check + build)     | Every push / PR to main/develop | `.github/workflows/ci.yml`          |
-| Deploy to GitHub Pages | Push to `main`                  | `.github/workflows/deploy.yml`      |
-| Staging artifact       | Push to `develop`               | `.github/workflows/deploy.yml`      |
-| Lighthouse audit       | PR to `main` or `develop`       | `.github/workflows/lighthouse.yml`  |
-| Dependabot updates     | Weekly (Monday)                 | `.github/dependabot.yml`            |
+| Automation            | Trigger                         | File                                |
+| --------------------- | ------------------------------- | ----------------------------------- |
+| Pre-commit formatting | Every commit                    | `.husky/pre-commit` + `lint-staged` |
+| CI (check + build)    | Every push / PR to main/develop | `.github/workflows/ci.yml`          |
+| Deploy to Netlify     | Push to `main`                  | Netlify (automatic)                 |
+| Branch preview        | Push to any branch              | Netlify (automatic)                 |
+| Lighthouse audit      | PR to `main` or `develop`       | `.github/workflows/lighthouse.yml`  |
+| Dependabot updates    | Weekly (Monday)                 | `.github/dependabot.yml`            |
 
 ## Deployment
 
-The site deploys to GitHub Pages via `.github/workflows/deploy.yml` using `withastro/action`.
+The site deploys to Netlify automatically on every push. Build settings are in `netlify.toml`.
 
-**One-time setup:** In GitHub repo Settings → Pages → Source, select **GitHub Actions**.
+- **Production:** `main` branch → `https://veranikabarel.netlify.app`
+- **Branch previews:** any branch gets a unique preview URL automatically
 
-Site URL is configured in `astro.config.mjs`. Update it from the current placeholder to your actual domain.
+If you have a custom domain, update `site` in `astro.config.mjs` and configure it in the Netlify dashboard.
