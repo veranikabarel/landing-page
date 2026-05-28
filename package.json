@@ -17,10 +17,10 @@
     "*.{astro,ts,css,json,md}": "prettier --write"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.7",
-    "@astrojs/mdx": "^5.0.0",
-    "@astrojs/rss": "^4.0.17",
-    "@astrojs/sitemap": "^3.7.1",
+    "@astrojs/check": "^0.9.9",
+    "@astrojs/mdx": "^6.0.1",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.3",
     "@fontsource-variable/montserrat": "^5.1.0",
     "astro": "^6.0.2",
     "typescript": "^5.5.3"
@@ -28,7 +28,7 @@
   "devDependencies": {
     "husky": "^9.1.7",
     "lint-staged": "^17.0.5",
-    "prettier": "3.8.1",
+    "prettier": "3.8.3",
     "prettier-plugin-astro": "0.14.1"
   }
 }
