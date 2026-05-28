@@ -5,6 +5,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://veranikabarel.github.io",
+  site: "https://veranikabarel.github.io/landing-page",
+  base: "/landing-page",
   integrations: [mdx(), sitemap()],
 });
