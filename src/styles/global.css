@@ -3,7 +3,7 @@
   --cream: #f0ede6;
   --black: #0a0a0a;
   --white: #ffffff;
-  --grey: #606060;
+  --grey: #b0aba3;
 }
 
 *,
@@ -95,9 +95,9 @@ nav {
   z-index: 200;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 40px;
+  justify-content: space-between;
   padding: 24px 40px;
+  mix-blend-mode: multiply;
   transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -298,8 +298,7 @@ nav.scrolled {
   letter-spacing: -0.01em;
 }
 
-.hero-name::after {
-  content: 'KASPAREVYCH';
+.hero-name span {
   display: block;
   color: var(--cream);
   opacity: 0.35;
@@ -563,18 +562,6 @@ nav.scrolled {
   margin-bottom: 4px;
 }
 
-.section-num--spaced {
-  margin-bottom: 12px;
-}
-
-.section-num--dim {
-  color: rgba(255, 255, 255, 0.75);
-}
-
-.section-num--muted {
-  color: rgba(255, 255, 255, 0.5);
-}
-
 /* — Project cards — */
 .work-grid {
   display: grid;
@@ -677,7 +664,7 @@ nav.scrolled {
 }
 
 .wc-3 .work-desc {
-  color: #555;
+  color: #666;
 }
 
 .work-link {
@@ -890,32 +877,22 @@ nav.scrolled {
 
 .carousel-dots {
   display: flex;
-  gap: 0;
+  gap: 8px;
   align-items: center;
 }
 
 .dot {
-  width: 44px;
-  height: 44px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.dot::before {
-  content: '';
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.3);
+  border: none;
+  cursor: pointer;
+  padding: 0;
   transition: background 0.2s, transform 0.2s;
 }
 
-.dot.active::before {
+.dot.active {
   background: var(--white);
   transform: scale(1.3);
 }
@@ -950,7 +927,7 @@ nav.scrolled {
   font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.65);
   margin-top: 4px;
 }
 
@@ -987,7 +964,6 @@ nav.scrolled {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-bottom: 40px;
 }
 
 .contact-link {
