@@ -1,0 +1,26 @@
+---
+interface Props {
+  label: string;
+  tag: string;
+  title: string;
+  description: string;
+  link?: string;
+  colorClass: string;
+}
+
+const { label, tag, title, description, link, colorClass } = Astro.props;
+---
+
+<div class={`work-card ${colorClass} fade-up`}>
+  <div class="work-card-inner">
+    <div class="work-card-bg-text">{label}</div>
+    <div class="work-tag">{tag}</div>
+    <div class="work-title">{title}</div>
+    <div class="work-desc">{description}</div>
+    {link && (
+      <a href={link} class="work-link" target="_blank" rel="noopener noreferrer">
+        View →
+      </a>
+    )}
+  </div>
+</div>

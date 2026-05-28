@@ -1,0 +1,15 @@
+---
+interface Props {
+  quote: string;
+  name: string;
+  role: string;
+}
+
+const { quote, name, role } = Astro.props;
+---
+
+<div class="testimonial-card carousel-slide">
+  <p class="t-quote">"{quote}"</p>
+  <div class="t-author">{name}</div>
+  <div class="t-role">{role}</div>
+</div>
