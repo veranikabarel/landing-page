@@ -1,0 +1,13 @@
+---
+interface Props {
+  title: string;
+  items: string[];
+}
+
+const { title, items } = Astro.props;
+---
+
+<div class="skill-group">
+  <div class="skill-group-title">{title}</div>
+  {items.map((item) => <span class="skill-tag">{item}</span>)}
+</div>

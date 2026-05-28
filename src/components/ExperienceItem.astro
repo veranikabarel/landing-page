@@ -1,0 +1,23 @@
+---
+interface Props {
+  date: string;
+  jobTitle: string;
+  company: string;
+  responsibilities: string[];
+  index: number;
+}
+
+const { date, jobTitle, company, responsibilities, index } = Astro.props;
+---
+
+<div class="exp-item fade-up">
+  <div class="exp-period">{date}</div>
+  <div>
+    <div class="exp-role">{jobTitle}</div>
+    <div class="exp-company">{company}</div>
+    <ul class="exp-bullets">
+      {responsibilities.map((r) => <li>{r}</li>)}
+    </ul>
+  </div>
+  <div class="exp-num">0{index + 1}</div>
+</div>
