@@ -1,0 +1,24 @@
+---
+import experienceData from '../data/experience.json';
+import SectionHeader from '../components/SectionHeader.astro';
+import ExperienceItem from '../components/ExperienceItem.astro';
+
+const { experience } = experienceData;
+---
+
+<section class="exp-section" id="experience">
+  <SectionHeader num="03 / Experience" label="WHERE I'VE<br />WORKED" />
+  <div class="exp-list">
+    {
+      experience.map((job, i) => (
+        <ExperienceItem
+          date={job.date}
+          jobTitle={job.job_title}
+          company={job.company}
+          responsibilities={job.responsibilities}
+          index={i}
+        />
+      ))
+    }
+  </div>
+</section>

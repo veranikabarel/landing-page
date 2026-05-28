@@ -1,0 +1,79 @@
+---
+import referralsData from '../data/referrals.json';
+import SectionHeader from '../components/SectionHeader.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+
+const { referrals } = referralsData;
+---
+
+<section class="testimonials" id="testimonials">
+  <SectionHeader
+    num="04 / Referrals"
+    label="WHAT<br />THEY SAY"
+    numStyle="color:rgba(255,255,255,0.4);margin-bottom:12px;"
+  />
+  <div class="carousel" id="carousel">
+    <div class="carousel-track" id="carouselTrack">
+      {referrals.map((r) => <TestimonialCard quote={r.quote} name={r.name} role={r.role} />)}
+    </div>
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="prevBtn" aria-label="Previous">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path
+            d="M10 12L6 8L10 4"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+      </button>
+      <div class="carousel-dots" id="carouselDots">
+        {
+          referrals.map((_, i) => (
+            <button class="dot" data-index={String(i)} aria-label={`Go to slide ${i + 1}`} />
+          ))
+        }
+      </div>
+      <button class="carousel-btn" id="nextBtn" aria-label="Next">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path
+            d="M6 4L10 8L6 12"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  const track = document.getElementById('carouselTrack');
+  const dots = Array.from(document.querySelectorAll('.dot'));
+  const total = dots.length;
+  let current = 0;
+
+  function goTo(index: number) {
+    current = (index + total) % total;
+    if (track) track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  document
+    .getElementById('prevBtn')
+    ?.addEventListener('click', () => goTo(current - 1));
+  document
+    .getElementById('nextBtn')
+    ?.addEventListener('click', () => goTo(current + 1));
+  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+  let autoplay = setInterval(() => goTo(current + 1), 6000);
+  const carousel = document.getElementById('carousel');
+  carousel?.addEventListener('mouseenter', () => clearInterval(autoplay));
+  carousel?.addEventListener('mouseleave', () => {
+    autoplay = setInterval(() => goTo(current + 1), 6000);
+  });
+
+  goTo(0);
+</script>

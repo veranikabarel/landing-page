@@ -1,0 +1,26 @@
+---
+import activitiesData from '../data/activities.json';
+import SectionHeader from '../components/SectionHeader.astro';
+import WorkCard from '../components/WorkCard.astro';
+
+const { presentations } = activitiesData;
+const cardClasses = ['wc-1', 'wc-2', 'wc-3', 'wc-4'];
+---
+
+<section class="section" id="work">
+  <SectionHeader num="01 / Work" label="SELECTED<br />PROJECTS" />
+  <div class="work-grid">
+    {
+      presentations.map((item, i) => (
+        <WorkCard
+          label={item.label}
+          tag={item.tag}
+          title={item.title}
+          description={item.description}
+          link={item.link}
+          colorClass={cardClasses[i % cardClasses.length]}
+        />
+      ))
+    }
+  </div>
+</section>
