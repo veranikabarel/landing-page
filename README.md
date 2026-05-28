@@ -49,20 +49,20 @@ public/
 
 All page content lives in `src/data/`. No code changes needed to update text:
 
-| File | Controls |
-| :--- | :--- |
-| `activities.json` | Work section cards |
-| `experience.json` | Experience section |
-| `referrals.json` | Testimonials carousel |
-| `skills.json` | Skills grid categories |
-| `languages.json` | Languages spoken group |
+| File              | Controls               |
+| :---------------- | :--------------------- |
+| `activities.json` | Work section cards     |
+| `experience.json` | Experience section     |
+| `referrals.json`  | Testimonials carousel  |
+| `skills.json`     | Skills grid categories |
+| `languages.json`  | Languages spoken group |
 
 ## Commands
 
-| Command | Action |
-| :--- | :--- |
-| `npm install` | Install dependencies |
-| `npm run dev` | Start dev server at `localhost:4321` |
-| `npm run build` | Type-check and build to `./dist/` |
-| `npm run preview` | Preview production build locally |
-| `npm run format` | Format all files with Prettier |
+| Command           | Action                               |
+| :---------------- | :----------------------------------- |
+| `npm install`     | Install dependencies                 |
+| `npm run dev`     | Start dev server at `localhost:4321` |
+| `npm run build`   | Type-check and build to `./dist/`    |
+| `npm run preview` | Preview production build locally     |
+| `npm run format`  | Format all files with Prettier       |

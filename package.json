@@ -8,7 +8,13 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "npx prettier . --write"
+    "format": "npx prettier . --write",
+    "format:check": "npx prettier . --check",
+    "validate": "node scripts/validate-content.js",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{astro,ts,css,json,md}": "prettier --write"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.7",
@@ -20,6 +26,8 @@
     "typescript": "^5.5.3"
   },
   "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.5",
     "prettier": "3.8.1",
     "prettier-plugin-astro": "0.14.1"
   }
