@@ -1,7 +1,7 @@
 ---
-import referralsData from '../data/referrals.json';
-import SectionHeader from '../components/SectionHeader.astro';
-import TestimonialCard from '../components/TestimonialCard.astro';
+import referralsData from "../data/referrals.json";
+import SectionHeader from "../components/SectionHeader.astro";
+import TestimonialCard from "../components/TestimonialCard.astro";
 
 const { referrals } = referralsData;
 ---
@@ -14,7 +14,11 @@ const { referrals } = referralsData;
   />
   <div class="carousel" id="carousel">
     <div class="carousel-track" id="carouselTrack">
-      {referrals.map((r) => <TestimonialCard quote={r.quote} name={r.name} role={r.role} />)}
+      {
+        referrals.map((r) => (
+          <TestimonialCard quote={r.quote} name={r.name} role={r.role} />
+        ))
+      }
     </div>
     <div class="carousel-controls">
       <button class="carousel-btn" id="prevBtn" aria-label="Previous">
@@ -30,7 +34,11 @@ const { referrals } = referralsData;
       <div class="carousel-dots" id="carouselDots">
         {
           referrals.map((_, i) => (
-            <button class="dot" data-index={String(i)} aria-label={`Go to slide ${i + 1}`} />
+            <button
+              class="dot"
+              data-index={String(i)}
+              aria-label={`Go to slide ${i + 1}`}
+            />
           ))
         }
       </div>
@@ -49,29 +57,29 @@ const { referrals } = referralsData;
 </section>
 
 <script>
-  const track = document.getElementById('carouselTrack');
-  const dots = Array.from(document.querySelectorAll('.dot'));
+  const track = document.getElementById("carouselTrack");
+  const dots = Array.from(document.querySelectorAll(".dot"));
   const total = dots.length;
   let current = 0;
 
   function goTo(index: number) {
     current = (index + total) % total;
     if (track) track.style.transform = `translateX(-${current * 100}%)`;
-    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    dots.forEach((d, i) => d.classList.toggle("active", i === current));
   }
 
   document
-    .getElementById('prevBtn')
-    ?.addEventListener('click', () => goTo(current - 1));
+    .getElementById("prevBtn")
+    ?.addEventListener("click", () => goTo(current - 1));
   document
-    .getElementById('nextBtn')
-    ?.addEventListener('click', () => goTo(current + 1));
-  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+    .getElementById("nextBtn")
+    ?.addEventListener("click", () => goTo(current + 1));
+  dots.forEach((dot, i) => dot.addEventListener("click", () => goTo(i)));
 
   let autoplay = setInterval(() => goTo(current + 1), 6000);
-  const carousel = document.getElementById('carousel');
-  carousel?.addEventListener('mouseenter', () => clearInterval(autoplay));
-  carousel?.addEventListener('mouseleave', () => {
+  const carousel = document.getElementById("carousel");
+  carousel?.addEventListener("mouseenter", () => clearInterval(autoplay));
+  carousel?.addEventListener("mouseleave", () => {
     autoplay = setInterval(() => goTo(current + 1), 6000);
   });
 

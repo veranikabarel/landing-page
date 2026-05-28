@@ -1,13 +1,13 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 
 interface Props {
   title?: string;
   description?: string;
 }
 const {
-  title = 'Veranika Kasparevych – Front-end Engineer',
-  description = 'Front-end engineer with 4+ years building interactive, user-centric applications. Specialising in React, Next.js, and Astro.',
+  title = "Veranika Kasparevych – Front-end Engineer",
+  description = "Front-end engineer with 4+ years building interactive, user-centric applications. Specialising in React, Next.js, and Astro.",
 } = Astro.props;
 ---
 
@@ -16,7 +16,10 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
+    <meta
+      name="format-detection"
+      content="telephone=no, date=no, address=no, email=no"
+    />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={Astro.url} />
@@ -87,8 +90,19 @@ const {
     </nav>
 
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <path d="M8 12V4M8 4L4 8M8 4L12 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M8 12V4M8 4L4 8M8 4L12 8"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
       </svg>
     </button>
 
@@ -102,77 +116,89 @@ const {
 
     <script>
       // Custom cursor — uses transform for GPU-composited movement
-      const cursor = document.getElementById('cursor');
-      const ring = document.getElementById('cursorRing');
-      let mx = 0, my = 0, rx = 0, ry = 0;
+      const cursor = document.getElementById("cursor");
+      const ring = document.getElementById("cursorRing");
+      let mx = 0,
+        my = 0,
+        rx = 0,
+        ry = 0;
 
-      document.addEventListener('mousemove', (e) => {
+      document.addEventListener("mousemove", (e) => {
         mx = e.clientX;
         my = e.clientY;
-        if (cursor) cursor.style.transform = `translate(${mx - 6}px, ${my - 6}px)`;
+        if (cursor)
+          cursor.style.transform = `translate(${mx - 6}px, ${my - 6}px)`;
       });
 
       (function animRing() {
         rx += (mx - rx) * 0.12;
         ry += (my - ry) * 0.12;
-        if (ring) ring.style.transform = `translate(${rx - 20}px, ${ry - 20}px)`;
+        if (ring)
+          ring.style.transform = `translate(${rx - 20}px, ${ry - 20}px)`;
         requestAnimationFrame(animRing);
       })();
 
-      document.querySelectorAll('a, button').forEach((el) => {
-        el.addEventListener('mouseenter', () => {
+      document.querySelectorAll("a, button").forEach((el) => {
+        el.addEventListener("mouseenter", () => {
           if (!cursor || !ring) return;
-          cursor.style.width = '6px';
-          cursor.style.height = '6px';
-          ring.style.width = '60px';
-          ring.style.height = '60px';
+          cursor.style.width = "6px";
+          cursor.style.height = "6px";
+          ring.style.width = "60px";
+          ring.style.height = "60px";
         });
-        el.addEventListener('mouseleave', () => {
+        el.addEventListener("mouseleave", () => {
           if (!cursor || !ring) return;
-          cursor.style.width = '12px';
-          cursor.style.height = '12px';
-          ring.style.width = '40px';
-          ring.style.height = '40px';
+          cursor.style.width = "12px";
+          cursor.style.height = "12px";
+          ring.style.width = "40px";
+          ring.style.height = "40px";
         });
       });
 
       // Hamburger menu
-      const hamburger = document.getElementById('hamburger');
-      const drawer = document.getElementById('mobileDrawer');
-      hamburger?.addEventListener('click', () => {
-        const open = hamburger.classList.toggle('open');
-        drawer?.classList.toggle('open', open);
-        document.body.style.overflow = open ? 'hidden' : '';
+      const hamburger = document.getElementById("hamburger");
+      const drawer = document.getElementById("mobileDrawer");
+      hamburger?.addEventListener("click", () => {
+        const open = hamburger.classList.toggle("open");
+        drawer?.classList.toggle("open", open);
+        document.body.style.overflow = open ? "hidden" : "";
       });
-      drawer?.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', () => {
-          hamburger?.classList.remove('open');
-          drawer.classList.remove('open');
-          document.body.style.overflow = '';
+      drawer?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          hamburger?.classList.remove("open");
+          drawer.classList.remove("open");
+          document.body.style.overflow = "";
         });
       });
 
       // Back to top
-      const backToTop = document.getElementById('backToTop');
-      backToTop?.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        history.pushState(null, '', window.location.pathname);
+      const backToTop = document.getElementById("backToTop");
+      backToTop?.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        history.pushState(null, "", window.location.pathname);
       });
 
       // Nav scroll background + back-to-top visibility
-      const nav = document.querySelector('nav');
-      window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY > 60;
-        nav?.classList.toggle('scrolled', scrolled);
-        backToTop?.classList.toggle('visible', window.scrollY > window.innerHeight * 0.8);
-      }, { passive: true });
+      const nav = document.querySelector("nav");
+      window.addEventListener(
+        "scroll",
+        () => {
+          const scrolled = window.scrollY > 60;
+          nav?.classList.toggle("scrolled", scrolled);
+          backToTop?.classList.toggle(
+            "visible",
+            window.scrollY > window.innerHeight * 0.8,
+          );
+        },
+        { passive: true },
+      );
 
       // Scroll fade-in animations
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              setTimeout(() => entry.target.classList.add('visible'), 80);
+              setTimeout(() => entry.target.classList.add("visible"), 80);
               observer.unobserve(entry.target);
             }
           });
@@ -180,7 +206,9 @@ const {
         { threshold: 0.12 },
       );
 
-      document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+      document
+        .querySelectorAll(".fade-up")
+        .forEach((el) => observer.observe(el));
     </script>
   </body>
 </html>
