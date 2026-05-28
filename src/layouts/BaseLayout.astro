@@ -9,6 +9,8 @@ const {
   title = 'Veranika Kasparevych – Front-end Engineer',
   description = 'Front-end engineer with 4+ years building interactive, user-centric applications. Specialising in React, Next.js, and Astro.',
 } = Astro.props;
+
+const isProd = import.meta.env.PROD;
 ---
 
 <!doctype html>
@@ -16,6 +18,12 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {isProd && (
+      <meta
+        http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self';"
+      />
+    )}
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={Astro.url} />
@@ -35,10 +43,22 @@ const {
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap"
-      rel="stylesheet"
-    />
+    <script is:inline>
+      (function () {
+        var l = document.createElement('link');
+        l.rel = 'preload';
+        l.as = 'style';
+        l.href = 'https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap';
+        l.onload = function () { this.rel = 'stylesheet'; };
+        document.head.appendChild(l);
+      })();
+    </script>
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap"
+      />
+    </noscript>
   </head>
   <body>
     <a href="#main" class="skip-to-content">Skip to main content</a>
