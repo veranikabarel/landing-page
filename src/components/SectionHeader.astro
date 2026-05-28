@@ -2,15 +2,15 @@
 interface Props {
   num: string;
   label: string;
-  numClass?: string;
+  numStyle?: string;
 }
 
-const { num, label, numClass } = Astro.props;
+const { num, label, numStyle } = Astro.props;
 ---
 
 <div class="section-header fade-up">
   <div>
-    <div class={`section-num${numClass ? ` ${numClass}` : ''}`}>{num}</div>
+    <div class="section-num" style={numStyle}>{num}</div>
     <h2 class="section-label" set:html={label} />
   </div>
 </div>

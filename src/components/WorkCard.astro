@@ -18,7 +18,7 @@ const { label, tag, title, description, link, colorClass } = Astro.props;
     <div class="work-title">{title}</div>
     <div class="work-desc">{description}</div>
     {link && (
-      <a href={link} class="work-link" target="_blank" rel="noopener noreferrer" aria-label={`View ${title}`}>
+      <a href={link} class="work-link" target="_blank" rel="noopener noreferrer">
         View →
       </a>
     )}
