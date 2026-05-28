@@ -95,9 +95,9 @@ nav {
   z-index: 200;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
+  gap: 40px;
   padding: 24px 40px;
-  mix-blend-mode: multiply;
   transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -571,7 +571,7 @@ nav.scrolled {
 
 .work-card {
   position: relative;
-  aspect-ratio: 1;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   cursor: none;
 }
@@ -758,12 +758,6 @@ nav.scrolled {
   align-items: start;
   padding: 40px 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
-  transition: padding-left 0.3s;
-}
-
-.exp-item:hover {
-  padding-left: 16px;
-  border-top-color: var(--blue);
 }
 
 .exp-period {
@@ -1063,31 +1057,58 @@ footer {
    RESPONSIVE — Tablet ≤ 1024px
 ———————————————————————————————— */
 @media (max-width: 1024px) {
+  /* Nav */
   nav {
     padding: 20px 28px;
+    gap: 24px;
   }
 
   .nav-links {
     gap: 24px;
   }
 
+  /* Hero — stacked, compact */
   .hero {
     grid-template-columns: 1fr;
     min-height: auto;
   }
 
   .hero-left {
-    padding: 100px 32px 48px;
+    padding: 80px 32px 40px;
+    min-height: 30vh;
+  }
+
+  .hero-name {
+    font-size: clamp(64px, 10vw, 100px);
+  }
+
+  .hero-name span {
+    font-size: clamp(42px, 6.5vw, 66px);
   }
 
   .hero-right {
-    padding: 48px 32px 60px;
+    padding: 40px 32px 52px;
+  }
+
+  .hero-available {
+    margin-bottom: 24px;
+  }
+
+  .hero-bio {
+    font-size: 15px;
+    margin-bottom: 32px;
   }
 
   .hero-stats {
-    gap: 28px;
+    gap: 24px;
+    margin-bottom: 36px;
   }
 
+  .hero-scroll-label {
+    display: none;
+  }
+
+  /* Work */
   .section {
     padding: 72px 28px;
   }
@@ -1096,6 +1117,7 @@ footer {
     padding: 28px;
   }
 
+  /* Skills */
   .skills-section {
     padding: 72px 28px;
     gap: 48px;
@@ -1105,6 +1127,11 @@ footer {
     gap: 28px;
   }
 
+  .skills-intro {
+    max-width: 100%;
+  }
+
+  /* Experience */
   .exp-section {
     padding: 72px 28px;
   }
@@ -1118,11 +1145,19 @@ footer {
     font-size: 56px;
   }
 
+  /* Testimonials — stack header above carousel */
   .testimonials {
+    grid-template-columns: 1fr;
     padding: 72px 28px;
-    gap: 48px;
+    gap: 40px;
   }
 
+  /* Marquee */
+  .marquee-wrap {
+    margin-top: 48px;
+  }
+
+  /* Contact */
   .contact-section {
     padding: 80px 28px;
     gap: 48px;
@@ -1255,24 +1290,26 @@ footer {
 
   .work-grid {
     grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   .work-card {
     aspect-ratio: auto;
-    min-height: 280px;
   }
 
   .work-card-inner {
     padding: 28px 24px;
+    justify-content: flex-start;
+  }
+
+  .work-card-bg-text {
+    display: none;
   }
 
   .work-link {
     opacity: 1;
     transform: translateY(0);
-  }
-
-  .work-card-bg-text {
-    font-size: 72px;
+    margin-top: 16px;
   }
 
   .work-title {
@@ -1288,6 +1325,7 @@ footer {
   .skills-grid {
     grid-template-columns: 1fr 1fr;
     gap: 24px;
+    align-items: start;
   }
 
   .skills-intro {
