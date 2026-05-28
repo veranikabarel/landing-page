@@ -21,7 +21,7 @@ html {
 body {
   background: var(--cream);
   color: var(--black);
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
   font-weight: 300;
   overflow-x: hidden;
   cursor: none;
@@ -65,7 +65,9 @@ body {
   pointer-events: none;
   z-index: 9999;
   mix-blend-mode: difference;
-  transition: width 0.2s ease, height 0.2s ease;
+  transition:
+    width 0.2s ease,
+    height 0.2s ease;
 }
 
 .cursor-ring {
@@ -79,7 +81,10 @@ body {
   pointer-events: none;
   z-index: 9998;
   mix-blend-mode: difference;
-  transition: width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+  transition:
+    width 0.2s ease,
+    height 0.2s ease,
+    opacity 0.2s ease;
 }
 
 body:hover .cursor {
@@ -98,7 +103,10 @@ nav {
   justify-content: flex-end;
   gap: 40px;
   padding: 24px 40px;
-  transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    background 0.3s ease,
+    backdrop-filter 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 nav.scrolled {
@@ -110,7 +118,7 @@ nav.scrolled {
 }
 
 .nav-logo {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 22px;
   letter-spacing: 0.12em;
   color: var(--black);
@@ -133,7 +141,7 @@ nav.scrolled {
 }
 
 .nav-links a::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -184,7 +192,10 @@ nav.scrolled {
   width: 100%;
   height: 1.5px;
   background: var(--black);
-  transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    width 0.3s ease;
   transform-origin: center;
 }
 
@@ -222,7 +233,7 @@ nav.scrolled {
 }
 
 .mobile-drawer a {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 56px;
   letter-spacing: 0.06em;
   color: var(--white);
@@ -230,7 +241,10 @@ nav.scrolled {
   padding: 12px 0;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    color 0.2s;
 }
 
 .mobile-drawer.open a {
@@ -268,7 +282,7 @@ nav.scrolled {
   letter-spacing: 0.2em !important;
   border: 1px solid rgba(255, 255, 255, 0.4) !important;
   padding: 14px 32px !important;
-  font-family: 'DM Sans', sans-serif !important;
+  font-family: "DM Sans", sans-serif !important;
 }
 
 /* — Hero — */
@@ -291,7 +305,7 @@ nav.scrolled {
 }
 
 .hero-name {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: clamp(80px, 9vw, 140px);
   line-height: 0.88;
   color: var(--white);
@@ -326,7 +340,7 @@ nav.scrolled {
 }
 
 .hero-available::before {
-  content: '';
+  content: "";
   width: 6px;
   height: 6px;
   background: var(--blue);
@@ -335,7 +349,6 @@ nav.scrolled {
 }
 
 @keyframes pulse {
-
   0%,
   100% {
     opacity: 1;
@@ -370,7 +383,7 @@ nav.scrolled {
 }
 
 .stat-num {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 42px;
   color: var(--black);
   line-height: 1;
@@ -408,7 +421,9 @@ nav.scrolled {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s, border-color 0.2s;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
 }
 
 .hero-cta:hover .hero-cta-arrow {
@@ -449,7 +464,7 @@ nav.scrolled {
 }
 
 .hero-scroll-arrow::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -461,8 +476,12 @@ nav.scrolled {
 }
 
 @keyframes scroll-line {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100%); }
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
 }
 
 /* — Back to top — */
@@ -483,7 +502,10 @@ nav.scrolled {
   opacity: 0;
   pointer-events: none;
   transform: translateY(12px);
-  transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    background 0.2s;
 }
 
 .back-to-top.visible {
@@ -512,7 +534,7 @@ nav.scrolled {
 }
 
 .marquee-item {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 20px;
   letter-spacing: 0.15em;
   color: var(--white);
@@ -548,14 +570,14 @@ nav.scrolled {
 }
 
 .section-label {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: clamp(60px, 7vw, 100px);
   line-height: 0.9;
   color: var(--black);
 }
 
 .section-num {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 14px;
   color: var(--blue);
   letter-spacing: 0.1em;
@@ -611,7 +633,7 @@ nav.scrolled {
   position: absolute;
   top: 20px;
   left: 30px;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: clamp(60px, 8vw, 110px);
   line-height: 0.9;
   opacity: 0.08;
@@ -619,7 +641,9 @@ nav.scrolled {
   pointer-events: none;
   letter-spacing: -0.02em;
   transform-origin: left top;
-  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+  transition:
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.5s ease;
 }
 
 .work-card:hover .work-card-bg-text {
@@ -644,7 +668,7 @@ nav.scrolled {
 }
 
 .work-title {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: clamp(28px, 3.5vw, 48px);
   color: var(--white);
   line-height: 1;
@@ -679,8 +703,9 @@ nav.scrolled {
   text-decoration: none;
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.08s,
-              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
+  transition:
+    opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.08s,
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
 }
 
 .wc-3 .work-link {
@@ -768,7 +793,7 @@ nav.scrolled {
 }
 
 .exp-role {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 32px;
   letter-spacing: 0.04em;
   color: var(--black);
@@ -799,14 +824,14 @@ nav.scrolled {
 }
 
 .exp-bullets li::before {
-  content: '→';
+  content: "→";
   position: absolute;
   left: 0;
   color: var(--blue);
 }
 
 .exp-num {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 80px;
   color: rgba(0, 0, 0, 0.06);
   line-height: 1;
@@ -883,7 +908,9 @@ nav.scrolled {
   border: none;
   cursor: pointer;
   padding: 0;
-  transition: background 0.2s, transform 0.2s;
+  transition:
+    background 0.2s,
+    transform 0.2s;
 }
 
 .dot.active {
@@ -911,7 +938,7 @@ nav.scrolled {
 }
 
 .t-author {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 18px;
   color: var(--white);
   letter-spacing: 0.06em;
@@ -936,7 +963,7 @@ nav.scrolled {
 }
 
 .contact-heading {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: clamp(60px, 8vw, 120px);
   line-height: 0.9;
   color: var(--black);
@@ -989,7 +1016,7 @@ nav.scrolled {
 }
 
 .contact-big-email {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: clamp(28px, 4vw, 56px);
   color: var(--black);
   line-height: 1;
@@ -1010,7 +1037,9 @@ nav.scrolled {
   padding: 18px 36px;
   text-decoration: none;
   cursor: none;
-  transition: background 0.2s, transform 0.2s;
+  transition:
+    background 0.2s,
+    transform 0.2s;
 }
 
 .btn-primary:hover {
@@ -1028,7 +1057,7 @@ footer {
 }
 
 .footer-logo {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-size: 20px;
   color: var(--white);
   letter-spacing: 0.1em;
@@ -1045,7 +1074,9 @@ footer {
 .fade-up {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
 }
 
 .fade-up.visible {

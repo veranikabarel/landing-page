@@ -17,10 +17,17 @@ const { label, tag, title, description, link, colorClass } = Astro.props;
     <div class="work-tag">{tag}</div>
     <div class="work-title">{title}</div>
     <div class="work-desc">{description}</div>
-    {link && (
-      <a href={link} class="work-link" target="_blank" rel="noopener noreferrer">
-        View →
-      </a>
-    )}
+    {
+      link && (
+        <a
+          href={link}
+          class="work-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View →
+        </a>
+      )
+    }
   </div>
 </div>
