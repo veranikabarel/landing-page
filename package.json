@@ -23,7 +23,7 @@
     "@astrojs/sitemap": "^3.7.3",
     "@fontsource-variable/montserrat": "^5.1.0",
     "astro": "^6.0.2",
-    "typescript": "^5.5.3"
+    "typescript": "^6.0.3"
   },
   "devDependencies": {
     "husky": "^9.1.7",
