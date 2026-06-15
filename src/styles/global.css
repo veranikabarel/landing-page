@@ -1,3 +1,7 @@
+@import "@fontsource/bebas-neue";
+@import "@fontsource-variable/dm-sans/wght.css";
+@import "@fontsource-variable/dm-sans/wght-italic.css";
+
 :root {
   --blue: #1a1aff;
   --cream: #f0ede6;
@@ -21,7 +25,7 @@ html {
 body {
   background: var(--cream);
   color: var(--black);
-  font-family: "DM Sans", sans-serif;
+  font-family: "DM Sans Variable", sans-serif;
   font-weight: 300;
   overflow-x: hidden;
   cursor: none;
@@ -282,7 +286,7 @@ nav.scrolled {
   letter-spacing: 0.2em !important;
   border: 1px solid rgba(255, 255, 255, 0.4) !important;
   padding: 14px 32px !important;
-  font-family: "DM Sans", sans-serif !important;
+  font-family: "DM Sans Variable", sans-serif !important;
 }
 
 /* — Hero — */
