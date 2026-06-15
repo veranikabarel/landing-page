@@ -5,12 +5,9 @@ on:
     branches: [develop, main]
 
 jobs:
-  # TODO: make this a required check once Lighthouse scores are stable
-  # Re-enable by removing `continue-on-error: true` from the job
   lighthouse:
     name: Lighthouse Audit
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
 
@@ -29,6 +26,5 @@ jobs:
         uses: treosh/lighthouse-ci-action@v12
         with:
           configPath: ./lighthouserc.json
-          staticDistDir: ./dist
           uploadArtifacts: true
           temporaryPublicStorage: true
