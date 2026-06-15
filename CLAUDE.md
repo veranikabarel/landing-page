@@ -7,7 +7,7 @@ Veranika Kasparevych's personal portfolio — built with Astro v6, TypeScript, a
 - **Framework:** Astro v6 with MDX + Sitemap integrations
 - **Language:** TypeScript (strict mode)
 - **Styling:** Vanilla CSS with custom properties (`src/styles/global.css`)
-- **Fonts:** Bebas Neue, DM Sans (Google Fonts), Montserrat (fontsource-variable)
+- **Fonts:** Bebas Neue (`@fontsource/bebas-neue`), DM Sans (`@fontsource-variable/dm-sans`), Montserrat (`@fontsource-variable/montserrat`) — all self-hosted, imported in `global.css`
 
 ## Commands
 
