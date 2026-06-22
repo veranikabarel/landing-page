@@ -24,7 +24,7 @@
     "@fontsource-variable/dm-sans": "^5.2.8",
     "@fontsource-variable/montserrat": "^5.1.0",
     "@fontsource/bebas-neue": "^5.2.7",
-    "astro": "^6.4.6",
+    "astro": "^6.4.8",
     "typescript": "^5.5.3"
   },
   "devDependencies": {
